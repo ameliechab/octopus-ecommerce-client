@@ -27,35 +27,46 @@ function errorHandler(error) {
 // 		.catch(errorHandler)
 // }
 
-apiHandler.getAllArtists = function () {
-  return apiHandler
-    .get("/artists")
-    .then((res) => {
-      return res.data;
-    })
-    .catch((e) => console.log(e));
-};
+// apiHandler.getAllArtists = function () {
+//   return apiHandler
+//     .get("/artists")
+//     .then((res) => {
+//       console.log(res);
+//       return res.data;
+//     })
+//     .catch((e) => console.log(e));
+// };
 
 const service = {
   // Service is spread to have access to the basics get/post...
   ...apiHandler,
 
+  getAllArtists() {
+    return service
+      .get("/artists")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
   signup(userInfo) {
     return service
-      .post("/api/auth/signup", userInfo)
+      .post("/auth/signup", userInfo)
       .then((res) => res.data)
       .catch(errorHandler);
   },
   isLoggedIn() {
     return service
-      .get("/api/auth/me")
+      .get("/auth/me")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   signin(userInfo) {
     return service
-      .post("/api/auth/signin", userInfo)
+      .post("/auth/signin", userInfo)
       .then((res) => res.data)
       .catch(errorHandler);
   },

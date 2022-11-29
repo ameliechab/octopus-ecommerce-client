@@ -23,7 +23,7 @@ const NavBar = () => {
               type="search"
               name="search-creation-categorie"
               className="search-creation-categorie"
-              placeholder="Search for a category of creation"
+              placeholder="Search for creation"
             />
           </div>
         </div>

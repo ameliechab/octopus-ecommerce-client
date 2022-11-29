@@ -16,11 +16,12 @@ body {
   align-content: center;
   width: 100vw;
   background-color: #22223b;
-  font-family: Montserrat;
+  font-family: "Montserrat";
   height: 15vh;
+  flex-wrap: wrap;
 }
 .logo-nav-bar {
-  width: 10vw;
+  width: 10rem;
   padding: 1rem;
 }
 
@@ -51,9 +52,9 @@ input:focus {
 }
 
 input[name="search-creation-categorie"] {
-  width: 450px;
-  height: 40px;
-  font-size: 20px;
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 

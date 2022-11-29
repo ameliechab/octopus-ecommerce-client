@@ -1,0 +1,13 @@
+body {
+  overflow-x: hidden;
+  min-height: 100%;
+  width: 100%;
+}
+
+.logo-octopus-home-page {
+  height: 100%;
+}
+
+.intro-home-page {
+  height: 80vh;
+}

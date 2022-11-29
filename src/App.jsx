@@ -20,24 +20,24 @@ function App() {
       <NavBar></NavBar>
 
       <Routes>
+        <Route path="/" element={<HomePage />} />
         {/* LoggedOut routes */}
         <Route element={<LoggedOut />}>
-          <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/artist" element={<OneArtist />} />
         </Route>
 
         {/* LoggedIn routes */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/creations" element={<NavBar />}>
-            <Route index element={<CreationsList />} />
-            {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
-            {/* <Route path="/:id" element={<OneCreation />} /> */}
-          </Route>
+        {/* <Route element={<PrivateRoute />}> */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/creations" element={<NavBar />}>
+          <Route index element={<CreationsList />} />
+          {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
+          {/* <Route path="/:id" element={<OneCreation />} /> */}
         </Route>
+        {/* </Route> */}
 
         <Route path="*" element={<NotFound />} />
       </Routes>
