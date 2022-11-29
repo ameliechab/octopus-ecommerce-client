@@ -5,9 +5,13 @@ body {
 }
 
 .logo-octopus-home-page {
-  height: 100%;
+  width: 70%;
 }
 
 .intro-home-page {
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
 }

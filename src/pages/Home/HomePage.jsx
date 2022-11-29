@@ -1,5 +1,6 @@
 import React from "react";
 import AllArtists from "../../components/AllArtists/AllArtists";
+import AllCreations from "../../components/AllCreations/AllCreations";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
         </h6>
       </section>
       <AllArtists></AllArtists>
+      <AllCreations></AllCreations>
     </div>
   );
 };

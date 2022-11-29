@@ -51,6 +51,16 @@ const service = {
       .catch(errorHandler);
   },
 
+  getAllCreations() {
+    return service
+      .get("/creations")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
   signup(userInfo) {
     return service
       .post("/auth/signup", userInfo)
