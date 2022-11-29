@@ -1,0 +1,94 @@
+/* .navbar-entire {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+body {
+  margin: 0;
+}
+.navbar-entire {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  background-color: #22223b;
+  font-family: Montserrat;
+  height: 15vh;
+}
+.logo-nav-bar {
+  width: 10vw;
+  padding: 1rem;
+}
+
+.navbar-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navbar-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-nav-bar {
+  padding: 0.2rem;
+}
+
+.search-creation-categorie {
+  background-color: #22223b;
+  color: white;
+  border: 0px solid;
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+input[name="search-creation-categorie"] {
+  width: 450px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-artist-creation-link {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.artists-creations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar-login-register-link {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.card-logo-nav-bar {
+  width: 6vw;
+  padding: 1rem;
+}
