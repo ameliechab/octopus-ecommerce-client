@@ -12,11 +12,11 @@ import OneArtist from "./pages/OneArtist/OneArtist";
 import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
 import NotFound from "./pages/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div className="App">
-      <NavMain />
       <NavBar></NavBar>
 
       <Routes>
@@ -41,6 +41,8 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
