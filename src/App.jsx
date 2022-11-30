@@ -18,15 +18,25 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [creations, setCreations] = useState([]);
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
       console.log(res);
       setCreations(res);
     });
+
+    apiHandler.getAllArtists().then((data) => {
+      console.log(data);
+      setArtists(data);
+    });
   }, []);
 
   if (!creations.length) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  if (!artists.length) {
     return <div className="loading">Loading...</div>;
   }
 
@@ -37,12 +47,11 @@ function App() {
       <Routes>
         {/* <Route element={<PrivateRoute />}> */}
 
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage artists={artists} />} />
         {/* LoggedOut routes */}
         <Route element={<LoggedOut />}>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/artist" element={<OneArtist />} />
         </Route>
 
         {/* LoggedIn routes */}
@@ -55,6 +64,11 @@ function App() {
           path="/creations/:id"
           element={<OneCreation creations={creations} />}
         />
+        <Route
+          path="/artist/:id"
+          element={<OneArtist artists={artists} creations={creations} />}
+        />
+
         {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
         {/* </Route> */}
         {/* </Route> */}

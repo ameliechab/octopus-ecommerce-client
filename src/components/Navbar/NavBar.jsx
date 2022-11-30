@@ -16,7 +16,7 @@ const NavBar = () => {
             alt="logo-octopus"
           ></img>
         </div>
-        <div className="navbar-center">
+        <div id="navbar-center-responsive" className="navbar-center">
           <div className="artists-creations">
             <Link className="navbar-artist-creation-link">Artists</Link>
             <Link className="navbar-artist-creation-link">Creations</Link>
@@ -33,20 +33,36 @@ const NavBar = () => {
         <div className="navbar-right">
           {isLoggedIn && (
             <>
-              <NavLink className="navbar-login-register-link" to="/profile">
+              <NavLink
+                id="navbar-right-responsive"
+                className="navbar-login-register-link"
+                to="/profile"
+              >
                 {currentUser && currentUser.name}
               </NavLink>
-              <button className="button-log-out-navbar" onClick={removeUser}>
+              <button
+                id="navbar-right-responsive"
+                className="button-log-out-navbar"
+                onClick={removeUser}
+              >
                 Log-Out
               </button>
             </>
           )}
           {!isLoggedIn && (
             <>
-              <NavLink className="navbar-login-register-link" to="/signin">
+              <NavLink
+                id="navbar-right-responsive"
+                className="navbar-login-register-link"
+                to="/signin"
+              >
                 Log in
               </NavLink>
-              <NavLink className="navbar-login-register-link" to="/signup">
+              <NavLink
+                id="navbar-right-responsive"
+                className="navbar-login-register-link"
+                to="/signup"
+              >
                 Register
               </NavLink>
             </>

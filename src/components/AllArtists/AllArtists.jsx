@@ -15,18 +15,7 @@ const AllArtists = () => {
       console.log(res);
       setArtists(res);
     });
-    // axios
-    //   .get("http://localhost:5005/api/artists")
-    //   .then((res) => {
-    //     console.log(res);
-    //     setArtists(res);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
   }, []);
-
-  // }, []);
 
   if (!artists.length) {
     return <div className="loading">Loading...</div>;
@@ -34,15 +23,18 @@ const AllArtists = () => {
 
   return (
     <div>
+      <p className="artists-paragraph-title">ARTISTS & CREATORS</p>
       <div className="all-artists-home-page">
         {artists.map((element) => {
           return (
             <>
-              <img
-                className="artists-images-all-artists"
-                src={element.picture}
-                alt={element.name}
-              />
+              <Link to={`/artist/${element._id}`}>
+                <img
+                  className="artists-images-all-artists"
+                  src={element.picture}
+                  alt={element.name}
+                />
+              </Link>
               {/* <Link to={`${element._id}`}>{element.name}</Link> */}
               {/* <h3>{element.name}</h3>
               <div>{element.description}</div> */}

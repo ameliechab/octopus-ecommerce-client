@@ -19,14 +19,12 @@ const AllCreations = () => {
 
   return (
     <div>
+      <p className="creation-paragraph-title">CREATIONS</p>
       <div className="all-creations-home-page">
         {creations.map((element) => {
           return (
             <>
-              <Link
-                className="creations-images-all-creations"
-                to={`/creations/${element._id}`}
-              >
+              <Link to={`/creations/${element._id}`}>
                 <img
                   className="creations-images-all-creations"
                   src={element.img}
