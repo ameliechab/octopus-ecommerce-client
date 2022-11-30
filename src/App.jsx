@@ -15,6 +15,7 @@ import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
 import NotFound from "./pages/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
+import FormCreateArtist from "./components/Forms/FormCreateArtist";
 
 function App() {
   const [creations, setCreations] = useState([]);
@@ -68,6 +69,7 @@ function App() {
           path="/artist/:id"
           element={<OneArtist artists={artists} creations={creations} />}
         />
+        <Route path="/artists/create" element={<FormCreateArtist />} />
 
         {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
         {/* </Route> */}
