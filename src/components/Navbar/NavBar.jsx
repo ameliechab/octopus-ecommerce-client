@@ -52,11 +52,13 @@ const NavBar = () => {
             </>
           )}
 
-          <img
-            className="card-logo-nav-bar"
-            src="images/logos/shopping-cart-white.png"
-            alt="logo-card"
-          ></img>
+          <Link to="/cart">
+            <img
+              className="card-logo-nav-bar"
+              src="images/logos/shopping-cart-white.png"
+              alt="logo-card"
+            ></img>{" "}
+          </Link>
         </div>
       </div>
       <Outlet />

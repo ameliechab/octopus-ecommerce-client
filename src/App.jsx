@@ -47,7 +47,7 @@ function App() {
 
         {/* LoggedIn routes */}
         <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart creations={creations} />} />
 
         {/* <Route path="/creations"> */}
         <Route path="/creation" element={<CreationsList />} />

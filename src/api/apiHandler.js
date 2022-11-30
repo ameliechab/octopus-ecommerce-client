@@ -51,6 +51,16 @@ const service = {
       .catch(errorHandler);
   },
 
+  getOrder() {
+    return service
+      .get("/order")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
   getAllCreations() {
     return service
       .get("/creations")
