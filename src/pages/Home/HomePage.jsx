@@ -16,8 +16,12 @@ const HomePage = () => {
           handcrafted pieces to art treasures...
         </h6>
       </section>
-      <AllArtists></AllArtists>
-      <AllCreations></AllCreations>
+      <section className="artists-home-page">
+        <AllArtists></AllArtists>
+      </section>
+      <section className="creations-home-page">
+        <AllCreations></AllCreations>
+      </section>
     </div>
   );
 };

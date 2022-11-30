@@ -1,8 +1,11 @@
 import React from "react";
 import "./Navbar.css";
 import { Link, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import useAuth from "../../auth/useAuth";
 
 const NavBar = () => {
+  const { isLoggedIn, currentUser, removeUser } = useAuth();
   return (
     <>
       <div className="navbar-entire">
@@ -28,8 +31,27 @@ const NavBar = () => {
           </div>
         </div>
         <div className="navbar-right">
-          <Link className="navbar-login-register-link">Log In</Link>
-          <Link className="navbar-login-register-link">Register</Link>
+          {isLoggedIn && (
+            <>
+              <NavLink className="navbar-login-register-link" to="/profile">
+                {currentUser && currentUser.name}
+              </NavLink>
+              <button className="button-log-out-navbar" onClick={removeUser}>
+                Log-Out
+              </button>
+            </>
+          )}
+          {!isLoggedIn && (
+            <>
+              <NavLink className="navbar-login-register-link" to="/signin">
+                Log in
+              </NavLink>
+              <NavLink className="navbar-login-register-link" to="/signup">
+                Register
+              </NavLink>
+            </>
+          )}
+
           <img
             className="card-logo-nav-bar"
             src="images/logos/shopping-cart-white.png"

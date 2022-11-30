@@ -5,7 +5,24 @@ body {
 }
 
 .logo-octopus-home-page {
-  width: 70%;
+  width: 40%;
+  padding: 2rem;
+}
+
+h6 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 27px;
+  line-height: 32px;
+  /* or 119% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+
+  color: #000000;
 }
 
 .intro-home-page {
@@ -14,4 +31,12 @@ body {
   justify-content: space-between;
   align-items: center;
   align-content: center;
+}
+
+.artists-home-page {
+  background-color: #22223b;
+}
+
+.creations-home-page {
+  background-color: #22223b;
 }

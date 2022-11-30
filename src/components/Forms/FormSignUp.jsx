@@ -22,11 +22,15 @@ const FormSignUp = () => {
   };
   return (
     <>
-      {error && <h3 className="error">{error.message}</h3>}
       <section class="signup" id="form">
+        <img
+          className="logo-octopus-sign-up-page"
+          src="images/logos/intro-logo.png"
+        ></img>
+        {error && <h3 className="error">{error.message}</h3>}
         <form id="signup-form" onSubmit={handleSubmit}>
-          <h2>Register</h2>
-          <div>
+          <h2 className="register-word-log-up-page">Register</h2>
+          <div className="signup-checkbox">
             <label htmlFor="artist">Artist ?</label>
             <input type="checkbox" id="artist" />
           </div>

@@ -3,6 +3,7 @@ import useForm from "../../hooks/useForm";
 import apiHandler from "../../api/apiHandler";
 import useAuth from "../../auth/useAuth";
 import { useNavigate } from "react-router-dom";
+import "./FormSignIn.css";
 
 const FormSignIn = () => {
   const [{ email, password }, handleChange] = useForm({
@@ -30,27 +31,37 @@ const FormSignIn = () => {
 
   return (
     <>
-      {error && <h3 className="error">{error.message}</h3>}
-      <form onSubmit={handleSubmit}>
-        <h2>Signin</h2>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          onChange={handleChange}
-          value={email}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-          value={password}
-        />
-        <button>Submit</button>
-      </form>
+      <section class="signin" id="form">
+        <img
+          className="logo-octopus-sign-in-page"
+          src="images/logos/intro-logo.png"
+        ></img>
+        {error && <h3 className="error">{error.message}</h3>}
+        <form id="signin-form" onSubmit={handleSubmit}>
+          <h2 className="log-in-word-log-in-page">Log in</h2>
+          <label htmlFor="email"></label>
+          <input
+            type="email"
+            id="email"
+            className="signin-input"
+            name="email"
+            onChange={handleChange}
+            value={email}
+            placeholder="Email adress"
+          />
+          <label htmlFor="password"></label>
+          <input
+            type="password"
+            id="password"
+            className="signin-input"
+            name="password"
+            onChange={handleChange}
+            value={password}
+            placeholder="Password"
+          />
+          <button className="log-in-button-log-in-page">LOG IN</button>
+        </form>
+      </section>
     </>
   );
 };
