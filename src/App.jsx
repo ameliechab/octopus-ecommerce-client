@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import apiHandler from "./api/apiHandler";
+import React, { useEffect, useState } from "react";
 import NavMain from "./components/Nav/NavMain";
 import NavBar from "./components/Navbar/NavBar";
 import HomePage from "./pages/Home/HomePage";
@@ -15,11 +17,26 @@ import NotFound from "./pages/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [creations, setCreations] = useState([]);
+
+  useEffect(() => {
+    apiHandler.getAllCreations().then((res) => {
+      console.log(res);
+      setCreations(res);
+    });
+  }, []);
+
+  if (!creations.length) {
+    return <div className="loading">Loading...</div>;
+  }
+
   return (
     <div className="App">
       <NavBar></NavBar>
 
       <Routes>
+        {/* <Route element={<PrivateRoute />}> */}
+
         <Route path="/" element={<HomePage />} />
         {/* LoggedOut routes */}
         <Route element={<LoggedOut />}>
@@ -29,14 +46,17 @@ function App() {
         </Route>
 
         {/* LoggedIn routes */}
-        {/* <Route element={<PrivateRoute />}> */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/creations" element={<NavBar />}>
-          <Route index element={<CreationsList />} />
-          {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
-          {/* <Route path="/:id" element={<OneCreation />} /> */}
-        </Route>
+
+        {/* <Route path="/creations"> */}
+        <Route path="/creation" element={<CreationsList />} />
+        <Route
+          path="/creations/:id"
+          element={<OneCreation creations={creations} />}
+        />
+        {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
+        {/* </Route> */}
         {/* </Route> */}
 
         <Route path="*" element={<NotFound />} />

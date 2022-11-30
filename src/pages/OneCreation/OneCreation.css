@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+.add-to-cart-button-creation-page {
+  background: #22223b;
+  border: 2px solid #000000;
+  width: 343px;
+  height: 52px;
+  top: 479px;
+  left: 549px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  left: 44.79%;
+  right: 44.8%;
+  top: 68.16%;
+  bottom: 29.86%;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-family: "Montserrat";
+}
