@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import apiHandler from "./api/apiHandler";
 import React, { useEffect, useState } from "react";
-import NavMain from "./components/Nav/NavMain";
+import NavSearch from "./components/Nav/NavSearch";
 import NavBar from "./components/Navbar/NavBar";
 import HomePage from "./pages/Home/HomePage";
 import Signin from "./pages/Signin";
@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute";
 import LoggedOut from "./components/LoggedOut/LoggedOut";
 import Cart from "./pages/Cart/Cart";
+import ArtistsList from "./pages/ArtistsList/ArtistsList";
 import OneArtist from "./pages/OneArtist/OneArtist";
 import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
@@ -43,11 +44,22 @@ function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
+      <NavSearch></NavSearch>
 
       <Routes>
-        {/* <Route element={<PrivateRoute />}> */}
-
+        {/* Routes for all*/}
         <Route path="/" element={<HomePage artists={artists} />} />
+        <Route
+          path="/artist/:id"
+          element={<OneArtist artists={artists} creations={creations} />}
+        />
+        <Route
+          path="/creations"
+          element={<CreationsList creations={creations} />}
+        />
+        <Route path="/artists" element={<ArtistsList artists={artists} />} />
+        <Route path="*" element={<NotFound />} />
+
         {/* LoggedOut routes */}
         <Route element={<LoggedOut />}>
           <Route path="/signin" element={<Signin />} />
@@ -55,25 +67,14 @@ function App() {
         </Route>
 
         {/* LoggedIn routes */}
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart creations={creations} />} />
-
-        {/* <Route path="/creations"> */}
-        <Route path="/creation" element={<CreationsList />} />
-        <Route
-          path="/creations/:id"
-          element={<OneCreation creations={creations} />}
-        />
-        <Route
-          path="/artist/:id"
-          element={<OneArtist artists={artists} creations={creations} />}
-        />
-
-        {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
-        {/* </Route> */}
-        {/* </Route> */}
-
-        <Route path="*" element={<NotFound />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart creations={creations} />} />
+          <Route
+            path="/creations/:id"
+            element={<OneCreation creations={creations} />}
+          />
+        </Route>
       </Routes>
 
       <Footer></Footer>
