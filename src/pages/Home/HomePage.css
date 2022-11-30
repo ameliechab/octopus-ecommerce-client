@@ -23,6 +23,7 @@ h6 {
   width: 60%;
 
   color: #000000;
+  margin-bottom: 2rem;
 }
 
 .intro-home-page {
@@ -39,4 +40,16 @@ h6 {
 
 .creations-home-page {
   background-color: #22223b;
+}
+
+@media (max-width: 1000px) {
+  #navbar-center-responsive {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  #navbar-right-responsive {
+    display: none;
+  }
 }

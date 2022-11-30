@@ -7,7 +7,7 @@ const OneCreation = ({ creations }) => {
   const navigate = useNavigate();
   const id = params.id;
   const oneCreation = creations.find((creation) => creation._id === id);
-  console.log(oneCreation);
+  console.log(oneCreation.artistId);
 
   const handleAddToCart = async (event) => {
     event.preventDefault();

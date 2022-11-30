@@ -2,7 +2,6 @@ import axios from "axios";
 
 const apiHandler = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
-  withCredentials: true,
 });
 
 apiHandler.interceptors.request.use((config) => {

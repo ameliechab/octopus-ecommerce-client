@@ -100,12 +100,3 @@ input[name="search-creation-categorie"] {
   height: 2rem;
   border-radius: 1rem;
 }
-
-/* @media (min-width: 768px) {
-  .navbar-center {
-    display: none;
-  }
-  .navbar-right {
-    display: none;
-  }
-} */
