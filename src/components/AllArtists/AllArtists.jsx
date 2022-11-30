@@ -35,9 +35,6 @@ const AllArtists = () => {
                   alt={element.name}
                 />
               </Link>
-              {/* <Link to={`${element._id}`}>{element.name}</Link> */}
-              {/* <h3>{element.name}</h3>
-              <div>{element.description}</div> */}
             </>
           );
         })}

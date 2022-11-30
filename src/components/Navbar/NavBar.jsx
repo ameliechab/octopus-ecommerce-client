@@ -10,24 +10,22 @@ const NavBar = () => {
     <>
       <div className="navbar-entire">
         <div className="navbar-left">
-          <img
-            className="logo-nav-bar"
-            src="images/logos/octopus-logo-blanc.png"
-            alt="logo-octopus"
-          ></img>
+          <Link to="/">
+            <img
+              className="logo-nav-bar"
+              src="https://res.cloudinary.com/dsioshcio/image/upload/v1669835655/octopus-logo-blanc_kgg3pw.png"
+              alt="logo-octopus"
+            ></img>
+          </Link>
         </div>
         <div id="navbar-center-responsive" className="navbar-center">
           <div className="artists-creations">
-            <Link className="navbar-artist-creation-link">Artists</Link>
-            <Link className="navbar-artist-creation-link">Creations</Link>
-          </div>
-          <div className="search-nav-bar">
-            <input
-              type="search"
-              name="search-creation-categorie"
-              className="search-creation-categorie"
-              placeholder="Search for creation"
-            />
+            <Link to="/artists" className="navbar-artist-creation-link">
+              All Artists
+            </Link>
+            <Link to="/creations" className="navbar-artist-creation-link">
+              All Creations
+            </Link>
           </div>
         </div>
         <div className="navbar-right">
@@ -71,7 +69,7 @@ const NavBar = () => {
           <Link to="/cart">
             <img
               className="card-logo-nav-bar"
-              src="images/logos/shopping-cart-white.png"
+              src="https://res.cloudinary.com/dsioshcio/image/upload/v1669836105/shopping-cart-white_fhx2z3.png"
               alt="logo-card"
             ></img>{" "}
           </Link>

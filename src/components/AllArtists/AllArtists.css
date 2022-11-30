@@ -4,6 +4,12 @@
   font-family: "Montserrat";
 }
 
+.name-of-artist-all-artists-page {
+  text-align: center;
+  color: #22223b;
+  padding-top: 2rem;
+}
+
 .artists-images-all-artists {
   height: 17rem;
   width: 17rem;
