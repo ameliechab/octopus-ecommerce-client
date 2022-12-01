@@ -50,9 +50,9 @@ const service = {
       .catch(errorHandler);
   },
 
-  getOrder() {
+  getOrderCart() {
     return service
-      .get("/order")
+      .get("/orderCart")
       .then((res) => {
         console.log(res);
         return res.data;
@@ -63,6 +63,18 @@ const service = {
   getAllCreations() {
     return service
       .get("/creations")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+  // POST
+
+  postAddToCart(id) {
+    return service
+      .post(`/creations/${id}/addtocart`)
       .then((res) => {
         console.log(res);
         return res.data;

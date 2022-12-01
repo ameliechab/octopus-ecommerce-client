@@ -21,6 +21,7 @@ import FormCreateArtist from "./components/Forms/FormCreateArtist";
 function App() {
   const [creations, setCreations] = useState([]);
   const [artists, setArtists] = useState([]);
+  const [orderCart, setOrderCart] = useState(null);
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
@@ -69,6 +70,8 @@ function App() {
 
         {/* LoggedIn routes */}
 
+
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart creations={creations} />} />
 
@@ -89,6 +92,7 @@ function App() {
         {/* </Route> */}
 
         <Route path="*" element={<NotFound />} />
+
 
       </Routes>
 
