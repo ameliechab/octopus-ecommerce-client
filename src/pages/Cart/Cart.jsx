@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import apiHandler from "../../api/apiHandler";
 
 const Cart = ({ creations, orderCart, setOrderCart }) => {
+  //Use effect to display the cart
   useEffect(() => {
     apiHandler.getOrderCart().then((res) => {
       console.log(res);
@@ -9,17 +10,32 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     });
   }, []);
 
-  console.log("tatita", [orderCart]);
-
-  // console.log(Object.keys(orderCart));
+  console.log("orderCart", orderCart);
   console.log(orderCart?.creations);
+
   if (!orderCart?.creations) {
     return <div className="loading">Loading...</div>;
   }
 
-  // console.log("tototo", orderCart[0].creations);
   const creationOfOrder = orderCart.creations;
   let creationAdded = {};
+
+  //Handle event for the delete button
+  const handleDelete = async (event) => {
+    document
+      .querySelectorAll(".trash-bin-creation-cart")
+      .forEach(async (button) => {
+        event.preventDefault();
+        const productId = event.target.getAttribute("id");
+
+        try {
+          const updatedOrder = await apiHandler.deleteCreationCart(productId);
+          setOrderCart(updatedOrder);
+        } catch (error) {
+          console.error(error);
+        }
+      });
+  };
 
   return (
     <div>
@@ -55,9 +71,13 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
 
                   <h4>Quantity: {element.quantity}</h4>
                   <h5>Id: {element.productId}</h5>
-                  {/* <Link to={`${element._id}`}>{element.name}</Link> */}
-                  {/* <h3>{element.name}</h3>
-          <div>{element.description}</div> */}
+                  <button className="trash-bin-creation-cart">
+                    <img
+                      onClick={handleDelete}
+                      id={element.productId}
+                      src="images/logos/trash-bin.png"
+                    ></img>
+                  </button>
                 </li>
               </>
             );
