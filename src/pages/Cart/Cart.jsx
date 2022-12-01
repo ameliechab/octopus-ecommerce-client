@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import apiHandler from "../../api/apiHandler";
+import { Link } from "react-router-dom";
 
 const Cart = ({ creations, orderCart, setOrderCart }) => {
   //Use effect to display the cart
@@ -56,6 +57,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
 
   const handleBuyCart = async (event) => {
     event.preventDefault();
+    console.log("hello");
     try {
       const orderCartBuy = await apiHandler.buyCart();
       console.log(orderCartBuy);
@@ -154,7 +156,11 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
             );
           })}
         </ul>
-        <button onClick={handleBuyCart}> BUY </button>
+
+        <button onClick={handleBuyCart}>
+          {" "}
+          <Link to="/profile">BUY</Link>{" "}
+        </button>
       </div>
     </div>
   );
