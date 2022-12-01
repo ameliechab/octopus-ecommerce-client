@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import apiHandler from "../../api/apiHandler";
 
-const Cart = ({ creations }) => {
-  const [order, setOrder] = useState([]);
-
+const Cart = ({ creations, orderCart, setOrderCart }) => {
   useEffect(() => {
-    apiHandler.getOrder().then((res) => {
+    apiHandler.getOrderCart().then((res) => {
       console.log(res);
-      setOrder(res);
+      setOrderCart(res);
     });
   }, []);
 
-  console.log("tatita", order);
+  console.log("tatita", [orderCart]);
 
-  if (!order.length) {
+  // console.log(Object.keys(orderCart));
+  console.log(orderCart?.creations);
+  if (!orderCart?.creations) {
     return <div className="loading">Loading...</div>;
   }
 
-  console.log(order[0].creations);
-  const creationOfOrder = order[0].creations;
+  // console.log("tototo", orderCart[0].creations);
+  const creationOfOrder = orderCart.creations;
+  let creationAdded = {};
 
   return (
     <div>
@@ -28,14 +29,32 @@ const Cart = ({ creations }) => {
             return (
               <>
                 <li>
-                  {
-                    creations.find(
-                      (creation) => creation._id === element.productId
-                    ).title
-                  }
+                  <img
+                    src={
+                      (creationAdded = creations.find(
+                        (creation) => creation._id === element.productId
+                      ).img)
+                    }
+                  />
+                  <h3>
+                    {
+                      (creationAdded = creations.find(
+                        (creation) => creation._id === element.productId
+                      ).title)
+                    }
+                  </h3>
+                  <h4>
+                    Price:
+                    {
+                      (creationAdded = creations.find(
+                        (creation) => creation._id === element.productId
+                      ).price)
+                    }
+                    €
+                  </h4>
 
-                  <h3>Quantity: {element.quantity}</h3>
-                  <h3>Id: {element.productId}</h3>
+                  <h4>Quantity: {element.quantity}</h4>
+                  <h5>Id: {element.productId}</h5>
                   {/* <Link to={`${element._id}`}>{element.name}</Link> */}
                   {/* <h3>{element.name}</h3>
           <div>{element.description}</div> */}

@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import apiHandler from "./../../api/apiHandler";
 import "./OneCreation.css";
 
-const OneCreation = ({ creations }) => {
+const OneCreation = ({ creations, setCreations, setOrder }) => {
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id;
   const oneCreation = creations.find((creation) => creation._id === id);
-  console.log(oneCreation.artistId);
 
   const handleAddToCart = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:5005/api/order/:id/productId/add"
-      );
+      const { data } = await apiHandler.postAddToCart(id);
       console.log(data);
+      //setOrder((currentState) => [...currentState, data]);
     } catch (error) {
       console.error(error);
     }
 
-    setContent("");
-    setUrgent(false);
+    //setCreations({});
   };
 
   return (
