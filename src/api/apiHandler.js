@@ -119,7 +119,7 @@ const service = {
         .catch(errorHandler);
     },
 
-    // DELETE
+    // DELETE ALL CART
 
     deleteCart() {
       return service
@@ -133,9 +133,7 @@ const service = {
 
     
 
-    // AUTH ROUTES
-
-  // DELETE
+  // DELETE ONE CREATION
 
   deleteCreationCart(productId) {
     return service

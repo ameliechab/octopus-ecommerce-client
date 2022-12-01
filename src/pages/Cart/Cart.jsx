@@ -71,8 +71,8 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   const creationOfOrder = orderCart.creations;
   let creationAdded = {};
 
-  //Handle event for the delete button
-  const handleDelete = async (event) => {
+  //Handle event for the delete button of one creation
+  const handleDeleteCreation = async (event) => {
     document
       .querySelectorAll(".trash-bin-creation-cart")
       .forEach(async (button) => {
@@ -144,7 +144,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
 
                   <button className="trash-bin-creation-cart">
                     <img
-                      onClick={handleDelete}
+                      onClick={handleDeleteCreation}
                       id={element.productId}
                       src="images/logos/trash-bin.png"
                     ></img>
