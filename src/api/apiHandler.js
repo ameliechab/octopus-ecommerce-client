@@ -82,6 +82,20 @@ const service = {
       .catch(errorHandler);
   },
 
+  // DELETE
+
+  deleteCreationCart(productId) {
+    return service
+      .patch(`/orderCart/${productId}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+  // Authentification
+
   signup(userInfo) {
     return service
       .post("/auth/signup", userInfo)
