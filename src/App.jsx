@@ -70,7 +70,7 @@ function App() {
 
         {/* LoggedIn routes */}
 
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile creations={creations} />} />
         <Route
           path="/cart"
           element={

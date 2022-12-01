@@ -116,9 +116,10 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                   <h4>
                     Price:
                     {
-                      (creationAdded = creations.find(
-                        (creation) => creation._id === element.productId
-                      ).price)
+                      (creationAdded =
+                        creations.find(
+                          (creation) => creation._id === element.productId
+                        ).price * element.quantity)
                     }
                     €
                   </h4>
@@ -156,6 +157,19 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
             );
           })}
         </ul>
+
+        <h3>
+          Total price :
+          {creationOfOrder.reduce(
+            (total, element) =>
+              total +
+              creations.find((creation) => creation._id === element.productId)
+                .price *
+                element.quantity,
+            0
+          )}
+          €
+        </h3>
 
         <button onClick={handleBuyCart}>
           {" "}

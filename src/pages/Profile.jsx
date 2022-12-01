@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 
-const Profile = () => {
+const Profile = ({ creations }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -11,17 +11,37 @@ const Profile = () => {
     });
   }, []);
 
+  console.log("ORDERS", orders);
+
   return (
     <div>
       <p>Welcome to your profile!</p>
 
       <p>Your orders :</p>
 
-      {orders.map((element) => {
+      {orders.map((order) => {
         return (
           <>
-            <p>{element.userId}</p>
-            <p>{element.date}</p>
+            <ul>
+              {order.creations.map((element) => {
+                return (
+                  <>
+                    <li>
+                      <p>
+                        Creation's name:
+                        {
+                          creations.find(
+                            (creation) => creation._id === element.productId
+                          ).title
+                        }
+                      </p>
+                      <p>Quantity: {element.quantity}</p>
+                    </li>
+                  </>
+                );
+              })}
+            </ul>
+            <p>{order.date}</p>
           </>
         );
       })}
