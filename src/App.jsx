@@ -70,10 +70,17 @@ function App() {
 
         {/* LoggedIn routes */}
 
-
-
         <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart creations={creations} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              creations={creations}
+              orderCart={orderCart}
+              setOrderCart={setOrderCart}
+            />
+          }
+        />
 
         {/* <Route path="/creations"> */}
         <Route path="/creation" element={<CreationsList />} />
@@ -92,8 +99,6 @@ function App() {
         {/* </Route> */}
 
         <Route path="*" element={<NotFound />} />
-
-
       </Routes>
 
       <Footer></Footer>
