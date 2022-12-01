@@ -16,6 +16,7 @@ import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
 import NotFound from "./pages/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
+import FormCreateArtist from "./components/Forms/FormCreateArtist";
 
 function App() {
   const [creations, setCreations] = useState([]);
@@ -67,14 +68,28 @@ function App() {
         </Route>
 
         {/* LoggedIn routes */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<Cart creations={creations} />} />
-          <Route
-            path="/creations/:id"
-            element={<OneCreation creations={creations} />}
-          />
-        </Route>
+
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart creations={creations} />} />
+
+        {/* <Route path="/creations"> */}
+        <Route path="/creation" element={<CreationsList />} />
+        <Route
+          path="/creations/:id"
+          element={<OneCreation creations={creations} />}
+        />
+        <Route
+          path="/artist/:id"
+          element={<OneArtist artists={artists} creations={creations} />}
+        />
+        <Route path="/artists/create" element={<FormCreateArtist />} />
+
+        {/* <Route path={`/${object.categorie}`} element={<OneCreation />} /> */}
+        {/* </Route> */}
+        {/* </Route> */}
+
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
 
       <Footer></Footer>
