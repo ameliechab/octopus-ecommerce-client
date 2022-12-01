@@ -72,6 +72,16 @@ const service = {
       .catch(errorHandler);
   },
 
+  getAllOrders() {
+    return service
+      .get("/orders")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
   // POST
 
   postAddToCart(id) {
@@ -111,7 +121,7 @@ const service = {
   
     buyCart() {
       return service
-        .patch(`/orderCart/buy`)
+        .put(`/orderCart/buy`)
         .then((res) => {
           console.log(res);
           return res.data;
