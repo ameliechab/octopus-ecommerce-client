@@ -40,6 +40,8 @@ const service = {
   // Service is spread to have access to the basics get/post...
   ...apiHandler,
 
+  //GET
+
   getAllArtists() {
     return service
       .get("/artists")
@@ -81,6 +83,57 @@ const service = {
       })
       .catch(errorHandler);
   },
+  
+
+
+
+    // PATCH
+
+    patchIncrementCreationToOrder(creationId) {
+      return service
+        .patch(`/orderCart/increment/${creationId}`)
+        .then((res) => {
+          console.log(res);
+          return res.data;
+        })
+        .catch(errorHandler);
+    },
+
+    patchDecrementCreationToOrder(creationId) {
+      return service
+        .patch(`/orderCart/decrement/${creationId}`)
+        .then((res) => {
+          console.log(res);
+          return res.data;
+        })
+        .catch(errorHandler);
+    },
+  
+    buyCart() {
+      return service
+        .patch(`/orderCart/buy`)
+        .then((res) => {
+          console.log(res);
+          return res.data;
+        })
+        .catch(errorHandler);
+    },
+
+    // DELETE
+
+    deleteCart() {
+      return service
+        .delete(`/orderCart/delete`)
+        .then((res) => {
+          console.log(res);
+          return res.data;
+        })
+        .catch(errorHandler);
+    },
+
+    
+
+    // AUTH ROUTES
 
   // DELETE
 

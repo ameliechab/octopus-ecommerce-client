@@ -10,11 +10,62 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     });
   }, []);
 
-  console.log("orderCart", orderCart);
-  console.log(orderCart?.creations);
+  console.log("tatita", [orderCart]);
+
+  const handleIncrementCreation = async (event) => {
+    document.querySelectorAll(".increment-button").forEach(async (button) => {
+      event.preventDefault();
+      const creationId = event.target.getAttribute("id");
+      console.log(creationId);
+      try {
+        const orderIncremented = await apiHandler.patchIncrementCreationToOrder(
+          creationId
+        );
+        setOrderCart(orderIncremented);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  };
+
+  const handleDecrementCreation = async (event) => {
+    document.querySelectorAll(".decrement-button").forEach(async (button) => {
+      event.preventDefault();
+      const creationId = event.target.getAttribute("id");
+      console.log(creationId);
+      try {
+        const orderDecremented = await apiHandler.patchDecrementCreationToOrder(
+          creationId
+        );
+        setOrderCart(orderDecremented);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  };
+
+  const handleDeleteCart = async (event) => {
+    event.preventDefault();
+    try {
+      const orderDeleted = await apiHandler.deleteCart();
+      setOrderCart(orderDeleted);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleBuyCart = async (event) => {
+    event.preventDefault();
+    try {
+      const orderCartBuy = await apiHandler.buyCart();
+      console.log(orderCartBuy);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (!orderCart?.creations) {
-    return <div className="loading">Loading...</div>;
+    return <div className="loading">You don't have any cart... yet !</div>;
   }
 
   const creationOfOrder = orderCart.creations;
@@ -40,6 +91,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   return (
     <div>
       <div>
+        <button onClick={handleDeleteCart}> Delete the entire cart </button>
         <ul>
           {creationOfOrder.map((element) => {
             return (
@@ -70,7 +122,26 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                   </h4>
 
                   <h4>Quantity: {element.quantity}</h4>
+                  <div>
+                    <button
+                      className="decrement-button"
+                      id={element.productId}
+                      onClick={handleDecrementCreation}
+                    >
+                      {" "}
+                      -{" "}
+                    </button>
+                    <button
+                      className="increment-button"
+                      id={element.productId}
+                      onClick={handleIncrementCreation}
+                    >
+                      {" "}
+                      +{" "}
+                    </button>
+                  </div>
                   <h5>Id: {element.productId}</h5>
+
                   <button className="trash-bin-creation-cart">
                     <img
                       onClick={handleDelete}
@@ -83,6 +154,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
             );
           })}
         </ul>
+        <button onClick={handleBuyCart}> BUY </button>
       </div>
     </div>
   );
