@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import useFormCreate from "../../hooks/useFormCreate";
 
-const CreateForm = () => {
+const CreateFormArtist = () => {
   const navigate = useNavigate();
   const [formData, setFormData, resetForm] = useFormCreate({
     name: "",
@@ -11,15 +11,14 @@ const CreateForm = () => {
     picture: {},
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmitArtistForm = async (e) => {
     e.preventDefault();
     const fd = new FormData();
-    // console.log(picture)
     fd.append("name", formData.name);
     fd.append("description", formData.description);
     fd.append("picture", formData.picture);
 
-    const { data } = await apiHandler.post("/artists", fd);
+    const { data } = await apiHandler.post("/artists/form", fd);
     console.log(data);
     resetForm();
     navigate("/artist/" + data._id);
@@ -27,7 +26,7 @@ const CreateForm = () => {
 
   const { name, description } = formData;
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmitArtistForm}>
       <div>
         <label htmlFor="name">Name:</label>
         <input
@@ -66,4 +65,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default CreateFormArtist;
