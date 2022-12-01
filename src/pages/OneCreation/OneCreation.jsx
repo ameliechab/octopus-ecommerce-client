@@ -12,8 +12,7 @@ const OneCreation = ({ creations, setCreations, setOrder }) => {
   const handleAddToCart = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await apiHandler.postAddToCart(id);
-      console.log(data);
+      await apiHandler.postAddToCart(id);
       //setOrder((currentState) => [...currentState, data]);
     } catch (error) {
       console.error(error);
