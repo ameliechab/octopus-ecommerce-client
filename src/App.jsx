@@ -83,11 +83,11 @@ function App() {
             element={<ProfileOrders creations={creations} />}
           />
           <Route
-            path="/profile/artists/:artistID/createartist"
+            path="/profile/artists/createartist"
             element={<FormCreateArtist />}
           />
           <Route
-            path="/profile/artists/:artistID/createobject/:objectID"
+            path="/profile/artists/createobject"
             element={<FormCreateObject />}
           />
           {/* Orders */}
