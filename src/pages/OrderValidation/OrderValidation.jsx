@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const OrderValidation = () => {
   return (
-    <div>
+    <div className="middle-div-min">
       <h3>Thank you for your order!</h3>
       <p>
         You can see<Link to="/profile/orders">your order history here</Link>

@@ -16,7 +16,7 @@ const Profile = ({ creations }) => {
   console.log("ORDERS", orders);
 
   return (
-    <div>
+    <div className="middle-div-min">
       <h3 className="welcome-profile">Welcome to your profile!</h3>
 
       <div className="buttons-on-profile">

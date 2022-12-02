@@ -32,8 +32,9 @@ const CreateFormCreation = () => {
 
   const { title, description, categories, price } = formData;
   return (
-    <form onSubmit={handleSubmitCreationForm}>
-      {/* <div>
+    <div className="middle-div-min">
+      <form onSubmit={handleSubmitCreationForm}>
+        {/* <div>
         <label htmlFor="name">ArtistId:</label>
         <input
           type="text"
@@ -44,63 +45,64 @@ const CreateFormCreation = () => {
         />
       </div> */}
 
-      <div>
-        <label htmlFor="description">Title: </label>
-        <input
-          type="text"
-          value={title}
-          name="title"
-          id="title"
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Title: </label>
+          <input
+            type="text"
+            value={title}
+            name="title"
+            id="title"
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="description">Description: </label>
-        <input
-          type="text"
-          value={description}
-          name="description"
-          id="description"
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Description: </label>
+          <input
+            type="text"
+            value={description}
+            name="description"
+            id="description"
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="picture">Picture</label>
-        <input
-          type="file"
-          id="img"
-          name="img"
-          // value={picture.name || ""}
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="picture">Picture</label>
+          <input
+            type="file"
+            id="img"
+            name="img"
+            // value={picture.name || ""}
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="description">Categories: </label>
-        <input
-          type="text"
-          value={categories}
-          name="categories"
-          id="categories"
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Categories: </label>
+          <input
+            type="text"
+            value={categories}
+            name="categories"
+            id="categories"
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="description">Price: </label>
-        <input
-          type="text"
-          value={price}
-          name="price"
-          id="price"
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Price: </label>
+          <input
+            type="text"
+            value={price}
+            name="price"
+            id="price"
+            onChange={setFormData}
+          />
+        </div>
 
-      <button>Submit</button>
-    </form>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 };
 

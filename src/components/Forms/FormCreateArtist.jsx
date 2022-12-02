@@ -26,42 +26,44 @@ const CreateFormArtist = () => {
 
   const { name, description } = formData;
   return (
-    <form onSubmit={handleSubmitArtistForm}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={setFormData}
-        />
-      </div>
+    <div className="middle-div-min">
+      <form onSubmit={handleSubmitArtistForm}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="description">Description: </label>
-        <input
-          type="text"
-          value={description}
-          name="description"
-          id="description"
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Description: </label>
+          <input
+            type="text"
+            value={description}
+            name="description"
+            id="description"
+            onChange={setFormData}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="picture">Picture</label>
-        <input
-          type="file"
-          id="picture"
-          name="picture"
-          // value={picture.name || ""}
-          onChange={setFormData}
-        />
-      </div>
+        <div>
+          <label htmlFor="picture">Picture</label>
+          <input
+            type="file"
+            id="picture"
+            name="picture"
+            // value={picture.name || ""}
+            onChange={setFormData}
+          />
+        </div>
 
-      <button>Submit</button>
-    </form>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 };
 

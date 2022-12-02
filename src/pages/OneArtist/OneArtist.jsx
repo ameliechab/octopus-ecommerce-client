@@ -19,7 +19,7 @@ const OneArtist = ({ artists, creations }) => {
   console.log("totototo", remainingObjects);
 
   return (
-    <>
+    <div className="middle-div-min">
       <div className="artist-presentation">
         <img
           className="artist-picture"
@@ -53,7 +53,7 @@ const OneArtist = ({ artists, creations }) => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

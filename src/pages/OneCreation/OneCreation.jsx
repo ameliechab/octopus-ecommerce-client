@@ -22,7 +22,7 @@ const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
   };
 
   return (
-    <>
+    <div className="middle-div-min">
       <div className="all-object-details-page">
         <div className="creation-presentation">
           <img
@@ -48,7 +48,7 @@ const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
