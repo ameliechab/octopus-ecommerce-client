@@ -1,7 +1,11 @@
 import "./NavSearch.css";
 import { Link } from "react-router-dom";
 
-const NavMain = () => {
+const NavSearch = ({ searchCreationString, setSearchCreationString }) => {
+  const handleCreationSearch = (e) => {
+    setSearchCreationString(e.target.value);
+  };
+
   return (
     <div className="search-navbar-entire">
       <div className="search-nav-bar">
@@ -12,15 +16,24 @@ const NavMain = () => {
             alt="logo-search"
           ></img>{" "}
         </Link>
-        <input
+        {/* <input
           type="search"
           name="search-creation-categorie"
           className="search-creation-categorie"
           placeholder="Search for creation"
+          value={searchStringInput} 
+          type="text" 
+          onChange={handleSearch}
+        /> */}
+        <input
+          value={searchCreationString}
+          type="text"
+          placeholder="Search for creation"
+          onChange={handleCreationSearch}
         />
       </div>
     </div>
   );
 };
 
-export default NavMain;
+export default NavSearch;

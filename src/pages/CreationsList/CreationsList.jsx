@@ -2,12 +2,30 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./CreationsList.css";
+import NavSearch from "../../components/Nav/NavSearch";
 
-const CreationsList = ({ creations }) => {
+const CreationsList = ({
+  creations,
+  searchCreationString,
+  setSearchCreationString,
+}) => {
+  const displayedCreations = creations.filter((creationEl) => {
+    return creationEl.title.toLowerCase().includes(searchCreationString);
+  });
+
   return (
     <div>
+      {/* <div>
+        {displayedCreations.map((creationFiltered) => {
+          return <h2>{creationFiltered.title}</h2>;
+        })}
+      </div> */}
+      <NavSearch
+        setSearchCreationString={setSearchCreationString}
+        searchCreationString={searchCreationString}
+      ></NavSearch>
       <div className="all-creations-page">
-        {creations.map((element) => {
+        {displayedCreations.map((element) => {
           return (
             <>
               <Link to={`/creations/${element._id}`}>

@@ -33,6 +33,7 @@ body {
   font-family: "Montserrat";
   height: 5vh;
   flex-wrap: wrap;
+  opacity: 85%;
 }
 
 .search-nav-bar {
