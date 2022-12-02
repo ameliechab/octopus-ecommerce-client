@@ -68,7 +68,9 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   };
 
   if (!orderCart?.creations) {
-    return <div className="loading">You don't have any cart... yet !</div>;
+    return (
+      <div className="middle-div-min">You don't have any cart... yet !</div>
+    );
   }
 
   const creationOfOrder = orderCart.creations;

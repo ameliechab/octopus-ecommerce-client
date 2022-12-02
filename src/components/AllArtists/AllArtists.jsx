@@ -18,7 +18,7 @@ const AllArtists = () => {
   }, []);
 
   if (!artists.length) {
-    return <div className="loading">Loading...</div>;
+    return <div className="middle-div-min">Loading...</div>;
   }
 
   return (
