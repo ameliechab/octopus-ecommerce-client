@@ -1,0 +1,67 @@
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.each-creation-order {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.info-creation-order {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.quantity-creation-order {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.quantity-creation-order > p {
+  font-weight: 600;
+}
+
+.creation-image-order {
+  height: 17rem;
+  width: 17rem;
+  object-fit: cover;
+  filter: drop-shadow(0px 0.5px 10px rgba(255, 255, 255, 0.15));
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+
+.trash-bin-creation-cart {
+  height: 2rem;
+}
+
+.trash-bin-creation-cart-button {
+  height: 2rem;
+}
+
+.trash-bin-creation-cart-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.decrement-button,
+.increment-button {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
