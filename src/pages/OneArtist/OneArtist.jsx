@@ -31,8 +31,9 @@ const OneArtist = ({ artists, creations }) => {
           <p className="artist-details-description">{oneArtist.description}</p>
         </div>
       </div>
+
       <div className="object-of-artist-details">
-        <h3>CREATIONS</h3>
+        <h3 className="one-artist-creations">CREATIONS</h3>
         <div className="all-creations-artist-page">
           {remainingObjects.map((element) => {
             return (

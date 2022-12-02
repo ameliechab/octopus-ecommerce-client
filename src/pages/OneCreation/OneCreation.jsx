@@ -3,11 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import apiHandler from "./../../api/apiHandler";
 import "./OneCreation.css";
 
-const OneCreation = ({ creations, setCreations, setOrder }) => {
+const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id;
   const oneCreation = creations.find((creation) => creation._id === id);
+  const artistsCopy = [...artists];
 
   const handleAddToCart = async (event) => {
     event.preventDefault();
@@ -17,24 +18,37 @@ const OneCreation = ({ creations, setCreations, setOrder }) => {
     } catch (error) {
       console.error(error);
     }
-
     //setCreations({});
   };
 
   return (
-    <div>
-      <img src={oneCreation.img} alt={oneCreation.title} />
-      <h2>{oneCreation.title}</h2>
-      <p>{oneCreation.description}</p>
-      <h4>Categories: {oneCreation.categories}</h4>
-      <h3>Price: {oneCreation.price} €</h3>
-      <button
-        onClick={handleAddToCart}
-        className="add-to-cart-button-creation-page"
-      >
-        Add to cart
-      </button>
-    </div>
+    <>
+      <div className="all-object-details-page">
+        <div className="creation-presentation">
+          <img
+            className="creation-picture"
+            src={oneCreation.img}
+            alt={oneCreation.title}
+          />
+          <div className="creation-details">
+            <h2 className="creation-details-title">{oneCreation.title}</h2>
+            <p className="creation-details-description">
+              {oneCreation.description}
+            </p>
+            <h4>Categories: {oneCreation.categories}</h4>
+          </div>
+        </div>
+        <div className="creation-price-and-button">
+          <h3 className="creation-price">Price: {oneCreation.price} €</h3>
+          <button
+            onClick={handleAddToCart}
+            className="add-to-cart-button-creation-page"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
