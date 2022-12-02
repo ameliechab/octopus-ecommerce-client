@@ -5,7 +5,7 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="middle-div-min">
       <section className="intro-home-page">
         <img
           className="logo-octopus-home-page"

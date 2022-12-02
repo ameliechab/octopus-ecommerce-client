@@ -6,12 +6,12 @@
 
 a:link {
   text-decoration: none;
-  color: #ffffff;
+  color: #d9d9d9;
 }
 
 /* visited link */
 a:visited {
-  color: #ffffff;
+  color: #d9d9d9;
 }
 
 /* mouse over link */
@@ -21,7 +21,11 @@ a:hover {
 
 /* selected link */
 a:active {
-  color: #ffffff;
+  color: #d9d9d9;
+}
+
+.middle-div-min {
+  min-height: 75vh;
 }
 
 .welcome-profile {

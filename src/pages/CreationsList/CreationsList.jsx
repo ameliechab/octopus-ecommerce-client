@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./CreationsList.css";
-import NavSearch from "../../components/Nav/NavSearch";
+import NavSearch from "../../components/NavSearch/NavSearch";
 
 const CreationsList = ({
   creations,
@@ -14,7 +14,7 @@ const CreationsList = ({
   });
 
   return (
-    <div>
+    <div className="middle-div-min">
       {/* <div>
         {displayedCreations.map((creationFiltered) => {
           return <h2>{creationFiltered.title}</h2>;

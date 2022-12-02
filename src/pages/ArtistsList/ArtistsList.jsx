@@ -5,7 +5,7 @@ import "./ArtistsList.css";
 
 const ArtistsList = ({ artists }) => {
   return (
-    <div>
+    <div className="middle-div-min">
       <div className="all-artists-page">
         {artists.map((element) => {
           return (

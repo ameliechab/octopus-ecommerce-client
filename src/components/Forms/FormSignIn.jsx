@@ -30,7 +30,7 @@ const FormSignIn = () => {
   };
 
   return (
-    <>
+    <div className="middle-div-min">
       <section class="signin" id="form">
         <img
           className="logo-octopus-sign-in-page"
@@ -62,7 +62,7 @@ const FormSignIn = () => {
           <button className="log-in-button-log-in-page">LOG IN</button>
         </form>
       </section>
-    </>
+    </div>
   );
 };
 

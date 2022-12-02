@@ -92,7 +92,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   };
 
   return (
-    <div>
+    <div className="middle-div-min">
       <div>
         <div className="creation-details-total-price-section">
           <ul className="all-creation-order">
