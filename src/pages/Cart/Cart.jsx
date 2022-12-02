@@ -94,96 +94,114 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   return (
     <div>
       <div>
-        <button onClick={handleDeleteCart}> Delete the entire cart </button>
-        <ul>
-          {creationOfOrder.map((element) => {
-            return (
-              <>
-                <li className="each-creation-order">
-                  <img
-                    className="creation-image-order"
-                    src={
-                      (creationAdded = creations.find(
-                        (creation) => creation._id === element.productId
-                      ).img)
-                    }
-                  />
-                  <div className="info-creation-order">
-                    <h3>
-                      {
+        <div className="creation-details-total-price-section">
+          <ul className="all-creation-order">
+            {creationOfOrder.map((element) => {
+              return (
+                <>
+                  <li className="each-creation-order">
+                    <img
+                      className="creation-image-order"
+                      src={
                         (creationAdded = creations.find(
                           (creation) => creation._id === element.productId
-                        ).title)
+                        ).img)
                       }
-                    </h3>
+                    />
+                    <div className="info-creation-order">
+                      <h4>
+                        <div className="title-trashbin-order-section">
+                          {
+                            (creationAdded = creations.find(
+                              (creation) => creation._id === element.productId
+                            ).title)
+                          }
 
-                    <div className="quantity-creation-order">
-                      <p>Quantity:</p>
-                      <button
-                        className="decrement-button"
-                        id={element.productId}
-                        onClick={handleDecrementCreation}
-                      >
-                        {" "}
-                        -{" "}
-                      </button>
-                      <h4>{element.quantity}</h4>
-                      <button
-                        className="increment-button"
-                        id={element.productId}
-                        onClick={handleIncrementCreation}
-                      >
-                        {" "}
-                        +{" "}
-                      </button>
+                          <button className="trash-bin-creation-cart-button">
+                            <img
+                              onClick={handleDeleteCreation}
+                              id={element.productId}
+                              className="trash-bin-creation-cart"
+                              src="images/logos/trash-bin.png"
+                              alt="trashbin-image"
+                            ></img>
+                          </button>
+                        </div>
+                      </h4>
+
+                      <div className="quantity-creation-order">
+                        <p>Quantity:</p>
+                        <button
+                          className="decrement-button"
+                          id={element.productId}
+                          onClick={handleDecrementCreation}
+                        >
+                          {" "}
+                          -{" "}
+                        </button>
+                        <h4>{element.quantity}</h4>
+                        <button
+                          className="increment-button"
+                          id={element.productId}
+                          onClick={handleIncrementCreation}
+                        >
+                          {" "}
+                          +{" "}
+                        </button>
+                      </div>
+
+                      <h3>
+                        {
+                          (creationAdded =
+                            creations.find(
+                              (creation) => creation._id === element.productId
+                            ).price * element.quantity)
+                        }
+                        €
+                      </h3>
                     </div>
+                  </li>
+                  <hr />
+                </>
+              );
+            })}
+          </ul>
 
-                    <h4>
-                      {
-                        (creationAdded =
-                          creations.find(
-                            (creation) => creation._id === element.productId
-                          ).price * element.quantity)
-                      }
-                      €
-                    </h4>
-                  </div>
-
-                  <div className="trash-bin-creation-cart-section">
-                    <button className="trash-bin-creation-cart-button">
-                      <img
-                        onClick={handleDeleteCreation}
-                        id={element.productId}
-                        className="trash-bin-creation-cart"
-                        src="images/logos/trash-bin.png"
-                        alt="trashbin-image"
-                      ></img>
-                    </button>
-                  </div>
-                </li>
-                <hr />
-              </>
-            );
-          })}
-        </ul>
-
-        <h3>
-          Total price:
-          {creationOfOrder.reduce(
-            (total, element) =>
-              total +
-              creations.find((creation) => creation._id === element.productId)
-                .price *
-                element.quantity,
-            0
-          )}
-          €
-        </h3>
-
-        <button onClick={handleBuyCart}>
-          {" "}
-          <Link to="/order/validation">BUY</Link>{" "}
-        </button>
+          <div className="order-summary-and-delete">
+            <div>
+              <button className="delete-all-cart" onClick={handleDeleteCart}>
+                {" "}
+                DELETE THE CART{" "}
+              </button>
+            </div>
+            <div className="order-summary">
+              <h3>ORDER SUMMARY</h3>
+              <div className="total-price-order">
+                <div>
+                  <h4>TOTAL</h4>
+                </div>
+                <div>
+                  {creationOfOrder.reduce(
+                    (total, element) =>
+                      total +
+                      creations.find(
+                        (creation) => creation._id === element.productId
+                      ).price *
+                        element.quantity,
+                    0
+                  )}
+                  €
+                </div>
+              </div>
+              <button className="button-to-buy" onClick={handleBuyCart}>
+                {" "}
+                <Link className="link-to-buy" to="/order/validation">
+                  BUY
+                </Link>{" "}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
