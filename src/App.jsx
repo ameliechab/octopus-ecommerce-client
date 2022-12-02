@@ -15,6 +15,7 @@ import OneArtist from "./pages/OneArtist/OneArtist";
 import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
 import NotFound from "./pages/NotFound/NotFound";
+import OrderValidation from "./pages/OrderValidation/OrderValidation";
 import Footer from "./components/Footer/Footer";
 import FormCreateArtist from "./components/Forms/FormCreateArtist";
 import FormCreateObject from "./components/Forms/FormCreateObject";
@@ -82,6 +83,7 @@ function App() {
             />
           }
         />
+        <Route path="/order/validation" element={<OrderValidation />} />
 
         {/* <Route path="/creations"> */}
         <Route path="/creation" element={<CreationsList />} />

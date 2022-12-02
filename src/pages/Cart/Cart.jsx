@@ -173,7 +173,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
 
         <button onClick={handleBuyCart}>
           {" "}
-          <Link to="/profile">BUY</Link>{" "}
+          <Link to="/order/validation">BUY</Link>{" "}
         </button>
       </div>
     </div>
