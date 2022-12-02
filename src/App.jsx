@@ -106,7 +106,7 @@ function App() {
           <Route path="/creations" element={<CreationsList />} />
           <Route
             path="/creations/:id"
-            element={<OneCreation creations={creations} />}
+            element={<OneCreation artists={artists} creations={creations} />}
           />
           {/* Artists */}
           <Route
