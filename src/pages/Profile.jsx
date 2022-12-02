@@ -15,7 +15,7 @@ const Profile = ({ creations }) => {
 
   return (
     <div>
-      <p>Welcome to your profile!</p>
+      <h3>Welcome to your profile!</h3>
 
       <p>Your orders :</p>
 
@@ -41,6 +41,19 @@ const Profile = ({ creations }) => {
                 );
               })}
             </ul>
+            <h5>
+              Total price:
+              {order.creations.reduce(
+                (total, element) =>
+                  total +
+                  creations.find(
+                    (creation) => creation._id === element.productId
+                  ).price *
+                    element.quantity,
+                0
+              )}
+              €
+            </h5>
             <p>{order.date}</p>
           </>
         );
