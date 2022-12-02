@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
 const Cart = ({ creations, orderCart, setOrderCart }) => {
   //Use effect to display the cart
@@ -98,68 +99,76 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
           {creationOfOrder.map((element) => {
             return (
               <>
-                <li>
+                <li className="each-creation-order">
                   <img
+                    className="creation-image-order"
                     src={
                       (creationAdded = creations.find(
                         (creation) => creation._id === element.productId
                       ).img)
                     }
                   />
-                  <h3>
-                    {
-                      (creationAdded = creations.find(
-                        (creation) => creation._id === element.productId
-                      ).title)
-                    }
-                  </h3>
-                  <h4>
-                    Price:
-                    {
-                      (creationAdded =
-                        creations.find(
+                  <div className="info-creation-order">
+                    <h3>
+                      {
+                        (creationAdded = creations.find(
                           (creation) => creation._id === element.productId
-                        ).price * element.quantity)
-                    }
-                    €
-                  </h4>
+                        ).title)
+                      }
+                    </h3>
 
-                  <h4>Quantity: {element.quantity}</h4>
-                  <div>
-                    <button
-                      className="decrement-button"
-                      id={element.productId}
-                      onClick={handleDecrementCreation}
-                    >
-                      {" "}
-                      -{" "}
-                    </button>
-                    <button
-                      className="increment-button"
-                      id={element.productId}
-                      onClick={handleIncrementCreation}
-                    >
-                      {" "}
-                      +{" "}
+                    <div className="quantity-creation-order">
+                      <p>Quantity:</p>
+                      <button
+                        className="decrement-button"
+                        id={element.productId}
+                        onClick={handleDecrementCreation}
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                      <h4>{element.quantity}</h4>
+                      <button
+                        className="increment-button"
+                        id={element.productId}
+                        onClick={handleIncrementCreation}
+                      >
+                        {" "}
+                        +{" "}
+                      </button>
+                    </div>
+
+                    <h4>
+                      {
+                        (creationAdded =
+                          creations.find(
+                            (creation) => creation._id === element.productId
+                          ).price * element.quantity)
+                      }
+                      €
+                    </h4>
+                  </div>
+
+                  <div className="trash-bin-creation-cart-section">
+                    <button className="trash-bin-creation-cart-button">
+                      <img
+                        onClick={handleDeleteCreation}
+                        id={element.productId}
+                        className="trash-bin-creation-cart"
+                        src="images/logos/trash-bin.png"
+                        alt="trashbin-image"
+                      ></img>
                     </button>
                   </div>
-                  <h5>Id: {element.productId}</h5>
-
-                  <button className="trash-bin-creation-cart">
-                    <img
-                      onClick={handleDeleteCreation}
-                      id={element.productId}
-                      src="images/logos/trash-bin.png"
-                    ></img>
-                  </button>
                 </li>
+                <hr />
               </>
             );
           })}
         </ul>
 
         <h3>
-          Total price :
+          Total price:
           {creationOfOrder.reduce(
             (total, element) =>
               total +
