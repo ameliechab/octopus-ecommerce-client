@@ -13,9 +13,9 @@ const OneArtist = ({ artists, creations }) => {
   const creationsCopy = [...creations];
 
   const remainingObjects = creationsCopy.filter((El) => {
-    return El.artistId.includes(oneArtist._id);
+    console.log(El);
+    return El.artistId == oneArtist._id;
   });
-
   console.log("totototo", remainingObjects);
 
   return (
