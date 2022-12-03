@@ -4,9 +4,9 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer-entire">
-      <h2 className="copyright-footer">
+      <p className="copyright-footer">
         Copyright © 2022 Lucile Tronczyk, Amélie Chabrand. All Rights Reserved.
-      </h2>
+      </p>
     </div>
   );
 };
