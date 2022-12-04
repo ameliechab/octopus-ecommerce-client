@@ -56,7 +56,6 @@ const CreateFormArtist = () => {
             type="file"
             id="picture"
             name="picture"
-            // value={picture.name || ""}
             onChange={setFormData}
           />
         </div>

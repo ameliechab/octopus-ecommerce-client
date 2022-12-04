@@ -17,7 +17,6 @@ const CreateFormCreation = () => {
   const handleSubmitCreationForm = async (e) => {
     e.preventDefault();
     const fd = new FormData();
-    fd.append("ArtistId", formData.ArtistId);
     fd.append("title", formData.title);
     fd.append("description", formData.description);
     fd.append("img", formData.img);
@@ -34,19 +33,8 @@ const CreateFormCreation = () => {
   return (
     <div className="middle-div-min">
       <form onSubmit={handleSubmitCreationForm}>
-        {/* <div>
-        <label htmlFor="name">ArtistId:</label>
-        <input
-          type="text"
-          id="artistId"
-          name="artistId"
-          value={artistId}
-          onChange={setFormData}
-        />
-      </div> */}
-
         <div>
-          <label htmlFor="description">Title: </label>
+          <label htmlFor="title">Title: </label>
           <input
             type="text"
             value={title}
@@ -68,14 +56,8 @@ const CreateFormCreation = () => {
         </div>
 
         <div>
-          <label htmlFor="picture">Picture</label>
-          <input
-            type="file"
-            id="img"
-            name="img"
-            // value={picture.name || ""}
-            onChange={setFormData}
-          />
+          <label htmlFor="img">Picture</label>
+          <input type="file" id="img" name="img" onChange={setFormData} />
         </div>
 
         <div>
