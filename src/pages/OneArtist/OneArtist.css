@@ -7,7 +7,6 @@
 .artist-presentation {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .artist-details {
