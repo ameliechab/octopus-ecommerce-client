@@ -64,14 +64,12 @@
 .log-in-button-log-in-page {
   background: #22223b;
   border: 2px solid #000000;
-  width: 343px;
-  height: 52px;
-  top: 479px;
-  left: 549px;
+  width: 19vw;
+  min-width: 5rem;
+  height: 6vh;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 26px;
   display: flex;
   flex-direction: column;
   justify-content: center;

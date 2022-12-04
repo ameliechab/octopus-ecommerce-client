@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import useFormCreate from "../../hooks/useFormCreate";
+import "./FormCreateObject.css";
 
 const CreateFormCreation = () => {
   const navigate = useNavigate();
@@ -32,57 +33,73 @@ const CreateFormCreation = () => {
   const { title, description, categories, price } = formData;
   return (
     <div className="middle-div-min">
-      <form onSubmit={handleSubmitCreationForm}>
-        <div>
-          <label htmlFor="title">Title: </label>
-          <input
-            type="text"
-            value={title}
-            name="title"
-            id="title"
-            onChange={setFormData}
-          />
-        </div>
+      <form
+        onSubmit={handleSubmitCreationForm}
+        className="create-all-object-details-page"
+      >
+        <div className="create-creation-presentation">
+          {/* <label htmlFor="img">Picture</label> */}
+          <div className="create-creation-picture">
+            <input
+              type="file"
+              id="create-creation-picture"
+              name="img"
+              onChange={setFormData}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="description">Description: </label>
-          <input
-            type="text"
-            value={description}
-            name="description"
-            id="description"
-            onChange={setFormData}
-          />
-        </div>
+          <div className="create-creation-details">
+            {/* <label  htmlFor="title">Title: </label> */}
+            <input
+              className="create-creation-details-title"
+              type="text"
+              value={title}
+              name="title"
+              id="title"
+              onChange={setFormData}
+              placeholder="Your creation name"
+            />
+            {/* <label htmlFor="description">Description: </label> */}
+            <textarea
+              className="create-creation-details-description"
+              type="text"
+              value={description}
+              name="description"
+              id="description"
+              onChange={setFormData}
+              placeholder="Your description here"
+            ></textarea>
 
-        <div>
-          <label htmlFor="img">Picture</label>
-          <input type="file" id="img" name="img" onChange={setFormData} />
+            <h4>
+              <label htmlFor="description">Categories: </label>
+              <input
+                type="text"
+                value={categories}
+                name="categories"
+                id="categories"
+                onChange={setFormData}
+                placeholder="add category"
+              />
+            </h4>
+          </div>
         </div>
-
-        <div>
-          <label htmlFor="description">Categories: </label>
-          <input
-            type="text"
-            value={categories}
-            name="categories"
-            id="categories"
-            onChange={setFormData}
-          />
+        <div className="create-creation-price-and-button">
+          <h3>
+            <label htmlFor="description">Price: </label>
+            <input
+              type="text"
+              value={price}
+              name="price"
+              id="price"
+              onChange={setFormData}
+              placeholder="price"
+            />
+            €
+          </h3>
+          <button className="create-add-to-profile-button-creation-page">
+            ADD TO YOUR PROFILE
+          </button>
         </div>
-
-        <div>
-          <label htmlFor="description">Price: </label>
-          <input
-            type="text"
-            value={price}
-            name="price"
-            id="price"
-            onChange={setFormData}
-          />
-        </div>
-
-        <button>Submit</button>
       </form>
     </div>
   );
