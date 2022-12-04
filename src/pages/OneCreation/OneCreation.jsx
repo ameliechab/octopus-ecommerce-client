@@ -19,6 +19,7 @@ const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
       console.error(error);
     }
     //setCreations({});
+    navigate("/cart");
   };
 
   return (
