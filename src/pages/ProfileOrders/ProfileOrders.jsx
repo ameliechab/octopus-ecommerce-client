@@ -11,7 +11,7 @@ const ProfileOrders = ({ creations }) => {
       setOrders(res);
     });
   }, []);
-
+  console.log(orders);
   return (
     <div className="all-orders">
       <h3 className="your-orders-on-profile">Your orders :</h3>

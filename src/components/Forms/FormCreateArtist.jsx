@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import useFormCreate from "../../hooks/useFormCreate";
+import "./FormCreateArtist.css";
 
 const CreateFormArtist = () => {
   const navigate = useNavigate();
@@ -27,41 +28,60 @@ const CreateFormArtist = () => {
   const { name, description } = formData;
   return (
     <div className="middle-div-min">
-      <form onSubmit={handleSubmitArtistForm}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={setFormData}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="description">Description: </label>
-          <input
-            type="text"
-            value={description}
-            name="description"
-            id="description"
-            onChange={setFormData}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="picture">Picture</label>
+      <form
+        onSubmit={handleSubmitArtistForm}
+        className="create-artist-presentation"
+      >
+        <div className="create-artist-picture">
+          {/* <label htmlFor="picture">Picture</label> */}
           <input
             type="file"
-            id="picture"
+            id="create-picture"
             name="picture"
             onChange={setFormData}
           />
         </div>
-
-        <button>Submit</button>
+        <div className="create-artist-details">
+          {/* <label htmlFor="name">Name:</label> */}
+          <input
+            className="create-artist-details-name"
+            type="text"
+            id="create-name"
+            name="name"
+            value={name}
+            onChange={setFormData}
+            placeholder="Your brand/creator name"
+          />
+          {/* <label htmlFor="description">Description: </label> */}
+          <textarea
+            className="create-artist-details-description"
+            type="text"
+            value={description}
+            name="description"
+            id="create-description"
+            onChange={setFormData}
+            placeholder="Description of you and your activity"
+          ></textarea>
+          <div className="div-for-submit-button-create-artist">
+            <button className="submit-button-create-artist">Submit</button>
+          </div>
+        </div>
       </form>
+
+      <div className="create-object-of-artist-details">
+        <h3 className="create-one-artist-creations">CREATIONS</h3>
+        <div className="create-all-creations-artist-page">
+          <>
+            <Link to="/profile/artists/createobject">
+              <img
+                className="create-creations-images-one-artist"
+                src="../../../public/images/logos/AddCreation.png"
+                alt="add-creation"
+              />
+            </Link>
+          </>
+        </div>
+      </div>
     </div>
   );
 };
