@@ -36,20 +36,23 @@ const ProfileUpdateCreation = () => {
 
   const handleUpdateCreationForm = async (e) => {
     e.preventDefault();
-    const fd = new FormData();
+    const formDataUpdatedCreation = new FormData();
     for (const key in formData) {
       if (formData[key] === "") {
         setError(`${key} is required`);
         return;
       }
     }
-    fd.append("title", formData.title);
-    fd.append("description", formData.description);
-    fd.append("img", formData.img);
-    fd.append("categories", formData.categories);
-    fd.append("price", formData.price);
+    formDataUpdatedCreation.append("title", formData.title);
+    formDataUpdatedCreation.append("description", formData.description);
+    formDataUpdatedCreation.append("img", formData.img);
+    formDataUpdatedCreation.append("categories", formData.categories);
+    formDataUpdatedCreation.append("price", formData.price);
 
-    const { data } = await apiHandler.patch(`/myCreation/${id}/update`, fd);
+    const { data } = await apiHandler.patch(
+      `/myCreation/${id}/update`,
+      formDataUpdatedCreation
+    );
     console.log(data);
     resetForm();
     navigate("/profile/artists/updatecreationpage");
@@ -118,7 +121,7 @@ const ProfileUpdateCreation = () => {
           <h3>
             <label htmlFor="description">Price: </label>
             <input
-              type="text"
+              type="number"
               value={price}
               name="price"
               id="price"

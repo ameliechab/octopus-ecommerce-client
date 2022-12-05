@@ -6,7 +6,7 @@ import "./FormCreateArtist.css";
 
 const CreateFormArtist = () => {
   const navigate = useNavigate();
-  const [formData, setFormData, resetForm] = useFormCreate({
+  const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     name: "",
     description: "",
     picture: {},
@@ -14,12 +14,12 @@ const CreateFormArtist = () => {
 
   const handleSubmitArtistForm = async (e) => {
     e.preventDefault();
-    const fd = new FormData();
-    fd.append("name", formData.name);
-    fd.append("description", formData.description);
-    fd.append("picture", formData.picture);
+    const formDataArtist = new FormData();
+    formDataArtist.append("name", formData.name);
+    formDataArtist.append("description", formData.description);
+    formDataArtist.append("picture", formData.picture);
 
-    const { data } = await apiHandler.post("/artists/form", fd);
+    const { data } = await apiHandler.post("/artists/form", formDataArtist);
     console.log(data);
     resetForm();
     navigate("/artist/" + data._id);
@@ -38,7 +38,7 @@ const CreateFormArtist = () => {
             type="file"
             id="create-picture"
             name="picture"
-            onChange={setFormData}
+            onChange={handleChangeData}
           />
         </div>
         <div className="create-artist-details">
@@ -49,7 +49,7 @@ const CreateFormArtist = () => {
             id="create-name"
             name="name"
             value={name}
-            onChange={setFormData}
+            onChange={handleChangeData}
             placeholder="Your brand/creator name"
           />
           {/* <label htmlFor="description">Description: </label> */}
@@ -59,7 +59,7 @@ const CreateFormArtist = () => {
             value={description}
             name="description"
             id="create-description"
-            onChange={setFormData}
+            onChange={handleChangeData}
             placeholder="Description of you and your activity"
           ></textarea>
           <div className="div-for-submit-button-create-artist">

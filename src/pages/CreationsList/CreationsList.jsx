@@ -27,7 +27,7 @@ const CreationsList = ({
       <div className="all-creations-page">
         {displayedCreations.map((element) => {
           return (
-            <>
+            <div key={element._id}>
               <Link to={`/creations/${element._id}`}>
                 <p className="title-of-creation-all-creations-page">
                   {element.title}
@@ -38,7 +38,7 @@ const CreationsList = ({
                   alt={element.title}
                 />
               </Link>
-            </>
+            </div>
           );
         })}
       </div>

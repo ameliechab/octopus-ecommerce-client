@@ -16,17 +16,15 @@ const OneArtist = ({ artists, creations }) => {
   //console.log(creations);
   //const creationsCopy = [...creations];
 
-  useEffect(async () => {
-    const oneArtist = await apiHandler.getOneArtist(id).then((res) => {
+  useEffect(() => {
+    const oneArtist = apiHandler.getOneArtist(id).then((res) => {
       console.log(res);
       setArtist(res);
     });
-    const artistCreations = await apiHandler
-      .getArtistCreations(id)
-      .then((res) => {
-        console.log(res);
-        setArtistCreation(res);
-      });
+    const artistCreations = apiHandler.getArtistCreations(id).then((res) => {
+      console.log(res);
+      setArtistCreation(res);
+    });
   }, []);
 
   if (!artist) {
@@ -62,7 +60,7 @@ const OneArtist = ({ artists, creations }) => {
         <div className="all-creations-artist-page">
           {artistCreation.map((element) => {
             return (
-              <>
+              <div key={element._id}>
                 <Link
                   // className="creations-images-one-artist"
                   to={`/creations/${element._id}`}
@@ -73,7 +71,7 @@ const OneArtist = ({ artists, creations }) => {
                     alt={element.title}
                   />
                 </Link>
-              </>
+              </div>
             );
           })}
         </div>

@@ -18,10 +18,10 @@ const ProfileOrders = ({ creations }) => {
 
       {orders.map((order) => {
         return (
-          <div className="one-order">
+          <div key={order._id} className="one-order">
             {order.creations.map((element) => {
               return (
-                <>
+                <div key={element._id}>
                   <p>
                     Date :{" "}
                     <span className="bold">{order.date.slice(0, 10)}</span>
@@ -37,7 +37,7 @@ const ProfileOrders = ({ creations }) => {
                     {" "}
                     Quantity: <span className="bold">{element.quantity}</span>
                   </p>
-                </>
+                </div>
               );
             })}
             <p>

@@ -12,11 +12,12 @@ const OneCreation = ({ artists, setOrder }) => {
   //const oneCreation = creations.find((creation) => creation._id === id);
   //const artistsCopy = [...artists];
 
-  useEffect(async () => {
-    await apiHandler.getOneCreation(id).then((res) => {
-      console.log(res);
+  useEffect(() => {
+    const getCreation = async () => {
+      const res = await apiHandler.getOneCreation(id);
       setCreation(res);
-    });
+    };
+    x();
   }, []);
 
   const handleAddToCart = async (event) => {
