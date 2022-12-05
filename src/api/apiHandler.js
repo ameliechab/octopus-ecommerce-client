@@ -189,11 +189,24 @@ const service = {
       .catch(errorHandler);
   },
 
-  // DELETE ONE CREATION
+
+
+  // DELETE ONE CREATION IN CART
 
   deleteCreationCart(productId) {
     return service
       .patch(`/orderCart/${productId}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+// Delete one creation in the artist profile
+  deleteCreationArtistProfile(id) {
+    return service
+      .delete(`/creationinprofile/${id}/delete`)
       .then((res) => {
         console.log(res);
         return res.data;
