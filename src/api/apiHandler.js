@@ -82,6 +82,16 @@ const service = {
       .catch(errorHandler);
   },
 
+  getMyArtist() {
+    return service
+    .get("/myartist")
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch(errorHandler) 
+  },
+
   // POST
 
   postAddToCart(id) {
