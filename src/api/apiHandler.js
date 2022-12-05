@@ -92,6 +92,17 @@ const service = {
     .catch(errorHandler) 
   },
 
+  getMyCreations() {
+    return service
+    .get("/mycreations")
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch(errorHandler) 
+  },
+
+
   // POST
 
   postAddToCart(id) {

@@ -20,7 +20,7 @@ const useFormCreate = (originalState) => {
     setState(originalState);
   };
 
-  return [state, handleChange, reset];
+  return [state, handleChange, setState, reset];
 };
 
 export default useFormCreate;
