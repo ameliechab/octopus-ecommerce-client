@@ -98,7 +98,9 @@ function App() {
           />
           <Route
             path="/profile/artists/updateartistpage"
-            element={<ProfileUpdateArtist />}
+            element={
+              <ProfileUpdateArtist artists={artists} setArtists={setArtists} />
+            }
           />
 
           {/* Orders */}

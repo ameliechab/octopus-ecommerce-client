@@ -124,14 +124,13 @@ const service = {
 
   getMyCreations() {
     return service
-    .get("/mycreations")
-    .then((res) => {
-      console.log(res);
-      return res.data;
-    })
-    .catch(errorHandler) 
+      .get("/mycreations")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
   },
-
 
   // POST
 
@@ -194,6 +193,17 @@ const service = {
   deleteCreationCart(productId) {
     return service
       .patch(`/orderCart/${productId}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+  // Delete artist profile
+  deleteArtist() {
+    return service
+      .delete(`/myArtist/delete`)
       .then((res) => {
         console.log(res);
         return res.data;
