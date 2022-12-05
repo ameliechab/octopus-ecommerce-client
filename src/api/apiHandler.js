@@ -124,14 +124,13 @@ const service = {
 
   getMyCreations() {
     return service
-    .get("/mycreations")
-    .then((res) => {
-      console.log(res);
-      return res.data;
-    })
-    .catch(errorHandler) 
+      .get("/mycreations")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
   },
-
 
   // POST
 
@@ -203,6 +202,19 @@ const service = {
       .catch(errorHandler);
   },
 
+
+  // Delete artist profile
+  deleteArtist() {
+    return service
+      .delete(`/myArtist/delete`)
+       .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+      
+ 
 // Delete one creation in the artist profile
   deleteCreationArtistProfile(id) {
     return service

@@ -4,7 +4,7 @@ import useFormCreate from "../../hooks/useFormCreate";
 import apiHandler from "../../api/apiHandler";
 import "./ProfileUpdateArtist.css";
 
-const ProfileUpdateArtist = () => {
+const ProfileUpdateArtist = ({ setArtists }) => {
   const [error, setError] = useState("");
   const [myCreations, setMyCreations] = useState([]);
   const [formData, handleChange, setFormData, resetForm] = useFormCreate({
@@ -14,6 +14,7 @@ const ProfileUpdateArtist = () => {
   });
   const navigate = useNavigate();
 
+  //Display artist profile with creation
   useEffect(() => {
     const myArtist = apiHandler.getMyArtist().then((res) => {
       console.log(res);
@@ -26,6 +27,7 @@ const ProfileUpdateArtist = () => {
     });
   }, []);
 
+  // Update artist profile
   const handleUpdateArtistForm = async (e) => {
     e.preventDefault();
     const fd = new FormData();
@@ -43,6 +45,17 @@ const ProfileUpdateArtist = () => {
     console.log(data);
     resetForm();
     navigate("/profile/artists/updateartistpage");
+  };
+
+  //Delete the artist profile
+  const handleDeleteArtist = async (event) => {
+    event.preventDefault();
+    try {
+      const artistDeleted = await apiHandler.deleteArtist();
+      navigate("/profile");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const { name, description, picture } = formData;
@@ -93,6 +106,13 @@ const ProfileUpdateArtist = () => {
           </div>
         </div>
       </form>
+
+      <button
+        className="submit-button-update-artist"
+        onClick={handleDeleteArtist}
+      >
+        DELETE CREATOR PAGE
+      </button>
 
       <div className="update-object-of-artist-details">
         <h3 className="update-one-artist-creations">CREATIONS</h3>

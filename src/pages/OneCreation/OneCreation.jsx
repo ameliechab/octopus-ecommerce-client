@@ -31,6 +31,10 @@ const OneCreation = ({ artists, setOrder }) => {
     navigate("/cart");
   };
 
+  if (!creation) {
+    return <div className="middle-div-min">Loading...</div>;
+  }
+
   return (
     <div className="middle-div-min">
       <div className="all-object-details-page">
