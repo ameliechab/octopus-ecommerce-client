@@ -17,7 +17,7 @@ const OneCreation = ({ artists, setOrder }) => {
       const res = await apiHandler.getOneCreation(id);
       setCreation(res);
     };
-    x();
+    getCreation();
   }, []);
 
   const handleAddToCart = async (event) => {
