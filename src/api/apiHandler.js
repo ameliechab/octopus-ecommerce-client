@@ -188,7 +188,9 @@ const service = {
       .catch(errorHandler);
   },
 
-  // DELETE ONE CREATION
+
+
+  // DELETE ONE CREATION IN CART
 
   deleteCreationCart(productId) {
     return service
@@ -200,10 +202,23 @@ const service = {
       .catch(errorHandler);
   },
 
+
   // Delete artist profile
   deleteArtist() {
     return service
       .delete(`/myArtist/delete`)
+       .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+      
+ 
+// Delete one creation in the artist profile
+  deleteCreationArtistProfile(id) {
+    return service
+      .delete(`/creationinprofile/${id}/delete`)
       .then((res) => {
         console.log(res);
         return res.data;

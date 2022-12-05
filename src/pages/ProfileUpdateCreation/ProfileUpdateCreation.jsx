@@ -24,6 +24,16 @@ const ProfileUpdateCreation = () => {
     });
   }, []);
 
+  const handleDeleteCreation = async (event) => {
+    event.preventDefault();
+    try {
+      const creationDeleted = await apiHandler.deleteCreationArtistProfile(id);
+      navigate("/profile/artists/updateartistpage");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleUpdateCreationForm = async (e) => {
     e.preventDefault();
     const fd = new FormData();
@@ -51,20 +61,20 @@ const ProfileUpdateCreation = () => {
     <div className="middle-div-min">
       <form
         onSubmit={handleUpdateCreationForm}
-        className="create-all-object-details-page"
+        className="update-all-object-details-page"
       >
-        <div className="create-creation-presentation">
+        <div className="update-creation-presentation">
           {/* <label htmlFor="img">Picture</label> */}
           <img
-            className="create-creation-picture"
+            className="update-creation-picture"
             src={`${img}`}
             alt="add-creation"
           />
 
-          <div className="create-creation-details">
+          <div className="update-creation-details">
             {/* <label  htmlFor="title">Title: </label> */}
             <input
-              className="create-creation-details-title"
+              className="update-creation-details-title"
               type="text"
               value={title}
               name="title"
@@ -74,7 +84,7 @@ const ProfileUpdateCreation = () => {
             />
             {/* <label htmlFor="description">Description: </label> */}
             <textarea
-              className="create-creation-details-description"
+              className="update-creation-details-description"
               type="text"
               value={description}
               name="description"
@@ -104,7 +114,7 @@ const ProfileUpdateCreation = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="create-creation-price-and-button">
+        <div className="update-creation-price-and-button">
           <h3>
             <label htmlFor="description">Price: </label>
             <input
@@ -118,8 +128,14 @@ const ProfileUpdateCreation = () => {
             €
           </h3>
 
-          <button className="create-add-to-profile-button-creation-page">
+          <button className="update-add-to-profile-button-creation-page">
             SUBMIT CHANGES
+          </button>
+          <button
+            className="update-add-to-profile-button-creation-page"
+            onClick={handleDeleteCreation}
+          >
+            DELETE THIS CREATION
           </button>
         </div>
       </form>
