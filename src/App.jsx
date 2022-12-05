@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import ProfileOrders from "./pages/ProfileOrders/ProfileOrders";
+import ProfileUpdateArtist from "./pages/ProfileUpdateArtist/ProfileUpdateArtist";
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute";
 import LoggedOut from "./components/LoggedOut/LoggedOut";
 import Cart from "./pages/Cart/Cart";
@@ -94,6 +95,10 @@ function App() {
           <Route
             path="/profile/artists/updateobject"
             element={<ProfileUpdateCreation />}
+          />
+          <Route
+            path="/profile/artists/updateartistpage"
+            element={<ProfileUpdateArtist />}
           />
           {/* Orders */}
           <Route
