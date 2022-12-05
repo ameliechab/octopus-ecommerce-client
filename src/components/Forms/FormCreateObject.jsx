@@ -6,31 +6,31 @@ import "./FormCreateObject.css";
 
 const CreateFormCreation = () => {
   const navigate = useNavigate();
-  const [formData, setFormData, resetForm] = useFormCreate({
-    // artistId: "",
+  const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     title: "",
     description: "",
     img: {},
     categories: [],
-    price: null,
+    price: 0,
   });
 
   const handleSubmitCreationForm = async (e) => {
     e.preventDefault();
-    const fd = new FormData();
-    fd.append("title", formData.title);
-    fd.append("description", formData.description);
-    fd.append("img", formData.img);
-    fd.append("categories", formData.categories);
-    fd.append("price", formData.price);
+    const formDataCreation = new FormData();
+    formDataCreation.append("title", formData.title);
+    formDataCreation.append("description", formData.description);
+    formDataCreation.append("img", formData.img);
+    formDataCreation.append("categories", formData.categories);
+    formDataCreation.append("price", formData.price);
 
-    const { data } = await apiHandler.post("/creations/form", fd);
+    const { data } = await apiHandler.post("/creations/form", formDataCreation);
     console.log(data);
     resetForm();
     navigate("/creations/" + data._id);
   };
 
   const { title, description, categories, price } = formData;
+
   return (
     <div className="middle-div-min">
       <form
@@ -44,7 +44,7 @@ const CreateFormCreation = () => {
               type="file"
               id="create-creation-picture"
               name="img"
-              onChange={setFormData}
+              onChange={handleChangeData}
             />
           </div>
 
@@ -56,7 +56,7 @@ const CreateFormCreation = () => {
               value={title}
               name="title"
               id="title"
-              onChange={setFormData}
+              onChange={handleChangeData}
               placeholder="Your creation name"
             />
             {/* <label htmlFor="description">Description: </label> */}
@@ -66,7 +66,7 @@ const CreateFormCreation = () => {
               value={description}
               name="description"
               id="description"
-              onChange={setFormData}
+              onChange={handleChangeData}
               placeholder="Your description here"
             ></textarea>
 
@@ -77,7 +77,7 @@ const CreateFormCreation = () => {
                 value={categories}
                 name="categories"
                 id="categories"
-                onChange={setFormData}
+                onChange={handleChangeData}
                 placeholder="add category"
               />
             </h4>
@@ -87,11 +87,11 @@ const CreateFormCreation = () => {
           <h3>
             <label htmlFor="description">Price: </label>
             <input
-              type="text"
+              type="number"
               value={price}
               name="price"
               id="price"
-              onChange={setFormData}
+              onChange={handleChangeData}
               placeholder="price"
             />
             €

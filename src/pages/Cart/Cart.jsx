@@ -100,7 +100,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
           <ul className="all-creation-order">
             {creationOfOrder.map((element) => {
               return (
-                <>
+                <div key={element._id}>
                   <li className="each-creation-order">
                     <img
                       className="creation-image-order"
@@ -164,7 +164,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                     </div>
                   </li>
                   <hr />
-                </>
+                </div>
               );
             })}
           </ul>

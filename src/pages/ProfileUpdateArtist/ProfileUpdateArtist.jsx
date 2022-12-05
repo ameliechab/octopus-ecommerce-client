@@ -30,21 +30,24 @@ const ProfileUpdateArtist = ({ setArtists }) => {
   // Update artist profile
   const handleUpdateArtistForm = async (e) => {
     e.preventDefault();
-    const fd = new FormData();
+    const formDataUpdatedArtist = new FormData();
     for (const key in formData) {
       if (formData[key] === "") {
         setError(`${key} is required`);
         return;
       }
     }
-    fd.append("name", formData.name);
-    fd.append("description", formData.description);
-    fd.append("picture", formData.picture);
+    formDataUpdatedArtist.append("name", formData.name);
+    formDataUpdatedArtist.append("description", formData.description);
+    formDataUpdatedArtist.append("picture", formData.picture);
 
-    const { data } = await apiHandler.patch("/myArtist/update", fd);
+    const { data } = await apiHandler.patch(
+      "/myArtist/update",
+      formDataUpdatedArtist
+    );
     console.log(data);
     resetForm();
-    navigate("/profile/artists/updateartistpage");
+    navigate("/profile");
   };
 
   //Delete the artist profile
@@ -118,7 +121,7 @@ const ProfileUpdateArtist = ({ setArtists }) => {
         <div className="all-creations-update-artist-page">
           {myCreations.map((element) => {
             return (
-              <>
+              <div key={element._id}>
                 <Link
                   // className="creations-images-one-artist"
                   to={`/profile/artists/updateobjectpage/${element._id}`}
@@ -129,7 +132,7 @@ const ProfileUpdateArtist = ({ setArtists }) => {
                     alt={element.title}
                   />
                 </Link>
-              </>
+              </div>
             );
           })}
         </div>

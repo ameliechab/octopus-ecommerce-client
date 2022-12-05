@@ -9,7 +9,7 @@ const ArtistsList = ({ artists }) => {
       <div className="all-artists-page">
         {artists.map((element) => {
           return (
-            <>
+            <div key={element._id}>
               <Link to={`/artist/${element._id}`}>
                 <p className="name-of-artist-all-artists-page">
                   {element.name}
@@ -20,7 +20,7 @@ const ArtistsList = ({ artists }) => {
                   alt={element.name}
                 />
               </Link>
-            </>
+            </div>
           );
         })}
       </div>
