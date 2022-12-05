@@ -29,6 +29,14 @@ const OneArtist = ({ artists, creations }) => {
       });
   }, []);
 
+  if (!artist) {
+    return <div className="middle-div-min">Loading...</div>;
+  }
+
+  if (!artistCreation) {
+    return <div className="middle-div-min">Loading...</div>;
+  }
+
   // const remainingObjects = creationsCopy.filter((El) => {
   //   console.log(El);
   //   return El.artistId == oneArtist._id;
