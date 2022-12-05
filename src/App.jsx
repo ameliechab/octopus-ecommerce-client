@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import ProfileOrders from "./pages/ProfileOrders/ProfileOrders";
 import ProfileUpdateArtist from "./pages/ProfileUpdateArtist/ProfileUpdateArtist";
+import ProfileUpdateCreation from "./pages/ProfileUpdateCreation/ProfileUpdateCreation";
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute";
 import LoggedOut from "./components/LoggedOut/LoggedOut";
 import Cart from "./pages/Cart/Cart";
@@ -17,7 +18,6 @@ import CreationsList from "./pages/CreationsList/CreationsList";
 import OneCreation from "./pages/OneCreation/OneCreation";
 import NotFound from "./pages/NotFound/NotFound";
 import OrderValidation from "./pages/OrderValidation/OrderValidation";
-import ProfileUpdateCreation from "./pages/ProfileUpdateCreation/ProfileUpdateCreation";
 import Footer from "./components/Footer/Footer";
 import FormCreateArtist from "./components/Forms/FormCreateArtist";
 import FormCreateObject from "./components/Forms/FormCreateObject";
@@ -93,13 +93,14 @@ function App() {
             element={<FormCreateObject />}
           />
           <Route
-            path="/profile/artists/updateobject"
+            path="/profile/artists/updateobjectpage/:id"
             element={<ProfileUpdateCreation />}
           />
           <Route
             path="/profile/artists/updateartistpage"
             element={<ProfileUpdateArtist />}
           />
+
           {/* Orders */}
           <Route
             path="/cart"
