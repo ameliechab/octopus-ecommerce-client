@@ -3,12 +3,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import apiHandler from "./../../api/apiHandler";
 import "./OneCreation.css";
 
-const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
+const OneCreation = ({ artists, setOrder }) => {
+  const [creation, setCreation] = useState([]);
+
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id;
-  const oneCreation = creations.find((creation) => creation._id === id);
-  const artistsCopy = [...artists];
+  //const oneCreation = creations.find((creation) => creation._id === id);
+  //const artistsCopy = [...artists];
+
+  useEffect(async () => {
+    await apiHandler.getOneCreation(id).then((res) => {
+      console.log(res);
+      setCreation(res);
+    });
+  }, []);
 
   const handleAddToCart = async (event) => {
     event.preventDefault();
@@ -28,19 +37,19 @@ const OneCreation = ({ creations, artists, setCreations, setOrder }) => {
         <div className="creation-presentation">
           <img
             className="creation-picture"
-            src={oneCreation.img}
-            alt={oneCreation.title}
+            src={creation.img}
+            alt={creation.title}
           />
           <div className="creation-details">
-            <h2 className="creation-details-title">{oneCreation.title}</h2>
+            <h2 className="creation-details-title">{creation.title}</h2>
             <p className="creation-details-description">
-              {oneCreation.description}
+              {creation.description}
             </p>
-            <h4>Categories: {oneCreation.categories}</h4>
+            <h4>Categories: {creation.categories}</h4>
           </div>
         </div>
         <div className="creation-price-and-button">
-          <h3 className="creation-price">Price: {oneCreation.price} €</h3>
+          <h3 className="creation-price">Price: {creation.price} €</h3>
           <button
             onClick={handleAddToCart}
             className="add-to-cart-button-creation-page"

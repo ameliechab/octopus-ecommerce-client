@@ -82,14 +82,44 @@ const service = {
       .catch(errorHandler);
   },
 
+  getOneCreation(id) {
+    return service
+      .get(`/creations/${id}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+  getOneArtist(id) {
+    return service
+      .get(`/artists/${id}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
+  getArtistCreations(id) {
+    return service
+      .get(`/artists/${id}/creations`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
+
   getMyArtist() {
     return service
-    .get("/myartist")
-    .then((res) => {
-      console.log(res);
-      return res.data;
-    })
-    .catch(errorHandler) 
+      .get("/myartist")
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
   },
 
   // POST
@@ -103,55 +133,50 @@ const service = {
       })
       .catch(errorHandler);
   },
-  
 
+  // PATCH
 
+  patchIncrementCreationToOrder(creationId) {
+    return service
+      .patch(`/orderCart/increment/${creationId}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
 
-    // PATCH
+  patchDecrementCreationToOrder(creationId) {
+    return service
+      .patch(`/orderCart/decrement/${creationId}`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
 
-    patchIncrementCreationToOrder(creationId) {
-      return service
-        .patch(`/orderCart/increment/${creationId}`)
-        .then((res) => {
-          console.log(res);
-          return res.data;
-        })
-        .catch(errorHandler);
-    },
+  buyCart() {
+    return service
+      .put(`/orderCart/buy`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
 
-    patchDecrementCreationToOrder(creationId) {
-      return service
-        .patch(`/orderCart/decrement/${creationId}`)
-        .then((res) => {
-          console.log(res);
-          return res.data;
-        })
-        .catch(errorHandler);
-    },
-  
-    buyCart() {
-      return service
-        .put(`/orderCart/buy`)
-        .then((res) => {
-          console.log(res);
-          return res.data;
-        })
-        .catch(errorHandler);
-    },
+  // DELETE ALL CART
 
-    // DELETE ALL CART
-
-    deleteCart() {
-      return service
-        .delete(`/orderCart/delete`)
-        .then((res) => {
-          console.log(res);
-          return res.data;
-        })
-        .catch(errorHandler);
-    },
-
-    
+  deleteCart() {
+    return service
+      .delete(`/orderCart/delete`)
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch(errorHandler);
+  },
 
   // DELETE ONE CREATION
 
