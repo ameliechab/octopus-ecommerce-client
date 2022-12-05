@@ -34,11 +34,11 @@ const Profile = ({ creations }) => {
           {" "}
           <Link to="/profile/artists/createobject">Create objects</Link>{" "}
         </button>
-        <button className="button-on-profile">
+        {/* <button className="button-on-profile">
           {" "}
           <Link to="/profile/artists/updateobject">Update object</Link>{" "}
-          </button>
-          <button className="button-on-profile">
+          </button> */}
+        <button className="button-on-profile">
           {" "}
           <Link to="/profile/artists/updateartistpage">
             Update creator page

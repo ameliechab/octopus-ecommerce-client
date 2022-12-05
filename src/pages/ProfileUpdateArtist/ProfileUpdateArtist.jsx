@@ -87,7 +87,9 @@ const ProfileUpdateArtist = () => {
 
           <div className="div-for-submit-button-update-artist">
             {error && <p className="error">{error}</p>}
-            <button className="submit-button-update-artist">Submit</button>
+            <button className="submit-button-update-artist">
+              SUBMIT CHANGES
+            </button>
           </div>
         </div>
       </form>

@@ -1,0 +1,14 @@
+.change-picture-creation-update {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  margin-left: 10%;
+}
+
+#update-creation-picture {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
