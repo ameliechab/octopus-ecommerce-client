@@ -103,16 +103,15 @@ const ProfileUpdateArtist = ({ setArtists }) => {
             <button className="submit-button-update-artist">
               SUBMIT CHANGES
             </button>
+            <button
+              className="submit-button-update-artist"
+              onClick={handleDeleteArtist}
+            >
+              DELETE CREATOR PAGE
+            </button>
           </div>
         </div>
       </form>
-
-      <button
-        className="submit-button-update-artist"
-        onClick={handleDeleteArtist}
-      >
-        DELETE CREATOR PAGE
-      </button>
 
       <div className="update-object-of-artist-details">
         <h3 className="update-one-artist-creations">CREATIONS</h3>
