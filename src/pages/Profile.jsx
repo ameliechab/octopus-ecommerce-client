@@ -36,6 +36,10 @@ const Profile = ({ creations }) => {
         </button>
         <button className="button-on-profile">
           {" "}
+          <Link to="/profile/artists/updateobject">Update object</Link>{" "}
+          </button>
+          <button className="button-on-profile">
+          {" "}
           <Link to="/profile/artists/updateartistpage">
             Update creator page
           </Link>{" "}
