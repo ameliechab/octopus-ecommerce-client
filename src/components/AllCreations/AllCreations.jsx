@@ -23,7 +23,7 @@ const AllCreations = () => {
       <div className="all-creations-home-page">
         {creations.map((element) => {
           return (
-            <>
+            <div key={element._id}>
               <Link to={`/creations/${element._id}`}>
                 <img
                   className="creations-images-all-creations"
@@ -34,7 +34,7 @@ const AllCreations = () => {
               {/* <Link to={`${element._id}`}>{element.name}</Link> */}
               {/* <h3>{element.name}</h3>
                   <div>{element.description}</div> */}
-            </>
+            </div>
           );
         })}
       </div>

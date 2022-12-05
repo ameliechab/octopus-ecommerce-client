@@ -27,7 +27,7 @@ const AllArtists = () => {
       <div className="all-artists-home-page">
         {artists.map((element) => {
           return (
-            <>
+            <div key={element._id}>
               <Link to={`/artist/${element._id}`}>
                 <img
                   className="artists-images-all-artists"
@@ -35,7 +35,7 @@ const AllArtists = () => {
                   alt={element.name}
                 />
               </Link>
-            </>
+            </div>
           );
         })}
       </div>
