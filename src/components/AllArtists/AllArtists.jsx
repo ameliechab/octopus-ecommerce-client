@@ -30,7 +30,7 @@ const AllArtists = () => {
     return tenArtistsArray;
   };
 
-  const sixRandomArtists = chooseRandom(artists, 6);
+  const sixRandomArtists = chooseRandom(artists, 10);
 
   if (!artists.length) {
     return <div className="middle-div-min">Loading...</div>;
