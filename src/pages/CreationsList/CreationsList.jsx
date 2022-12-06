@@ -20,9 +20,9 @@ const CreationsList = ({
     });
   }, []);
 
-//To display creations filtered by name or by category
+  //To display creations filtered by name or by category
 
-const filteredCreations = () => {
+  const filteredCreations = () => {
     let creationsFiltered = [...creations];
     if (searchCreationString) {
       creationsFiltered = creationsFiltered.filter((element) =>

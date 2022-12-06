@@ -20,7 +20,7 @@ const CreateFormCreation = () => {
     formDataCreation.append("title", formData.title);
     formDataCreation.append("description", formData.description);
     formDataCreation.append("img", formData.img);
-    formDataCreation.append("categories", formData.categories);
+    formDataCreation.append("categories", formData.categories.toLowerCase());
     formDataCreation.append("price", formData.price);
 
     const { data } = await apiHandler.post("/creations/form", formDataCreation);
