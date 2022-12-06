@@ -117,8 +117,17 @@ const ProfileUpdateArtist = ({ setArtists }) => {
       </form>
 
       <div className="update-object-of-artist-details">
-        <h3 className="update-one-artist-creations">CREATIONS</h3>
+        <h3 className="update-one-artist-creations">UPDATE YOUR CREATIONS</h3>
         <div className="all-creations-update-artist-page">
+          <>
+            <Link to="/profile/artists/createobject">
+              <img
+                className="create-creations-images-one-artist"
+                src="../../../public/images/logos/AddCreation.png"
+                alt="add-creation"
+              />
+            </Link>
+          </>
           {myCreations.map((element) => {
             return (
               <div key={element._id}>
