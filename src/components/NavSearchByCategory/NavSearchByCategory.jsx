@@ -6,18 +6,23 @@ const NavSearchByCategory = ({
   searchCreationCategoryString,
   setSearchCreationCategoryString,
 }) => {
+  // To search creation by category
   const handleCreationCategorySearch = (e) => {
     console.log(e.target.value);
     setSearchCreationCategoryString(e.target.value);
   };
 
-  const newArray = []; // use a new empty array
+  // To clear the input when you are doing another research by category
+  const clear = (event) => {
+    event.target.value = "";
+  };
 
+  // Unique creation categories
+  const creationCategories = [];
   for (let i = 0; i < creations.length; i++) {
-    newArray.push(creations[i].categories[0]); // push all the categories to this new empty array
+    creationCategories.push(creations[i].categories[0]);
   }
-
-  const newArrayWithoutDuplicates = [...new Set(newArray)]; // remove the duplicates of the array
+  const uniqueCreationCategories = [...new Set(creationCategories)];
 
   return (
     <div className="search-navbar-entire">
@@ -29,26 +34,23 @@ const NavSearchByCategory = ({
             alt="logo-search"
           ></img>{" "}
         </Link>
-        {/* <input
-          type="search"
-          name="search-creation-categorie"
-          className="search-creation-categorie"
-          placeholder="Search for creation"
-          value={searchStringInput} 
-          type="text" 
-          onChange={handleSearch}
-        /> */}
+
         <input
           value={searchCreationCategoryString}
           type="text"
           list="data"
-          placeholder="Search for creation by category"
+          onClick={clear}
+          onFocus={clear}
+          placeholder="Search by category"
           onChange={handleCreationCategorySearch}
         />
+
         <datalist id="data">
-          {newArrayWithoutDuplicates.map((element) => (
-            <option value={element} />
-          ))}
+          <select>
+            {uniqueCreationCategories.map((element) => (
+              <option key={element} value={element} />
+            ))}
+          </select>
         </datalist>
       </div>
     </div>

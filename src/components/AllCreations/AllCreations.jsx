@@ -13,6 +13,21 @@ const AllCreations = () => {
     });
   }, []);
 
+  // Pick some random creation in the array of all creations
+  const chooseRandom = (array, num = 9) => {
+    const tenCreationsArray = [];
+    for (let i = 0; i < num; i++) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      if (tenCreationsArray.indexOf(array[randomIndex]) !== -1) {
+        continue;
+      }
+      tenCreationsArray.push(array[randomIndex]);
+    }
+    return tenCreationsArray;
+  };
+
+  const tenRandomCreations = chooseRandom(creations, 10);
+
   if (!creations.length) {
     return <div className="middle-div-min">Loading...</div>;
   }
@@ -21,7 +36,7 @@ const AllCreations = () => {
     <div>
       <p className="creation-paragraph-title">CREATIONS</p>
       <div className="all-creations-home-page">
-        {creations.map((element) => {
+        {tenRandomCreations.map((element) => {
           return (
             <div key={element._id}>
               <Link to={`/creations/${element._id}`}>
@@ -31,12 +46,14 @@ const AllCreations = () => {
                   alt={element.title}
                 />
               </Link>
-              {/* <Link to={`${element._id}`}>{element.name}</Link> */}
-              {/* <h3>{element.name}</h3>
-                  <div>{element.description}</div> */}
             </div>
           );
         })}
+        <div className="creations-images-view-more">
+          <Link className="link-to-view-more" to="/creations">
+            <button className="button-on-view-more">VIEW MORE</button>
+          </Link>{" "}
+        </div>
       </div>
     </div>
   );

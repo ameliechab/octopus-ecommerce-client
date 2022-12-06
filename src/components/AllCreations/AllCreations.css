@@ -16,6 +16,23 @@
   border-radius: 50%;
 }
 
+.creations-images-view-more {
+  height: 17rem;
+  width: 17rem;
+  object-fit: cover;
+  filter: drop-shadow(0px 0.5px 10px rgba(255, 255, 255, 0.15));
+  filter: saturate(0);
+  margin: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgba(217, 217, 217, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
 /* .hide {
   display: none;
 } */

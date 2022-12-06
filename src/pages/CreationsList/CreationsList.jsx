@@ -13,16 +13,6 @@ const CreationsList = ({
 }) => {
   const [creations, setCreations] = useState([]);
 
-  const displayedCreations = creations.filter((creationEl) => {
-    return creationEl.title
-      .toLowerCase()
-      .includes(searchCreationString.toLowerCase());
-  });
-
-  const displayedCreationsByCategory = creations.filter((creationEl) => {
-    return creationEl.categories.includes(searchCreationCategoryString);
-  });
-
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
       console.log("CREATIONS", res);
@@ -30,33 +20,25 @@ const CreationsList = ({
     });
   }, []);
 
-  const filteredProdutcts = () => {
-    let products = creations;
+//To display creations filtered by name or by category
 
+const filteredCreations = () => {
+    let creationsFiltered = [...creations];
     if (searchCreationString) {
-      products = products.filter((product) =>
-        product.title.toLowerCase().includes(searchCreationString.toLowerCase())
+      creationsFiltered = creationsFiltered.filter((element) =>
+        element.title.toLowerCase().includes(searchCreationString.toLowerCase())
       );
     }
     if (searchCreationCategoryString) {
-      products = products.filter((product) =>
-        product.categories.includes(searchCreationCategoryString)
+      creationsFiltered = creationsFiltered.filter((element) =>
+        element.categories.includes(searchCreationCategoryString)
       );
     }
-    return products;
+    return creationsFiltered;
   };
-
-  useEffect(() => {
-    filteredProdutcts();
-  }, []);
 
   return (
     <div className="middle-div-min">
-      {/* <div>
-        {displayedCreations.map((creationFiltered) => {
-          return <h2>{creationFiltered.title}</h2>;
-        })}
-      </div> */}
       <NavSearch
         setSearchCreationString={setSearchCreationString}
         searchCreationString={searchCreationString}
@@ -67,7 +49,7 @@ const CreationsList = ({
         creations={creations}
       ></NavSearchByCategory>
       <div className="all-creations-page">
-        {filteredProdutcts().map((element) => {
+        {filteredCreations().map((element) => {
           return (
             <div key={element._id}>
               <Link to={`/creations/${element._id}`}>
@@ -83,38 +65,6 @@ const CreationsList = ({
             </div>
           );
         })}
-        {/*         {displayedCreations.map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/creations/${element._id}`}>
-                <p className="title-of-creation-all-creations-page">
-                  {element.title}
-                </p>
-                <img
-                  className="creations-images-all-creations"
-                  src={element.img}
-                  alt={element.title}
-                />
-              </Link>
-            </div>
-          );
-        })}
-        {displayedCreationsByCategory.map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/creations/${element._id}`}>
-                <p className="title-of-creation-all-creations-page">
-                  {element.title}
-                </p>
-                <img
-                  className="creations-images-all-creations"
-                  src={element.img}
-                  alt={element.title}
-                />
-              </Link>
-            </div>
-          );
-        })} */}
       </div>
     </div>
   );
