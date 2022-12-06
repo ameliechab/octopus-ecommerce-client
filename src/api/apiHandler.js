@@ -40,6 +40,18 @@ const service = {
   // Service is spread to have access to the basics get/post...
   ...apiHandler,
 
+  createArtist(formDataArtist) {
+    return service 
+    .post("/artists/form", formDataArtist)
+    .then((res) => {
+        console.log(res);
+        console.log("the res.data", res.data)
+        return res.data;
+      })
+    .catch(err => {
+      throw err.response.data.message
+    });
+  },
   //GET
 
   getAllArtists() {

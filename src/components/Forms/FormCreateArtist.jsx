@@ -11,6 +11,7 @@ const CreateFormArtist = () => {
     description: "",
     picture: {},
   });
+  const [error, setError] = useState(null);
 
   const handleSubmitArtistForm = async (e) => {
     e.preventDefault();
@@ -19,10 +20,14 @@ const CreateFormArtist = () => {
     formDataArtist.append("description", formData.description);
     formDataArtist.append("picture", formData.picture);
 
-    const { data } = await apiHandler.post("/artists/form", formDataArtist);
-    console.log(data);
-    resetForm();
-    navigate("/artist/" + data._id);
+    try {
+      const data = await apiHandler.createArtist(formDataArtist);
+      console.log(data);
+      resetForm();
+      navigate("/artist/" + data._id);
+    } catch (err) {
+      setError(err);
+    }
   };
 
   const { name, description } = formData;
@@ -63,6 +68,7 @@ const CreateFormArtist = () => {
             placeholder="Description of you and your activity"
           ></textarea>
           <div className="div-for-submit-button-create-artist">
+            {error && <p>{error}</p>}
             <button className="submit-button-create-artist">Submit</button>
           </div>
         </div>
@@ -75,7 +81,7 @@ const CreateFormArtist = () => {
             <Link to="/profile/artists/createobject">
               <img
                 className="create-creations-images-one-artist"
-                src="../../../public/images/logos/AddCreation.png"
+                src="/images/logos/AddCreation.png"
                 alt="add-creation"
               />
             </Link>

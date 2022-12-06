@@ -4,7 +4,7 @@ import useFormCreate from "../../hooks/useFormCreate";
 import apiHandler from "../../api/apiHandler";
 import "./ProfileUpdateArtist.css";
 
-const ProfileUpdateArtist = ({ setArtists }) => {
+const ProfileUpdateArtist = () => {
   const [error, setError] = useState("");
   const [myCreations, setMyCreations] = useState([]);
   const [formData, handleChange, setFormData, resetForm] = useFormCreate({
@@ -16,12 +16,11 @@ const ProfileUpdateArtist = ({ setArtists }) => {
 
   //Display artist profile with creation
   useEffect(() => {
-    const myArtist = apiHandler.getMyArtist().then((res) => {
+    apiHandler.getMyArtist().then((res) => {
       console.log(res);
       setFormData(res);
     });
-
-    const myCreations = apiHandler.getMyCreations().then((res) => {
+    apiHandler.getMyCreations().then((res) => {
       console.log(res);
       setMyCreations(res);
     });

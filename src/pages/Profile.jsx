@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import useAuth from "../auth/useAuth";
 
-const Profile = ({ creations, artists }) => {
+const Profile = () => {
   const { currentUser } = useAuth();
   console.log({ currentUser });
   const [orders, setOrders] = useState([]);
+  const [artists, setArtists] = useState([]);
 
   const artistPageExists = artists.filter((el) => el.user === currentUser._id);
   console.log(artistPageExists);
@@ -16,6 +17,10 @@ const Profile = ({ creations, artists }) => {
     apiHandler.getAllOrders().then((res) => {
       console.log(res);
       setOrders(res);
+    });
+    apiHandler.getAllArtists().then((data) => {
+      console.log(data);
+      setArtists(data);
     });
   }, []);
 
