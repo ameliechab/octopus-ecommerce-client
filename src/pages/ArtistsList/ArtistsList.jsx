@@ -3,7 +3,16 @@ import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./ArtistsList.css";
 
-const ArtistsList = ({ artists }) => {
+const ArtistsList = () => {
+  const [artists, setArtists] = useState([]);
+
+  useEffect(() => {
+    apiHandler.getAllArtists().then((data) => {
+      console.log(data);
+      setArtists(data);
+    });
+  }, []);
+
   return (
     <div className="middle-div-min">
       <div className="all-artists-page">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import apiHandler from "./../../api/apiHandler";
 import "./OneArtist.css";
 
-const OneArtist = ({ artists, creations }) => {
+const OneArtist = () => {
   const [artist, setArtist] = useState([]);
   const [artistCreation, setArtistCreation] = useState([]);
 
@@ -17,11 +17,11 @@ const OneArtist = ({ artists, creations }) => {
   //const creationsCopy = [...creations];
 
   useEffect(() => {
-    const oneArtist = apiHandler.getOneArtist(id).then((res) => {
+    apiHandler.getOneArtist(id).then((res) => {
       console.log(res);
       setArtist(res);
     });
-    const artistCreations = apiHandler.getArtistCreations(id).then((res) => {
+    apiHandler.getArtistCreations(id).then((res) => {
       console.log(res);
       setArtistCreation(res);
     });

@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import apiHandler from "../../api/apiHandler";
 import "./ProfileOrders.css";
 
-const ProfileOrders = ({ creations }) => {
+const ProfileOrders = () => {
   const [orders, setOrders] = useState([]);
+  const [creations, setCreations] = useState([]);
 
   useEffect(() => {
     apiHandler.getAllOrders().then((res) => {
-      console.log(res);
       setOrders(res);
     });
+    apiHandler.getAllCreations().then((res) => {
+      setCreations(res);
+    });
   }, []);
+
   console.log(orders);
   return (
     <div className="all-orders">

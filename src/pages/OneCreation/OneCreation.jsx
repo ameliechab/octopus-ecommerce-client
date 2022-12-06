@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import apiHandler from "./../../api/apiHandler";
 import "./OneCreation.css";
 
-const OneCreation = ({ artists, setOrder }) => {
+const OneCreation = () => {
   const [creation, setCreation] = useState([]);
 
   const params = useParams();

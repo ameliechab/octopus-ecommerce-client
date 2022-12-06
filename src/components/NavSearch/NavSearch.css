@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
 
-/* clears the ‘X’ from Internet Explorer */
+/* clears the ‘X’ from Internet Explorer  */
 input[type="search"]::-ms-clear {
   display: none;
   width: 0;
@@ -47,7 +47,7 @@ body {
   border: 0px solid;
 }
 
-input:focus {
+/* input:focus {
   border: none;
   outline: none;
 }
@@ -56,7 +56,7 @@ input[name="search-creation-categorie"] {
   width: 100%;
   font-size: 1rem;
   color: white;
-}
+} */
 
 .search-logo-nav-bar {
   height: 1rem;
