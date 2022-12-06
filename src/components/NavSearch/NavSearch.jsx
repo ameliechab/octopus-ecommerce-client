@@ -2,6 +2,7 @@ import "./NavSearch.css";
 import { Link } from "react-router-dom";
 
 const NavSearch = ({ searchCreationString, setSearchCreationString }) => {
+  // To search creation by name
   const handleCreationSearch = (e) => {
     setSearchCreationString(e.target.value);
   };
@@ -16,19 +17,11 @@ const NavSearch = ({ searchCreationString, setSearchCreationString }) => {
             alt="logo-search"
           ></img>{" "}
         </Link>
-        {/* <input
-          type="search"
-          name="search-creation-categorie"
-          className="search-creation-categorie"
-          placeholder="Search for creation"
-          value={searchStringInput} 
-          type="text" 
-          onChange={handleSearch}
-        /> */}
+
         <input
           value={searchCreationString}
           type="text"
-          placeholder="Search for creation"
+          placeholder="Search by name"
           onChange={handleCreationSearch}
         />
       </div>

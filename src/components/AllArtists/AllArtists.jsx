@@ -17,6 +17,21 @@ const AllArtists = () => {
     });
   }, []);
 
+  // Pick some random artist in the array of all artists
+  const chooseRandom = (array, num = 10) => {
+    const tenArtistsArray = [];
+    for (let i = 0; i < num; i++) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      if (tenArtistsArray.indexOf(array[randomIndex]) !== -1) {
+        continue;
+      }
+      tenArtistsArray.push(array[randomIndex]);
+    }
+    return tenArtistsArray;
+  };
+
+  const sixRandomArtists = chooseRandom(artists, 6);
+
   if (!artists.length) {
     return <div className="middle-div-min">Loading...</div>;
   }
@@ -25,7 +40,7 @@ const AllArtists = () => {
     <div>
       <p className="artists-paragraph-title">ARTISTS & CREATORS</p>
       <div className="all-artists-home-page">
-        {artists.map((element) => {
+        {sixRandomArtists.map((element) => {
           return (
             <div key={element._id}>
               <Link to={`/artist/${element._id}`}>
@@ -38,6 +53,11 @@ const AllArtists = () => {
             </div>
           );
         })}
+        <div className="artists-images-view-more">
+          <Link className="link-to-view-more" to="/artists">
+            <button className="button-on-view-more"> VIEW MORE</button>
+          </Link>{" "}
+        </div>
       </div>
     </div>
   );

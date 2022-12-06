@@ -27,18 +27,18 @@ function App() {
   const [creations, setCreations] = useState([]);
   const [artists, setArtists] = useState([]);
   const [orderCart, setOrderCart] = useState(null);
-  const [searchCreationString, setSearchCreationString] = useState("");
+  const [searchCreationString, setSearchCreationString] = useState(""); // To search creation by name
   const [searchCreationCategoryString, setSearchCreationCategoryString] =
-    useState("");
+    useState(""); // To search creation by category
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
-      console.log("CREATIONS", res);
+      //console.log(res);
       setCreations(res);
     });
 
     apiHandler.getAllArtists().then((data) => {
-      console.log(data);
+      //console.log(data);
       setArtists(data);
     });
   }, []);
