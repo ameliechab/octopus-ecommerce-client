@@ -5,8 +5,14 @@ import apiHandler from "../../api/apiHandler";
 import "./FormSignUp.css";
 
 const FormSignUp = () => {
-  const [values, handleChange] = useForm({ name: "", email: "", password: "" });
+  const [values, handleChange] = useForm({
+    name: "",
+    email: "",
+    password: "",
+    isArtist: false,
+  });
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -20,9 +26,15 @@ const FormSignUp = () => {
         setError(error.response.data);
       });
   };
+
+  // const handleArtistyChange = (event) => {
+  //   setArtisty(event.target.checked);
+  //   console.log(event.target.checked);
+  // };
+
   return (
     <div className="middle-div-min">
-      <section class="signup" id="form">
+      <section className="signup" id="form">
         <img
           className="logo-octopus-sign-up-page"
           src="images/logos/intro-logo.png"
@@ -30,10 +42,18 @@ const FormSignUp = () => {
         {error && <h3 className="error">{error.message}</h3>}
         <form id="signup-form" onSubmit={handleSubmit}>
           <h2 className="register-word-log-up-page">Register</h2>
+
           <div className="signup-checkbox">
-            <label htmlFor="artist">Artist ?</label>
-            <input type="checkbox" id="artist" />
+            <label htmlFor="isArtist">Artist ?</label>
+            <input
+              type="checkbox"
+              id="isArtist"
+              name="isArtist"
+              checked={values.isArtist}
+              onChange={handleChange}
+            />
           </div>
+
           <label htmlFor="name"></label>
           <input
             onChange={handleChange}

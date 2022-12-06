@@ -230,10 +230,13 @@ const service = {
 
   signup(userInfo) {
     return service
-      .post("/auth/signup", userInfo)
+      .post("/auth/signup", 
+        userInfo
+      )
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
   isLoggedIn() {
     return service
       .get("/auth/me")
