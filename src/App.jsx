@@ -33,21 +33,15 @@ function App() {
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
-      //console.log(res);
       setCreations(res);
     });
 
     apiHandler.getAllArtists().then((data) => {
-      //console.log(data);
       setArtists(data);
     });
   }, []);
 
-  if (!creations.length) {
-    return <div className="middle-div-min">Loading...</div>;
-  }
-
-  if (!artists.length) {
+  if (!creations.length || !artists.length) {
     return <div className="middle-div-min">Loading...</div>;
   }
 
@@ -57,15 +51,14 @@ function App() {
 
       <Routes>
         {/* ROUTES FOR ALL*/}
-        <Route path="/" element={<HomePage artists={artists} />} />
+        <Route path="/" element={<HomePage />} />
         {/* All artists */}
-        <Route path="/artists" element={<ArtistsList artists={artists} />} />
+        <Route path="/artists" element={<ArtistsList />} />
         {/* All creations */}
         <Route
           path="/creations"
           element={
             <CreationsList
-              creations={creations}
               setSearchCreationString={setSearchCreationString}
               searchCreationString={searchCreationString}
               searchCreationCategoryString={searchCreationCategoryString}
@@ -74,24 +67,15 @@ function App() {
           }
         />
         {/* One artist */}
-        <Route
-          path="/artist/:id"
-          element={<OneArtist artists={artists} creations={creations} />}
-        />
+        <Route path="/artist/:id" element={<OneArtist />} />
         {/* NotFound */}
         <Route path="*" element={<NotFound />} />
 
         {/* ROUTES FOR LOGGEDIN */}
         <Route element={<PrivateRoute />}>
           {/* Profile */}
-          <Route
-            path="/profile"
-            element={<Profile artists={artists} creations={creations} />}
-          />
-          <Route
-            path="/profile/orders"
-            element={<ProfileOrders creations={creations} />}
-          />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/orders" element={<ProfileOrders />} />
           <Route element={<IsArtistRoute />}>
             <Route
               path="/profile/artists/createartist"
@@ -107,12 +91,7 @@ function App() {
             />
             <Route
               path="/profile/artists/updateartistpage"
-              element={
-                <ProfileUpdateArtist
-                  artists={artists}
-                  setArtists={setArtists}
-                />
-              }
+              element={<ProfileUpdateArtist />}
             />
           </Route>
 
@@ -130,15 +109,9 @@ function App() {
           <Route path="/order/validation" element={<OrderValidation />} />
           {/* Creations */}
           <Route path="/creations" element={<CreationsList />} />
-          <Route
-            path="/creations/:id"
-            element={<OneCreation artists={artists} creations={creations} />}
-          />
+          <Route path="/creations/:id" element={<OneCreation />} />
           {/* Artists */}
-          <Route
-            path="/artist/:id"
-            element={<OneArtist artists={artists} creations={creations} />}
-          />
+          <Route path="/artist/:id" element={<OneArtist />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         {/* ROUTES FOR LOGGEDOUT */}

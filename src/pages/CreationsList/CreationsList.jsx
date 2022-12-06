@@ -6,16 +6,24 @@ import NavSearch from "../../components/NavSearch/NavSearch";
 import NavSearchByCategory from "../../components/NavSearchByCategory/NavSearchByCategory";
 
 const CreationsList = ({
-  creations,
   searchCreationString,
   setSearchCreationString,
   searchCreationCategoryString,
   setSearchCreationCategoryString,
 }) => {
-  //To display creations filtered by name or by category
-  const filteredCreations = () => {
-    let creationsFiltered = [...creations];
+  const [creations, setCreations] = useState([]);
 
+  useEffect(() => {
+    apiHandler.getAllCreations().then((res) => {
+      console.log("CREATIONS", res);
+      setCreations(res);
+    });
+  }, []);
+
+//To display creations filtered by name or by category
+
+const filteredCreations = () => {
+    let creationsFiltered = [...creations];
     if (searchCreationString) {
       creationsFiltered = creationsFiltered.filter((element) =>
         element.title.toLowerCase().includes(searchCreationString.toLowerCase())
