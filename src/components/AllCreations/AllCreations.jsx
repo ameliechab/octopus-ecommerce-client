@@ -14,7 +14,7 @@ const AllCreations = () => {
   }, []);
 
   // Pick some random creation in the array of all creations
-  const chooseRandom = (array, num = 9) => {
+  const chooseRandom = (array, num = 15) => {
     const tenCreationsArray = [];
     for (let i = 0; i < num; i++) {
       const randomIndex = Math.floor(Math.random() * array.length);
@@ -26,7 +26,7 @@ const AllCreations = () => {
     return tenCreationsArray;
   };
 
-  const tenRandomCreations = chooseRandom(creations, 10);
+  const tenRandomCreations = chooseRandom(creations, 15);
 
   if (!creations.length) {
     return <div className="middle-div-min">Loading...</div>;
