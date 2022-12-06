@@ -40,18 +40,8 @@ const service = {
   // Service is spread to have access to the basics get/post...
   ...apiHandler,
 
-  createArtist(formDataArtist) {
-    return service 
-    .post("/artists/form", formDataArtist)
-    .then((res) => {
-        console.log(res);
-        console.log("the res.data", res.data)
-        return res.data;
-      })
-    .catch(err => {
-      throw err.response.data.message
-    });
-  },
+
+
   //GET
 
   getAllArtists() {
@@ -156,6 +146,28 @@ const service = {
       .catch(errorHandler);
   },
 
+  createArtist(formDataArtist) {
+    return service 
+    .post("/artists/form", formDataArtist)
+    .then((res) => {
+        return res.data;
+      })
+    .catch(err => {
+      throw err.response.data.message
+    });
+  },
+
+  createCreation(formDataCreation) {
+    return service 
+    .post("/creations/form", formDataCreation)
+    .then((res) => {
+        return res.data;
+      })
+    .catch(err => {
+      throw err.response.data.message
+    });
+  },
+
   // PATCH
 
   patchIncrementCreationToOrder(creationId) {
@@ -177,6 +189,37 @@ const service = {
       })
       .catch(errorHandler);
   },
+
+
+  patchUpdateCreation(formDataUpdatedCreation, id) {
+    return service 
+    .patch(
+      `/myCreation/${id}/update`,
+      formDataUpdatedCreation
+    )
+    .then((res) => {
+        return res.data;
+      })
+    .catch(err => {
+      throw err.response.data.message
+    })
+  },
+
+  patchUpdateArtist(formDataUpdatedArtist) {
+    return service 
+    .patch(
+      "/myArtist/update",
+      formDataUpdatedArtist
+    )
+    .then((res) => {
+        return res.data;
+      })
+    .catch(err => {
+      throw err.response.data.message
+    })
+  },
+
+
 
   buyCart() {
     return service

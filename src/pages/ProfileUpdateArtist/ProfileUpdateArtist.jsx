@@ -40,13 +40,16 @@ const ProfileUpdateArtist = () => {
     formDataUpdatedArtist.append("description", formData.description);
     formDataUpdatedArtist.append("picture", formData.picture);
 
-    const { data } = await apiHandler.patch(
-      "/myArtist/update",
-      formDataUpdatedArtist
-    );
-    console.log(data);
-    resetForm();
-    navigate("/profile");
+    try {
+      const { data } = await apiHandler.patchUpdateArtist(
+        formDataUpdatedArtist
+      );
+      console.log(data);
+      resetForm();
+      navigate("/profile");
+    } catch (err) {
+      setError(err);
+    }
   };
 
   //Delete the artist profile

@@ -5,6 +5,7 @@ import apiHandler from "./../../api/apiHandler";
 import "./ProfileUpdateCreation.css";
 
 const ProfileUpdateCreation = () => {
+  const [error, setError] = useState("");
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
@@ -49,13 +50,17 @@ const ProfileUpdateCreation = () => {
     formDataUpdatedCreation.append("categories", formData.categories);
     formDataUpdatedCreation.append("price", formData.price);
 
-    const { data } = await apiHandler.patch(
-      `/myCreation/${id}/update`,
-      formDataUpdatedCreation
-    );
-    console.log(data);
-    resetForm();
-    navigate("/profile/artists/updatecreationpage");
+    try {
+      const data = await apiHandler.patchUpdateCreation(
+        formDataUpdatedCreation,
+        id
+      );
+      console.log(data);
+      resetForm();
+      navigate("/profile/artists/updatecreationpage");
+    } catch (err) {
+      setError(err);
+    }
   };
 
   const { title, description, categories, price, img } = formData;
@@ -130,7 +135,7 @@ const ProfileUpdateCreation = () => {
             />
             €
           </h3>
-
+          {error && <p className="error">{error}</p>}
           <button className="update-add-to-profile-button-creation-page">
             SUBMIT CHANGES
           </button>
