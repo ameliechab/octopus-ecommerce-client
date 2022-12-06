@@ -46,11 +46,9 @@ const NavSearchByCategory = ({
         />
 
         <datalist id="data">
-          <select>
-            {uniqueCreationCategories.map((element) => (
-              <option key={element} value={element} />
-            ))}
-          </select>
+          {uniqueCreationCategories.map((element) => (
+            <option key={element} value={element} />
+          ))}
         </datalist>
       </div>
     </div>
