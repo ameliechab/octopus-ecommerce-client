@@ -6,12 +6,13 @@ import "./FormCreateArtist.css";
 
 const CreateFormArtist = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
   const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     name: "",
     description: "",
     picture: {},
   });
-  const [error, setError] = useState(null);
 
   const handleSubmitArtistForm = async (e) => {
     e.preventDefault();
@@ -22,7 +23,6 @@ const CreateFormArtist = () => {
 
     try {
       const data = await apiHandler.createArtist(formDataArtist);
-      console.log(data);
       resetForm();
       navigate("/artist/" + data._id);
     } catch (err) {
@@ -31,6 +31,7 @@ const CreateFormArtist = () => {
   };
 
   const { name, description } = formData;
+
   return (
     <div className="middle-div-min">
       <form

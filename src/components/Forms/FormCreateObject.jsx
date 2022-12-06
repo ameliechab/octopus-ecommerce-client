@@ -6,6 +6,8 @@ import "./FormCreateObject.css";
 
 const CreateFormCreation = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
   const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     title: "",
     description: "",
@@ -23,10 +25,13 @@ const CreateFormCreation = () => {
     formDataCreation.append("categories", formData.categories);
     formDataCreation.append("price", formData.price);
 
-    const { data } = await apiHandler.post("/creations/form", formDataCreation);
-    console.log(data);
-    resetForm();
-    navigate("/creations/" + data._id);
+    try {
+      const data = await apiHandler.createCreation(formDataCreation);
+      resetForm();
+      navigate("/creations/" + data._id);
+    } catch (err) {
+      setError(err);
+    }
   };
 
   const { title, description, categories, price } = formData;
@@ -96,6 +101,8 @@ const CreateFormCreation = () => {
             />
             €
           </h3>
+          {error && <p>{error}</p>}
+
           <button className="create-add-to-profile-button-creation-page">
             ADD TO YOUR PROFILE
           </button>
