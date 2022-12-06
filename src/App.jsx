@@ -28,10 +28,12 @@ function App() {
   const [artists, setArtists] = useState([]);
   const [orderCart, setOrderCart] = useState(null);
   const [searchCreationString, setSearchCreationString] = useState("");
+  const [searchCreationCategoryString, setSearchCreationCategoryString] =
+    useState("");
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
-      console.log(res);
+      console.log("CREATIONS", res);
       setCreations(res);
     });
 
@@ -66,6 +68,8 @@ function App() {
               creations={creations}
               setSearchCreationString={setSearchCreationString}
               searchCreationString={searchCreationString}
+              searchCreationCategoryString={searchCreationCategoryString}
+              setSearchCreationCategoryString={setSearchCreationCategoryString}
             />
           }
         />
