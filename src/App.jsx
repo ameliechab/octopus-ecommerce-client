@@ -10,6 +10,7 @@ import ProfileOrders from "./pages/ProfileOrders/ProfileOrders";
 import ProfileUpdateArtist from "./pages/ProfileUpdateArtist/ProfileUpdateArtist";
 import ProfileUpdateCreation from "./pages/ProfileUpdateCreation/ProfileUpdateCreation";
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute";
+import IsArtistRoute from "./components/ProtectedRoute/IsArtistRoute";
 import LoggedOut from "./components/LoggedOut/LoggedOut";
 import Cart from "./pages/Cart/Cart";
 import ArtistsList from "./pages/ArtistsList/ArtistsList";
@@ -79,29 +80,37 @@ function App() {
         {/* ROUTES FOR LOGGEDIN */}
         <Route element={<PrivateRoute />}>
           {/* Profile */}
-          <Route path="/profile" element={<Profile creations={creations} />} />
+          <Route
+            path="/profile"
+            element={<Profile artists={artists} creations={creations} />}
+          />
           <Route
             path="/profile/orders"
             element={<ProfileOrders creations={creations} />}
           />
-          <Route
-            path="/profile/artists/createartist"
-            element={<FormCreateArtist />}
-          />
-          <Route
-            path="/profile/artists/createobject"
-            element={<FormCreateObject />}
-          />
-          <Route
-            path="/profile/artists/updateobjectpage/:id"
-            element={<ProfileUpdateCreation />}
-          />
-          <Route
-            path="/profile/artists/updateartistpage"
-            element={
-              <ProfileUpdateArtist artists={artists} setArtists={setArtists} />
-            }
-          />
+          <Route element={<IsArtistRoute />}>
+            <Route
+              path="/profile/artists/createartist"
+              element={<FormCreateArtist />}
+            />
+            <Route
+              path="/profile/artists/createobject"
+              element={<FormCreateObject />}
+            />
+            <Route
+              path="/profile/artists/updateobjectpage/:id"
+              element={<ProfileUpdateCreation />}
+            />
+            <Route
+              path="/profile/artists/updateartistpage"
+              element={
+                <ProfileUpdateArtist
+                  artists={artists}
+                  setArtists={setArtists}
+                />
+              }
+            />
+          </Route>
 
           {/* Orders */}
           <Route

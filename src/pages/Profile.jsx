@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import useAuth from "../auth/useAuth";
 
-const Profile = ({ creations }) => {
+const Profile = ({ creations, artists }) => {
+  const { currentUser } = useAuth();
+  console.log({ currentUser });
   const [orders, setOrders] = useState([]);
+
+  const artistPageExists = artists.filter((el) => el.user === currentUser._id);
+  console.log(artistPageExists);
 
   useEffect(() => {
     apiHandler.getAllOrders().then((res) => {
@@ -24,26 +30,53 @@ const Profile = ({ creations }) => {
           {" "}
           <Link to="/profile/orders">Your orders</Link>{" "}
         </button>
-        <button className="button-on-profile">
-          {" "}
-          <Link to="/profile/artists/createartist">
-            Create your creator page
-          </Link>{" "}
-        </button>
-        <button className="button-on-profile">
-          {" "}
-          <Link to="/profile/artists/createobject">Create objects</Link>{" "}
-        </button>
-        {/* <button className="button-on-profile">
-          {" "}
-          <Link to="/profile/artists/updateobject">Update object</Link>{" "}
-          </button> */}
-        <button className="button-on-profile">
-          {" "}
-          <Link to="/profile/artists/updateartistpage">
-            Update creator page
-          </Link>{" "}
-        </button>
+        {/* {currentUser.isArtist ? (
+
+          {artistPageExists.length ? 
+          (
+            <button className="button-on-profile">
+            {" "}
+            <Link to="/profile/artists/updateartistpage">
+              Update creator page
+            </Link>{" "}
+          </button>
+          ) 
+          : 
+          (
+            <button className="button-on-profile">
+                {" "}
+                <Link to="/profile/artists/createartist">
+                  Create your creator page
+                </Link>{" "}
+              </button>
+          )
+          }
+
+        ) 
+        : 
+        (
+          ""
+        )
+        } */}
+        {/* !isArtist === true ? profileUser : isArtistwithPage === true ?
+        UpdateButton : CreateButton */}
+        {!currentUser.isArtist ? (
+          ""
+        ) : artistPageExists.length ? (
+          <button className="button-on-profile">
+            {" "}
+            <Link to="/profile/artists/updateartistpage">
+              Update creator page
+            </Link>{" "}
+          </button>
+        ) : (
+          <button className="button-on-profile">
+            {" "}
+            <Link to="/profile/artists/createartist">
+              Create your creator page
+            </Link>{" "}
+          </button>
+        )}
       </div>
     </div>
   );
