@@ -43,13 +43,25 @@ h6 {
 }
 
 @media (max-width: 1000px) {
-  #navbar-center-responsive {
-    display: none;
+  .navbar-artist-creation-link {
+    font-size: 50%;
   }
 }
 
-@media (max-width: 520px) {
-  #navbar-right-responsive {
-    display: none;
+@media (max-width: 950px) {
+  .navbar-login-register-link {
+    font-size: 20%;
+  }
+  .navbar-login-register-link {
+    font-size: 20%;
+  }
+  .navbar-artist-creation-link {
+    font-size: 20%;
+  }
+  .logo-nav-bar {
+    width: 5rem;
+  }
+  .card-logo-nav-bar {
+    width: 3rem;
   }
 }
