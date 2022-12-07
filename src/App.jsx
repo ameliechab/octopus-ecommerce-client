@@ -97,8 +97,6 @@ function App() {
             {/* Creations */}
             <Route path="/creations" element={<CreationsList />} />
             <Route path="/creations/:id" element={<OneCreation />} />
-            {/* Artists */}
-            <Route path="/artist/:id" element={<OneArtist />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* ROUTES FOR LOGGEDOUT */}
