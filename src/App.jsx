@@ -27,9 +27,6 @@ function App() {
   const [creations, setCreations] = useState([]);
   const [artists, setArtists] = useState([]);
   const [orderCart, setOrderCart] = useState(null);
-  const [searchCreationString, setSearchCreationString] = useState(""); // To search creation by name
-  const [searchCreationCategoryString, setSearchCreationCategoryString] =
-    useState(""); // To search creation by category
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
@@ -55,17 +52,7 @@ function App() {
         {/* All artists */}
         <Route path="/artists" element={<ArtistsList />} />
         {/* All creations */}
-        <Route
-          path="/creations"
-          element={
-            <CreationsList
-              setSearchCreationString={setSearchCreationString}
-              searchCreationString={searchCreationString}
-              searchCreationCategoryString={searchCreationCategoryString}
-              setSearchCreationCategoryString={setSearchCreationCategoryString}
-            />
-          }
-        />
+        <Route path="/creations" element={<CreationsList />} />
         {/* One artist */}
         <Route path="/artist/:id" element={<OneArtist />} />
         {/* NotFound */}

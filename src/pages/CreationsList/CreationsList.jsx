@@ -5,13 +5,11 @@ import "./CreationsList.css";
 import NavSearch from "../../components/NavSearch/NavSearch";
 import NavSearchByCategory from "../../components/NavSearchByCategory/NavSearchByCategory";
 
-const CreationsList = ({
-  searchCreationString,
-  setSearchCreationString,
-  searchCreationCategoryString,
-  setSearchCreationCategoryString,
-}) => {
+const CreationsList = () => {
   const [creations, setCreations] = useState([]);
+  const [searchCreationString, setSearchCreationString] = useState(""); // To search creation by name
+  const [searchCreationCategoryString, setSearchCreationCategoryString] =
+    useState(""); // To search creation by category
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
