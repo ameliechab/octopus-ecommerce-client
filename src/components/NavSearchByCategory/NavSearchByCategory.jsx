@@ -36,6 +36,7 @@ const NavSearchByCategory = ({
         </Link>
 
         <input
+          className="search-navbar-input"
           value={searchCreationCategoryString}
           type="text"
           list="data"

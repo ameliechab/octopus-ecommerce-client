@@ -119,6 +119,14 @@
   text-align: center;
 }
 
+.create-creations-images-one-artist {
+  height: 4rem;
+}
+
+.create-creations-images-one-artist:hover {
+  transform: scale(1.2);
+}
+
 @media (max-width: 1000px) {
   .submit-button-update-artist {
     font-size: 0.5rem;

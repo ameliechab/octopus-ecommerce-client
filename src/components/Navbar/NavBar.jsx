@@ -18,57 +18,79 @@ const NavBar = () => {
             ></img>
           </Link>
         </div>
-        <div id="navbar-center-responsive" className="navbar-center">
-          <div className="artists-creations">
-            <Link to="/artists" className="navbar-artist-creation-link">
-              All Artists
-            </Link>
-            <Link to="/creations" className="navbar-artist-creation-link">
-              All Creations
-            </Link>
+        <div className="nav-hamburger-responsive">
+          <div id="navbar-center-responsive" className="navbar-center">
+            <div className="artists-creations">
+              <div className="link-navbar-responsive">
+                <Link
+                  to="/artists"
+                  id="link-all-artists"
+                  className="navbar-artist-creation-link"
+                >
+                  All Artists
+                </Link>
+              </div>
+              <div className="link-navbar-responsive">
+                <Link
+                  to="/creations"
+                  id="link-all-creations"
+                  className="navbar-artist-creation-link"
+                >
+                  All Creations
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
         <div className="navbar-right">
           {/* name of the user and Log out button if a user is logged in */}
 
           {isLoggedIn && (
-            <>
-              <NavLink
-                id="navbar-right-responsive"
-                className="navbar-login-register-link"
-                to="/profile"
-              >
-                {currentUser && currentUser.name}
-              </NavLink>
-              <button
-                id="navbar-right-responsive"
-                className="button-log-out-navbar"
-                onClick={removeUser}
-              >
-                Log-Out
-              </button>
-            </>
+            <div className="responsive-loggin">
+              <div className="link-navbar-responsive">
+                <NavLink
+                  id="navbar-right-responsive"
+                  className="navbar-login-register-link"
+                  to="/profile"
+                >
+                  {currentUser && currentUser.name}
+                </NavLink>
+              </div>
+              <div className="link-navbar-responsive">
+                <button
+                  className="navbar-right-responsive"
+                  id="button-log-out-navbar"
+                  onClick={removeUser}
+                >
+                  Log-Out
+                </button>
+              </div>
+            </div>
           )}
 
           {/* Log in and register buttons if a no user is logged in */}
 
           {!isLoggedIn && (
-            <>
-              <NavLink
-                id="navbar-right-responsive"
-                className="navbar-login-register-link"
-                to="/signin"
-              >
-                Log in
-              </NavLink>
-              <NavLink
-                id="navbar-right-responsive"
-                className="navbar-login-register-link"
-                to="/signup"
-              >
-                Register
-              </NavLink>
-            </>
+            <div className="responsive-loggin">
+              <div className="link-navbar-responsive">
+                <NavLink
+                  id="navbar-right-responsive"
+                  className="navbar-login-register-link"
+                  to="/signin"
+                >
+                  Log in
+                </NavLink>
+              </div>
+              <div className="link-navbar-responsive">
+                <NavLink
+                  id="navbar-right-responsive"
+                  className="navbar-login-register-link"
+                  to="/signup"
+                >
+                  Register
+                </NavLink>
+              </div>
+            </div>
           )}
 
           <Link to="/cart">
