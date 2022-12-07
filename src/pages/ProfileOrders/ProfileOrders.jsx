@@ -30,14 +30,12 @@ const ProfileOrders = () => {
       {orders.map((order) => {
         return (
           <div key={order._id} className="one-order">
+            <p>
+              Date : <span className="bold">{order.date.slice(0, 10)}</span>
+            </p>
             {order.creations.map((element) => {
               return (
                 <div key={element._id}>
-                  <p>
-                    Date :{" "}
-                    <span className="bold">{order.date.slice(0, 10)}</span>
-                  </p>
-
                   {/* Ternary if creation deleted by artist */}
                   {!creations.find(
                     (creation) => creation._id === element.productId
@@ -61,21 +59,25 @@ const ProfileOrders = () => {
               );
             })}
 
-            {/* <p>
+            <p>
               Total price:{" "}
               <span className="bold">
                 {order.creations.reduce(
                   (total, element) =>
                     total +
-                    creations.find(
+                    (!creations.find(
                       (creation) => creation._id === element.productId
-                    ).price *
+                    )
+                      ? 0
+                      : creations.find(
+                          (creation) => creation._id === element.productId
+                        ).price) *
                       element.quantity,
                   0
                 )}
               </span>
               €
-            </p> */}
+            </p>
           </div>
         );
       })}

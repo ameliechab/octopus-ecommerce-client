@@ -19,6 +19,7 @@ const NavSearch = ({ searchCreationString, setSearchCreationString }) => {
         </Link>
 
         <input
+          className="search-navbar-input"
           value={searchCreationString}
           type="text"
           placeholder="Search by name"

@@ -95,14 +95,14 @@
   padding-top: 1rem;
 }
 
-.create-creations-images-one-artist {
+/* .create-creations-images-one-artist {
   height: 17rem;
   width: 17rem;
   object-fit: cover;
   filter: drop-shadow(0px 0.5px 10px rgba(255, 255, 255, 0.15));
   margin: 2rem;
   border-radius: 50%;
-}
+} */
 
 .create-all-creations-artist-page {
   display: flex;
