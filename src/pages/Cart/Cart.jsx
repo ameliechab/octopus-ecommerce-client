@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
 import "./Cart.css";
