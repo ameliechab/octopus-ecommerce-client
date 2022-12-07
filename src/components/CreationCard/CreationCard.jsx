@@ -5,6 +5,7 @@ const CreationCard = ({ creation, showTitle = false }) => {
   return (
     <div key={creation._id}>
       <Link to={`/creations/${creation._id}`}>
+        {/* the creation name is displayed only if showTitle = true */}
         {showTitle && (
           <p className="title-of-creation-all-creations-page">
             {creation.title}

@@ -15,20 +15,22 @@ const AllCreations = () => {
   }, []);
 
   // Pick some random creation in the array of all creations
-  const chooseRandom = (array, num = 15) => {
+  const chooseRandom = (array, num) => {
     const tenCreationsArray = [];
     for (let i = 0; i < num; i++) {
       const randomIndex = Math.floor(Math.random() * array.length);
       if (tenCreationsArray.indexOf(array[randomIndex]) !== -1) {
+        //verify if there's no double artist
         continue;
       }
-      tenCreationsArray.push(array[randomIndex]);
+      tenCreationsArray.push(array[randomIndex]); //push (num times - double artist) in new array
     }
     return tenCreationsArray;
   };
 
   const tenRandomCreations = chooseRandom(creations, 15);
 
+  // If there is no creation found
   if (!creations.length) {
     return <div className="middle-div-min">Loading...</div>;
   }

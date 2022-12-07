@@ -6,12 +6,10 @@ import "./OneCreation.css";
 const OneCreation = () => {
   const [creation, setCreation] = useState([]);
 
+  // get creation by id
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id;
-  //const oneCreation = creations.find((creation) => creation._id === id);
-  //const artistsCopy = [...artists];
-
   useEffect(() => {
     const getCreation = async () => {
       const res = await apiHandler.getOneCreation(id);
@@ -20,15 +18,14 @@ const OneCreation = () => {
     getCreation();
   }, []);
 
+  // add creation to cart and navigate to cart
   const handleAddToCart = async (event) => {
     event.preventDefault();
     try {
       await apiHandler.postAddToCart(id);
-      //setOrder((currentState) => [...currentState, data]);
     } catch (error) {
       console.error(error);
     }
-    //setCreations({});
     navigate("/cart");
   };
 

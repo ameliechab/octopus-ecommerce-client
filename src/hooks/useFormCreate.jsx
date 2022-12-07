@@ -5,7 +5,6 @@ const useFormCreate = (originalState) => {
 
   const handleChange = (event) => {
     setState((currentState) => {
-      // console.log(event.target, event.target.type, event.target.files[0])
       return {
         ...currentState,
         [event.target.name]:

@@ -29,6 +29,8 @@ const NavBar = () => {
           </div>
         </div>
         <div className="navbar-right">
+          {/* name of the user and Log out button if a user is logged in */}
+
           {isLoggedIn && (
             <>
               <NavLink
@@ -47,6 +49,9 @@ const NavBar = () => {
               </button>
             </>
           )}
+
+          {/* Log in and register buttons if a no user is logged in */}
+
           {!isLoggedIn && (
             <>
               <NavLink

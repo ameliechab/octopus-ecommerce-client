@@ -16,6 +16,7 @@ const ArtistsList = () => {
     });
   }, []);
 
+  // to filter all artists name by navSearch value
   const filteredArtists = () => {
     let artistsFiltered = [...artists];
     if (searchCreationString) {

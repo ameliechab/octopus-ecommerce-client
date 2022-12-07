@@ -44,7 +44,6 @@ const CreateFormCreation = () => {
         className="create-all-object-details-page"
       >
         <div className="create-creation-presentation">
-          {/* <label htmlFor="img">Picture</label> */}
           <div className="create-creation-picture">
             <input
               type="file"
@@ -55,7 +54,6 @@ const CreateFormCreation = () => {
           </div>
 
           <div className="create-creation-details">
-            {/* <label  htmlFor="title">Title: </label> */}
             <input
               className="create-creation-details-title"
               type="text"
@@ -65,7 +63,6 @@ const CreateFormCreation = () => {
               onChange={handleChangeData}
               placeholder="Your creation name"
             />
-            {/* <label htmlFor="description">Description: </label> */}
             <textarea
               className="create-creation-details-description"
               type="text"

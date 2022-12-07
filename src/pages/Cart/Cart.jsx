@@ -14,6 +14,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
 
   console.log("tatita", [orderCart]);
 
+  // increment quantity of creation(s) in the cart
   const handleIncrementCreation = async (event) => {
     document.querySelectorAll(".increment-button").forEach(async (button) => {
       event.preventDefault();
@@ -29,6 +30,8 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
       }
     });
   };
+
+  // decrement quantity of creation(s) in the cart
 
   const handleDecrementCreation = async (event) => {
     document.querySelectorAll(".decrement-button").forEach(async (button) => {
@@ -46,6 +49,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     });
   };
 
+  // delete all the cart
   const handleDeleteCart = async (event) => {
     event.preventDefault();
     try {
@@ -56,6 +60,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     }
   };
 
+  // Buy what you put on the cart (the cart become an order)
   const handleBuyCart = async (event) => {
     event.preventDefault();
     console.log("hello");
@@ -67,6 +72,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     }
   };
 
+  // if the cart is empty
   if (!orderCart?.creations) {
     return (
       <div className="middle-div-min">You don't have any cart... yet !</div>
@@ -74,7 +80,6 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   }
 
   const creationOfOrder = orderCart.creations;
-  let creationAdded = {};
 
   //Handle event for the delete button of one creation
   const handleDeleteCreation = async (event) => {
@@ -105,18 +110,18 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                     <img
                       className="creation-image-order"
                       src={
-                        (creationAdded = creations.find(
+                        creations.find(
                           (creation) => creation._id === element.productId
-                        ).img)
+                        ).img
                       }
                     />
                     <div className="info-creation-order">
                       <h4>
                         <div className="title-trashbin-order-section">
                           {
-                            (creationAdded = creations.find(
+                            creations.find(
                               (creation) => creation._id === element.productId
-                            ).title)
+                            ).title
                           }
 
                           <button className="trash-bin-creation-cart-button">
@@ -153,12 +158,9 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                       </div>
 
                       <h3>
-                        {
-                          (creationAdded =
-                            creations.find(
-                              (creation) => creation._id === element.productId
-                            ).price * element.quantity)
-                        }
+                        {creations.find(
+                          (creation) => creation._id === element.productId
+                        ).price * element.quantity}
                         €
                       </h3>
                     </div>

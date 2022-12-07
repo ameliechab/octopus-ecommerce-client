@@ -72,11 +72,9 @@ const ProfileUpdateArtist = () => {
         className="update-artist-presentation"
       >
         <div className="update-artist-picture">
-          {/* <label htmlFor="picture">Picture</label> */}
           <img id="update-picture" src={`${picture}`} alt="add-creation" />
         </div>
         <div className="update-artist-details">
-          {/* <label htmlFor="name">Name:</label> */}
           <input
             className="update-artist-details-name"
             type="text"
@@ -84,9 +82,7 @@ const ProfileUpdateArtist = () => {
             name="name"
             value={name}
             onChange={handleChange}
-            // placeholder={myArtist.name}
           />
-          {/* <label htmlFor="description">Description: </label> */}
           <textarea
             className="update-artist-details-description"
             type="text"
@@ -94,14 +90,8 @@ const ProfileUpdateArtist = () => {
             name="description"
             id="create-description"
             onChange={handleChange}
-            // placeholder={myArtist.description}
           ></textarea>
-          <input
-            // style={{ backgroundImage: `{url(`${myArtist.picture}`)}`` }}
-            type="file"
-            name="picture"
-            onChange={handleChange}
-          />
+          <input type="file" name="picture" onChange={handleChange} />
 
           <div className="div-for-submit-button-update-artist">
             {error && <p className="error">{error}</p>}
@@ -133,10 +123,7 @@ const ProfileUpdateArtist = () => {
           {myCreations.map((element) => {
             return (
               <div key={element._id}>
-                <Link
-                  // className="creations-images-one-artist"
-                  to={`/profile/artists/updateobjectpage/${element._id}`}
-                >
+                <Link to={`/profile/artists/updateobjectpage/${element._id}`}>
                   <img
                     className="update-creations-images-one-artist"
                     src={element.img}
