@@ -30,7 +30,7 @@ const NavSearchByCategory = ({
         <Link to="/creations">
           <img
             className="search-logo-nav-bar"
-            src="https://res.cloudinary.com/dsioshcio/image/upload/v1669837342/search-white_ledj7c.png"
+            src="https://res.cloudinary.com/dsioshcio/image/upload/v1670414363/next_ysiu0b.png"
             alt="logo-search"
           ></img>{" "}
         </Link>
