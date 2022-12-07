@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./AllCreations.css";
-// import CreationCard from "../ArtistCard/ArtistCard";
+import CreationCard from "../CreationCard/CreationCard";
 
 const AllCreations = () => {
   const [creations, setCreations] = useState([]);
@@ -37,18 +37,8 @@ const AllCreations = () => {
     <div>
       <p className="creation-paragraph-title">CREATIONS</p>
       <div className="all-creations-home-page">
-        {tenRandomCreations.map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/creations/${element._id}`}>
-                <img
-                  className="creations-images-all-creations"
-                  src={element.img}
-                  alt={element.title}
-                />
-              </Link>
-            </div>
-          );
+        {tenRandomCreations.map((creation) => {
+          return <CreationCard creation={creation} />;
         })}
         <div className="creations-images-view-more">
           <Link className="link-to-view-more" to="/creations">
