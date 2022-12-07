@@ -14,8 +14,8 @@ const CreateFormArtist = () => {
     picture: {},
   });
 
-  const handleSubmitArtistForm = async (e) => {
-    e.preventDefault();
+  const handleSubmitArtistForm = async (event) => {
+    event.preventDefault();
     const formDataArtist = new FormData();
     formDataArtist.append("name", formData.name);
     formDataArtist.append("description", formData.description);
@@ -39,7 +39,6 @@ const CreateFormArtist = () => {
         className="create-artist-presentation"
       >
         <div className="create-artist-picture">
-          {/* <label htmlFor="picture">Picture</label> */}
           <input
             type="file"
             id="create-picture"
@@ -48,7 +47,6 @@ const CreateFormArtist = () => {
           />
         </div>
         <div className="create-artist-details">
-          {/* <label htmlFor="name">Name:</label> */}
           <input
             className="create-artist-details-name"
             type="text"
@@ -58,7 +56,6 @@ const CreateFormArtist = () => {
             onChange={handleChangeData}
             placeholder="Your brand/creator name"
           />
-          {/* <label htmlFor="description">Description: </label> */}
           <textarea
             className="create-artist-details-description"
             type="text"

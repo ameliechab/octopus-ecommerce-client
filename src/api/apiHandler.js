@@ -19,28 +19,9 @@ function errorHandler(error) {
   throw error;
 }
 
-// apiHandler.signup = (userInfo) => {
-// 	return apiHandler
-// 		.post("/api/auth/signup")
-// 		.then((res) => res.data)
-// 		.catch(errorHandler)
-// }
-
-// apiHandler.getAllArtists = function () {
-//   return apiHandler
-//     .get("/artists")
-//     .then((res) => {
-//       console.log(res);
-//       return res.data;
-//     })
-//     .catch((e) => console.log(e));
-// };
-
 const service = {
   // Service is spread to have access to the basics get/post...
   ...apiHandler,
-
-
 
   //GET
 
@@ -190,7 +171,6 @@ const service = {
       .catch(errorHandler);
   },
 
-
   patchUpdateCreation(formDataUpdatedCreation, id) {
     return service 
     .patch(
@@ -219,7 +199,7 @@ const service = {
     })
   },
 
-
+// PUT
 
   buyCart() {
     return service
@@ -231,6 +211,7 @@ const service = {
       .catch(errorHandler);
   },
 
+  // DELETE
   // DELETE ALL CART
 
   deleteCart() {
@@ -243,8 +224,6 @@ const service = {
       .catch(errorHandler);
   },
 
-
-
   // DELETE ONE CREATION IN CART
 
   deleteCreationCart(productId) {
@@ -256,7 +235,6 @@ const service = {
       })
       .catch(errorHandler);
   },
-
 
   // Delete artist profile
   deleteArtist() {
@@ -281,7 +259,9 @@ const service = {
       .catch(errorHandler);
   },
 
-  // Authentification
+  //
+  //
+  // AUTHENTICATION
 
   signup(userInfo) {
     return service
@@ -306,12 +286,6 @@ const service = {
       .catch(errorHandler);
   },
 
-  // getAllTheCats() {
-  // 	return service
-  // 		.get("/api/cats")
-  // 		.then((res) => res.data)
-  // 		.catch(errorHandler);
-  // },
 };
 
 // export default apiHandler

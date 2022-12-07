@@ -7,24 +7,18 @@ import useAuth from "../auth/useAuth";
 const Profile = () => {
   const { currentUser } = useAuth();
   console.log({ currentUser });
-  const [orders, setOrders] = useState([]);
   const [artists, setArtists] = useState([]);
 
+  // Find the artist related to the user if there is one
   const artistPageExists = artists.filter((el) => el.user === currentUser._id);
   console.log(artistPageExists);
 
   useEffect(() => {
-    apiHandler.getAllOrders().then((res) => {
-      console.log(res);
-      setOrders(res);
-    });
     apiHandler.getAllArtists().then((data) => {
       console.log(data);
       setArtists(data);
     });
   }, []);
-
-  console.log("ORDERS", orders);
 
   return (
     <div className="middle-div-min">

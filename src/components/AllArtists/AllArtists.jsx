@@ -19,20 +19,22 @@ const AllArtists = () => {
   }, []);
 
   // Pick some random artist in the array of all artists
-  const chooseRandom = (array, num = 10) => {
+  const chooseRandom = (array, num) => {
     const tenArtistsArray = [];
     for (let i = 0; i < num; i++) {
       const randomIndex = Math.floor(Math.random() * array.length);
       if (tenArtistsArray.indexOf(array[randomIndex]) !== -1) {
+        //verify if there's no double artist
         continue;
       }
-      tenArtistsArray.push(array[randomIndex]);
+      tenArtistsArray.push(array[randomIndex]); //push (num times - double artist) in new array
     }
     return tenArtistsArray;
   };
 
-  const sixRandomArtists = chooseRandom(artists, 10);
+  const sixRandomArtists = chooseRandom(artists, 5);
 
+  // If there is no artist found
   if (!artists.length) {
     return <div className="middle-div-min">Loading...</div>;
   }

@@ -5,6 +5,7 @@ const ArtistCard = ({ artist, showName = false }) => {
   return (
     <div key={artist._id}>
       <Link to={`/artist/${artist._id}`}>
+        {/* the artist name is displayed only if showName = true */}
         {showName && (
           <p className="name-of-artist-all-artists-page">{artist.name}</p>
         )}

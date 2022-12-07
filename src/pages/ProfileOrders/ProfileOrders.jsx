@@ -6,6 +6,7 @@ const ProfileOrders = () => {
   const [orders, setOrders] = useState([]);
   const [creations, setCreations] = useState([]);
 
+  // find orders of the current user and details of the creations
   useEffect(() => {
     apiHandler.getAllOrders().then((res) => {
       setOrders(res);
@@ -15,7 +16,8 @@ const ProfileOrders = () => {
     });
   }, []);
 
-  console.log(orders);
+  let creationExists = {};
+
   return (
     <div className="all-orders">
       {!orders.length ? (
@@ -35,13 +37,22 @@ const ProfileOrders = () => {
                     Date :{" "}
                     <span className="bold">{order.date.slice(0, 10)}</span>
                   </p>
-                  <p className="bold">
-                    {
-                      creations.find(
-                        (creation) => creation._id === element.productId
-                      ).title
-                    }
-                  </p>
+
+                  {/* Ternary if creation deleted by artist */}
+                  {!creations.find(
+                    (creation) => creation._id === element.productId
+                  ) ? (
+                    <h5>Creation deleted</h5>
+                  ) : (
+                    <p className="bold">
+                      {
+                        creations.find(
+                          (creation) => creation._id === element.productId
+                        ).title
+                      }
+                    </p>
+                  )}
+
                   <p>
                     {" "}
                     Quantity: <span className="bold">{element.quantity}</span>
@@ -49,7 +60,8 @@ const ProfileOrders = () => {
                 </div>
               );
             })}
-            <p>
+
+            {/* <p>
               Total price:{" "}
               <span className="bold">
                 {order.creations.reduce(
@@ -63,7 +75,7 @@ const ProfileOrders = () => {
                 )}
               </span>
               €
-            </p>
+            </p> */}
           </div>
         );
       })}

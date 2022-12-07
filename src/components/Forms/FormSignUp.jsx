@@ -27,11 +27,6 @@ const FormSignUp = () => {
       });
   };
 
-  // const handleArtistyChange = (event) => {
-  //   setArtisty(event.target.checked);
-  //   console.log(event.target.checked);
-  // };
-
   return (
     <div className="middle-div-min">
       <section className="signup" id="form">

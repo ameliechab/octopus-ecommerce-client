@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const NavSearch = ({ searchCreationString, setSearchCreationString }) => {
   // To search creation by name
-  const handleCreationSearch = (e) => {
-    setSearchCreationString(e.target.value);
+  const handleCreationSearch = (event) => {
+    setSearchCreationString(event.target.value);
   };
 
   return (
