@@ -115,7 +115,7 @@ const ProfileUpdateArtist = () => {
             <Link to="/profile/artists/createobject">
               <img
                 className="create-creations-images-one-artist"
-                src="../../../public/images/logos/AddCreation.png"
+                src="https://res.cloudinary.com/dsioshcio/image/upload/v1670435879/AddCreation_nbdndr.png"
                 alt="add-creation"
               />
             </Link>
