@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./ArtistsList.css";
 import NavSearch from "../../components/NavSearch/NavSearch";
+import ArtistCard from "../../components/ArtistCard/ArtistCard";
 
 const ArtistsList = () => {
   const [artists, setArtists] = useState([]);
@@ -32,21 +33,8 @@ const ArtistsList = () => {
         searchCreationString={searchCreationString}
       ></NavSearch>
       <div className="all-artists-page">
-        {filteredArtists().map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/artist/${element._id}`}>
-                <p className="name-of-artist-all-artists-page">
-                  {element.name}
-                </p>
-                <img
-                  className="artists-images-all-artists-page"
-                  src={element.picture}
-                  alt={element.name}
-                />
-              </Link>
-            </div>
-          );
+        {filteredArtists().map((artist) => {
+          return <ArtistCard artist={artist} showName={true} />;
         })}
       </div>
     </div>

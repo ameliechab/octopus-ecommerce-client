@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import "./AllCreations.css";
+// import CreationCard from "../ArtistCard/ArtistCard";
 
 const AllCreations = () => {
   const [creations, setCreations] = useState([]);

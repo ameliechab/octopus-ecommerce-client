@@ -45,69 +45,69 @@ function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-
-      <Routes>
-        {/* ROUTES FOR ALL*/}
-        <Route path="/" element={<HomePage />} />
-        {/* All artists */}
-        <Route path="/artists" element={<ArtistsList />} />
-        {/* All creations */}
-        <Route path="/creations" element={<CreationsList />} />
-        {/* One artist */}
-        <Route path="/artist/:id" element={<OneArtist />} />
-        {/* NotFound */}
-        <Route path="*" element={<NotFound />} />
-
-        {/* ROUTES FOR LOGGEDIN */}
-        <Route element={<PrivateRoute />}>
-          {/* Profile */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/orders" element={<ProfileOrders />} />
-          <Route element={<IsArtistRoute />}>
-            <Route
-              path="/profile/artists/createartist"
-              element={<FormCreateArtist />}
-            />
-            <Route
-              path="/profile/artists/createobject"
-              element={<FormCreateObject />}
-            />
-            <Route
-              path="/profile/artists/updateobjectpage/:id"
-              element={<ProfileUpdateCreation />}
-            />
-            <Route
-              path="/profile/artists/updateartistpage"
-              element={<ProfileUpdateArtist />}
-            />
-          </Route>
-
-          {/* Orders */}
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                creations={creations}
-                orderCart={orderCart}
-                setOrderCart={setOrderCart}
-              />
-            }
-          />
-          <Route path="/order/validation" element={<OrderValidation />} />
-          {/* Creations */}
+      <div className="middle-div-min">
+        <Routes>
+          {/* ROUTES FOR ALL*/}
+          <Route path="/" element={<HomePage />} />
+          {/* All artists */}
+          <Route path="/artists" element={<ArtistsList />} />
+          {/* All creations */}
           <Route path="/creations" element={<CreationsList />} />
-          <Route path="/creations/:id" element={<OneCreation />} />
-          {/* Artists */}
+          {/* One artist */}
           <Route path="/artist/:id" element={<OneArtist />} />
+          {/* NotFound */}
           <Route path="*" element={<NotFound />} />
-        </Route>
-        {/* ROUTES FOR LOGGEDOUT */}
-        <Route element={<LoggedOut />}>
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
-      </Routes>
 
+          {/* ROUTES FOR LOGGEDIN */}
+          <Route element={<PrivateRoute />}>
+            {/* Profile */}
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/orders" element={<ProfileOrders />} />
+            <Route element={<IsArtistRoute />}>
+              <Route
+                path="/profile/artists/createartist"
+                element={<FormCreateArtist />}
+              />
+              <Route
+                path="/profile/artists/createobject"
+                element={<FormCreateObject />}
+              />
+              <Route
+                path="/profile/artists/updateobjectpage/:id"
+                element={<ProfileUpdateCreation />}
+              />
+              <Route
+                path="/profile/artists/updateartistpage"
+                element={<ProfileUpdateArtist />}
+              />
+            </Route>
+
+            {/* Orders */}
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  creations={creations}
+                  orderCart={orderCart}
+                  setOrderCart={setOrderCart}
+                />
+              }
+            />
+            <Route path="/order/validation" element={<OrderValidation />} />
+            {/* Creations */}
+            <Route path="/creations" element={<CreationsList />} />
+            <Route path="/creations/:id" element={<OneCreation />} />
+            {/* Artists */}
+            <Route path="/artist/:id" element={<OneArtist />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          {/* ROUTES FOR LOGGEDOUT */}
+          <Route element={<LoggedOut />}>
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
+        </Routes>
+      </div>
       <Footer></Footer>
     </div>
   );

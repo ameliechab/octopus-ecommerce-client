@@ -52,9 +52,9 @@ const CreateFormArtist = () => {
           <input
             className="create-artist-details-name"
             type="text"
-            id="create-name"
-            name="name"
             value={name}
+            name="name"
+            id="create-name"
             onChange={handleChangeData}
             placeholder="Your brand/creator name"
           />

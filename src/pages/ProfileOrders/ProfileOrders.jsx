@@ -18,8 +18,13 @@ const ProfileOrders = () => {
   console.log(orders);
   return (
     <div className="all-orders">
-      <h3 className="your-orders-on-profile">Your orders :</h3>
-
+      {!orders.length ? (
+        <h5 className="your-orders-on-profile">
+          Your do not have orders yet !
+        </h5>
+      ) : (
+        <h3 className="your-orders-on-profile">Your orders :</h3>
+      )}
       {orders.map((order) => {
         return (
           <div key={order._id} className="one-order">
