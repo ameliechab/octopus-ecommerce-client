@@ -35,36 +35,6 @@ const Profile = () => {
           {" "}
           <Link to="/profile/orders">Your orders</Link>{" "}
         </button>
-        {/* {currentUser.isArtist ? (
-
-          {artistPageExists.length ? 
-          (
-            <button className="button-on-profile">
-            {" "}
-            <Link to="/profile/artists/updateartistpage">
-              Update creator page
-            </Link>{" "}
-          </button>
-          ) 
-          : 
-          (
-            <button className="button-on-profile">
-                {" "}
-                <Link to="/profile/artists/createartist">
-                  Create your creator page
-                </Link>{" "}
-              </button>
-          )
-          }
-
-        ) 
-        : 
-        (
-          ""
-        )
-        } */}
-        {/* !isArtist === true ? profileUser : isArtistwithPage === true ?
-        UpdateButton : CreateButton */}
         {!currentUser.isArtist ? (
           ""
         ) : artistPageExists.length ? (

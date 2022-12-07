@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./AllArtists.css";
+import ArtistCard from "../ArtistCard/ArtistCard";
 
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -40,18 +41,8 @@ const AllArtists = () => {
     <div>
       <p className="artists-paragraph-title">ARTISTS & CREATORS</p>
       <div className="all-artists-home-page">
-        {sixRandomArtists.map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/artist/${element._id}`}>
-                <img
-                  className="artists-images-all-artists"
-                  src={element.picture}
-                  alt={element.name}
-                />
-              </Link>
-            </div>
-          );
+        {sixRandomArtists.map((artist) => {
+          return <ArtistCard artist={artist} />;
         })}
         <div className="artists-images-view-more">
           <Link className="link-to-view-more" to="/artists">
