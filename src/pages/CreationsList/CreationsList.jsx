@@ -4,6 +4,7 @@ import apiHandler from "../../api/apiHandler";
 import "./CreationsList.css";
 import NavSearch from "../../components/NavSearch/NavSearch";
 import NavSearchByCategory from "../../components/NavSearchByCategory/NavSearchByCategory";
+import CreationCard from "../../components/CreationCard/CreationCard";
 
 const CreationsList = () => {
   const [creations, setCreations] = useState([]);
@@ -47,21 +48,8 @@ const CreationsList = () => {
         creations={creations}
       ></NavSearchByCategory>
       <div className="all-creations-page">
-        {filteredCreations().map((element) => {
-          return (
-            <div key={element._id}>
-              <Link to={`/creations/${element._id}`}>
-                <p className="title-of-creation-all-creations-page">
-                  {element.title}
-                </p>
-                <img
-                  className="creations-images-all-creations"
-                  src={element.img}
-                  alt={element.title}
-                />
-              </Link>
-            </div>
-          );
+        {filteredCreations().map((creation) => {
+          return <CreationCard creation={creation} showTitle={true} />;
         })}
       </div>
     </div>
