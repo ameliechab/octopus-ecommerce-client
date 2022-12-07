@@ -139,12 +139,12 @@ const ProfileUpdateCreation = () => {
           <button className="update-add-to-profile-button-creation-page">
             SUBMIT CHANGES
           </button>
-          <button
+          {/* <button
             className="update-add-to-profile-button-creation-page"
             onClick={handleDeleteCreation}
           >
             DELETE THIS CREATION
-          </button>
+          </button> */}
         </div>
       </form>
     </div>
