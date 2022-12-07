@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar.css";
+import "./NavBar.css";
 import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../auth/useAuth";
