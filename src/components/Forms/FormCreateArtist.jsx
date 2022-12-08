@@ -83,15 +83,17 @@ const CreateFormArtist = () => {
       <div className="create-object-of-artist-details">
         <h3 className="create-one-artist-creations">CREATIONS</h3>
         <div className="create-all-creations-artist-page">
-          <div className="creations-images-view-more">
-            {/* Img link that redirects to the page where we can create an object */}
-            <Link to="/profile/artists/createobject">
-              <img
-                className="create-creations-images-one-artist"
-                src="https://res.cloudinary.com/dzkbycvev/image/upload/v1670232991/first-fullstack-app/nldxlijwg2i2rf7lxygz.png"
-                alt="add-creation"
-              />
-            </Link>
+          <div>
+            <div className="creations-images-view-more">
+              {/* Img link that redirects to the page where we can create an object */}
+              <Link to="/profile/artists/createobject">
+                <img
+                  className="create-creations-images-one-artist"
+                  src="https://res.cloudinary.com/dzkbycvev/image/upload/v1670232991/first-fullstack-app/nldxlijwg2i2rf7lxygz.png"
+                  alt="add-creation"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

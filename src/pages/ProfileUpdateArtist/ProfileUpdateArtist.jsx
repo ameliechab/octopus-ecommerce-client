@@ -112,14 +112,16 @@ const ProfileUpdateArtist = () => {
       <div className="update-object-of-artist-details">
         <h3 className="update-one-artist-creations">UPDATE YOUR CREATIONS</h3>
         <div className="all-creations-update-artist-page">
-          <div className="creations-images-view-more">
-            <Link to="/profile/artists/createobject">
-              <img
-                className="create-creations-images-one-artist"
-                src="https://res.cloudinary.com/dzkbycvev/image/upload/v1670232991/first-fullstack-app/nldxlijwg2i2rf7lxygz.png"
-                alt="add-creation"
-              />
-            </Link>
+          <div>
+            <div className="creations-images-view-more">
+              <Link to="/profile/artists/createobject">
+                <img
+                  className="create-creations-images-one-artist"
+                  src="https://res.cloudinary.com/dzkbycvev/image/upload/v1670232991/first-fullstack-app/nldxlijwg2i2rf7lxygz.png"
+                  alt="add-creation"
+                />
+              </Link>
+            </div>
           </div>
           {/* To display all my creations on my profile */}
           {myCreations.map((element) => {
