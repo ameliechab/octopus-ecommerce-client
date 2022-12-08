@@ -5,10 +5,13 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../auth/useAuth";
 
 const NavBar = () => {
+  // useAuth use UserContext that use createContext from react in order to obtain the current user informations
   const { isLoggedIn, currentUser, removeUser } = useAuth();
+
   return (
     <>
       <div className="navbar-entire">
+        {/* The logo redirects to homePage */}
         <div className="navbar-left">
           <Link to="/">
             <img
@@ -18,6 +21,8 @@ const NavBar = () => {
             ></img>
           </Link>
         </div>
+
+        {/* Redirection to "All artists" page and "All creations" pages */}
         <div className="nav-hamburger-responsive">
           <div id="navbar-center-responsive" className="navbar-center">
             <div className="artists-creations">
@@ -44,7 +49,6 @@ const NavBar = () => {
         </div>
         <div className="navbar-right">
           {/* name of the user and Log out button if a user is logged in */}
-
           {isLoggedIn && (
             <div className="responsive-loggin">
               <div className="link-navbar-responsive">
@@ -69,7 +73,6 @@ const NavBar = () => {
           )}
 
           {/* Log in and register buttons if a no user is logged in */}
-
           {!isLoggedIn && (
             <div className="responsive-loggin">
               <div className="link-navbar-responsive">
@@ -92,7 +95,7 @@ const NavBar = () => {
               </div>
             </div>
           )}
-
+          {/* Redirection to the Cart of the current user */}
           <Link to="/cart">
             <img
               className="card-logo-nav-bar"

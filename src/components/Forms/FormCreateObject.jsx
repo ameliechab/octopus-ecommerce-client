@@ -9,6 +9,7 @@ const CreateFormCreation = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
+  // UseFormCreate hook defined in "hooks"
   const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     title: "",
     description: "",
@@ -17,6 +18,7 @@ const CreateFormCreation = () => {
     price: 0,
   });
 
+  // on submission of the form handleSubmitCreationForm pass the informations of the inputs to formData
   const handleSubmitCreationForm = async (e) => {
     e.preventDefault();
     const formDataCreation = new FormData();
@@ -26,6 +28,7 @@ const CreateFormCreation = () => {
     formDataCreation.append("categories", formData.categories.toLowerCase());
     formDataCreation.append("price", formData.price);
 
+    // createCreation is a post that creates a new creation
     try {
       const data = await apiHandler.createCreation(formDataCreation);
       resetForm();
@@ -35,6 +38,7 @@ const CreateFormCreation = () => {
     }
   };
 
+  // destructuration of formData
   const { title, description, categories, price } = formData;
 
   return (
@@ -43,6 +47,7 @@ const CreateFormCreation = () => {
         onSubmit={handleSubmitCreationForm}
         className="create-all-object-details-page"
       >
+        {/* Pass a picture URL of the new creation thanks to Cloudinary */}
         <div className="create-creation-presentation">
           <div className="create-creation-picture">
             <input
@@ -52,7 +57,7 @@ const CreateFormCreation = () => {
               onChange={handleChangeData}
             />
           </div>
-
+          {/* New creation name */}
           <div className="create-creation-details">
             <input
               className="create-creation-details-title"
@@ -63,6 +68,7 @@ const CreateFormCreation = () => {
               onChange={handleChangeData}
               placeholder="Your creation name"
             />
+            {/* New creation description */}
             <textarea
               className="create-creation-details-description"
               type="text"
@@ -72,7 +78,7 @@ const CreateFormCreation = () => {
               onChange={handleChangeData}
               placeholder="Your description here"
             ></textarea>
-
+            {/* New creation category */}
             <h4>
               <label htmlFor="description">Categories: </label>
               <input
@@ -86,6 +92,7 @@ const CreateFormCreation = () => {
             </h4>
           </div>
         </div>
+        {/* New creation price */}
         <div className="create-creation-price-and-button">
           <h3>
             <label htmlFor="description">Price: </label>
@@ -99,6 +106,7 @@ const CreateFormCreation = () => {
             />
             €
           </h3>
+          {/* Display the errors send by the back */}
           {error && <p>{error}</p>}
 
           <button className="create-add-to-profile-button-creation-page">

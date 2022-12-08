@@ -8,12 +8,14 @@ const CreateFormArtist = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
+  // UseFormCreate hook defined in "hooks"
   const [formData, handleChangeData, setStateData, resetForm] = useFormCreate({
     name: "",
     description: "",
     picture: {},
   });
 
+  // on submission of the form handleSubmitArtistForm pass the informations of the inputs to formData
   const handleSubmitArtistForm = async (event) => {
     event.preventDefault();
     const formDataArtist = new FormData();
@@ -21,6 +23,7 @@ const CreateFormArtist = () => {
     formDataArtist.append("description", formData.description);
     formDataArtist.append("picture", formData.picture);
 
+    // createArtist is a post that creates a new artist
     try {
       const data = await apiHandler.createArtist(formDataArtist);
       resetForm();
@@ -30,6 +33,7 @@ const CreateFormArtist = () => {
     }
   };
 
+  // destructuration of formData
   const { name, description } = formData;
 
   return (
@@ -38,6 +42,7 @@ const CreateFormArtist = () => {
         onSubmit={handleSubmitArtistForm}
         className="create-artist-presentation"
       >
+        {/* Pass a picture URL of the new artist thanks to Cloudinary */}
         <div className="create-artist-picture">
           <input
             type="file"
@@ -46,6 +51,7 @@ const CreateFormArtist = () => {
             onChange={handleChangeData}
           />
         </div>
+        {/* New artist name */}
         <div className="create-artist-details">
           <input
             className="create-artist-details-name"
@@ -56,6 +62,7 @@ const CreateFormArtist = () => {
             onChange={handleChangeData}
             placeholder="Your brand/creator name"
           />
+          {/* New artist description */}
           <textarea
             className="create-artist-details-description"
             type="text"
@@ -66,6 +73,7 @@ const CreateFormArtist = () => {
             placeholder="Description of you and your activity"
           ></textarea>
           <div className="div-for-submit-button-create-artist">
+            {/* Display the errors send by the back */}
             {error && <p>{error}</p>}
             <button className="submit-button-create-artist">Submit</button>
           </div>
@@ -76,6 +84,7 @@ const CreateFormArtist = () => {
         <h3 className="create-one-artist-creations">CREATIONS</h3>
         <div className="create-all-creations-artist-page">
           <div className="creations-images-view-more">
+            {/* Img link that redirects to the page where we can create an object */}
             <Link to="/profile/artists/createobject">
               <img
                 className="create-creations-images-one-artist"

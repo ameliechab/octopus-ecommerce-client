@@ -8,14 +8,14 @@ const ArtistsList = () => {
   const [artists, setArtists] = useState([]);
   const [searchCreationString, setSearchCreationString] = useState(""); // To search creation by name
 
+  // Get the list of all artists
   useEffect(() => {
     apiHandler.getAllArtists().then((data) => {
-      console.log(data);
       setArtists(data);
     });
   }, []);
 
-  // to filter all artists name by navSearch value
+  // To filter all artists name by navSearch value
   const filteredArtists = () => {
     let artistsFiltered = [...artists];
     if (searchCreationString) {
@@ -28,13 +28,19 @@ const ArtistsList = () => {
 
   return (
     <div className="middle-div-min">
+      {/* To search artist by name */}
       <NavSearch
         setSearchCreationString={setSearchCreationString}
         searchCreationString={searchCreationString}
       ></NavSearch>
       <div className="all-artists-page">
+        {/* To display artist by artist in the artist list */}
         {filteredArtists().map((artist) => {
-          return <ArtistCard artist={artist} showName={true} />;
+          return (
+            <div key={artist._id}>
+              <ArtistCard artist={artist} showName={true} />
+            </div>
+          );
         })}
       </div>
     </div>

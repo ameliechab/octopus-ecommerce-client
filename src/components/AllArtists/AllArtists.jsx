@@ -8,18 +8,16 @@ import chooseRandom from "../../helper";
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
 
+  // get all artists and pass it to the useState
   useEffect(() => {
     apiHandler.getAllArtists().then((res) => {
-      console.log(res);
       setArtists(res);
     });
   }, []);
 
-  // Pick some random artist in the array of all artists
-
+  // Pick 3 random artists in the array of all artists
   const threeRandomArtists = chooseRandom(artists, 3);
 
-  console.log("tatatatatata", artists);
   // If there is no artist found
   if (!artists.length) {
     return <div className="middle-div-min">Loading...</div>;
@@ -29,8 +27,13 @@ const AllArtists = () => {
     <div>
       <p className="artists-paragraph-title">ARTISTS & CREATORS</p>
       <div className="all-artists-home-page">
+        {/* We map over the random artists picked by the chooseRandom function */}
         {threeRandomArtists.map((artist) => {
-          return <ArtistCard artist={artist} />;
+          return (
+            <div key={artist._id}>
+              <ArtistCard artist={artist} />;
+            </div>
+          );
         })}
         <div className="artists-images-view-more">
           <Link className="link-to-view-more" to="/artists">

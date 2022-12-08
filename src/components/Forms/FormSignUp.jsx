@@ -5,6 +5,7 @@ import apiHandler from "../../api/apiHandler";
 import "./FormSignUp.css";
 
 const FormSignUp = () => {
+  // UseForm hook defined in "hooks"
   const [values, handleChange] = useForm({
     name: "",
     email: "",
@@ -15,6 +16,7 @@ const FormSignUp = () => {
 
   const navigate = useNavigate();
 
+  // .post method in the apihandler
   const handleSubmit = (e) => {
     e.preventDefault();
     apiHandler
@@ -23,6 +25,7 @@ const FormSignUp = () => {
         navigate("/signin");
       })
       .catch((error) => {
+        //Pass the errors send by the back to the useState in order to diplay it on the page
         setError(error.response.data);
       });
   };
@@ -34,6 +37,7 @@ const FormSignUp = () => {
           className="logo-octopus-sign-up-page"
           src="images/logos/intro-logo.png"
         ></img>
+        {/* displays the errors on the page */}
         {error && <h3 className="error">{error.message}</h3>}
         <form id="signup-form" onSubmit={handleSubmit}>
           <h2 className="register-word-log-up-page">Register</h2>

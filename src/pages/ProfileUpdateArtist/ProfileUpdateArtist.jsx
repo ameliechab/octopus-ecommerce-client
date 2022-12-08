@@ -7,6 +7,7 @@ import "./ProfileUpdateArtist.css";
 const ProfileUpdateArtist = () => {
   const [error, setError] = useState("");
   const [myCreations, setMyCreations] = useState([]);
+  // setFormData for the update artist page
   const [formData, handleChange, setFormData, resetForm] = useFormCreate({
     name: "",
     description: "",
@@ -17,34 +18,34 @@ const ProfileUpdateArtist = () => {
   //Display artist profile with creation
   useEffect(() => {
     apiHandler.getMyArtist().then((res) => {
-      console.log(res);
       setFormData(res);
     });
     apiHandler.getMyCreations().then((res) => {
-      console.log(res);
       setMyCreations(res);
     });
   }, []);
 
   // Update artist profile
-  const handleUpdateArtistForm = async (e) => {
-    e.preventDefault();
+  const handleUpdateArtistForm = async (event) => {
+    event.preventDefault();
     const formDataUpdatedArtist = new FormData();
+    // Error message if some input are empty
     for (const key in formData) {
       if (formData[key] === "") {
         setError(`${key} is required`);
         return;
       }
     }
+    // Get the value of each input of the update form
     formDataUpdatedArtist.append("name", formData.name);
     formDataUpdatedArtist.append("description", formData.description);
     formDataUpdatedArtist.append("picture", formData.picture);
 
+    // Update the artist profile
     try {
       const { data } = await apiHandler.patchUpdateArtist(
         formDataUpdatedArtist
       );
-      console.log(data);
       resetForm();
       navigate("/profile");
     } catch (err) {
@@ -120,6 +121,7 @@ const ProfileUpdateArtist = () => {
               />
             </Link>
           </div>
+          {/* To display all my creations on my profile */}
           {myCreations.map((element) => {
             return (
               <div key={element._id}>

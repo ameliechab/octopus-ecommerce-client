@@ -6,6 +6,7 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <div className="middle-div-min">
+      {/* Section intro with logo */}
       <section className="intro-home-page">
         <img
           className="logo-octopus-home-page"
@@ -16,9 +17,11 @@ const HomePage = () => {
           handcrafted pieces to art treasures...
         </h6>
       </section>
+      {/* Section that display some artist + view more */}
       <section className="artists-home-page">
         <AllArtists></AllArtists>
       </section>
+      {/* Section that display some creation + view more */}
       <section className="creations-home-page">
         <AllCreations></AllCreations>
       </section>

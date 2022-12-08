@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./FormSignIn.css";
 
 const FormSignIn = () => {
+  // UseForm hook defined in "hooks"
   const [{ email, password }, handleChange] = useForm({
     email: "",
     password: "",
@@ -14,28 +15,30 @@ const FormSignIn = () => {
   const navigate = useNavigate();
   const { storeToken, authenticateUser } = useAuth();
 
+  // .post method in the apihandler
   const handleSubmit = (event) => {
     event.preventDefault();
     apiHandler
       .signin({ email, password })
       .then((res) => {
-        console.log(res);
         storeToken(res.authToken);
         authenticateUser();
         navigate("/");
       })
       .catch((error) => {
+        //Pass the errors send by the back to the useState in order to diplay it on the page
         setError(error.response);
       });
   };
 
   return (
     <div className="middle-div-min">
-      <section class="signin" id="form">
+      <section className="signin" id="form">
         <img
           className="logo-octopus-sign-in-page"
           src="images/logos/intro-logo.png"
         ></img>
+        {/* displays the errors on the page */}
         {error && <h3 className="error">{error.message}</h3>}
         <form id="signin-form" onSubmit={handleSubmit}>
           <h2 className="log-in-word-log-in-page">Log in</h2>

@@ -7,6 +7,8 @@ const useFormCreate = (originalState) => {
     setState((currentState) => {
       return {
         ...currentState,
+
+        // add a place for the pictures if the type is a file
         [event.target.name]:
           event.target.type === "file"
             ? event.target?.files?.[0]
@@ -14,7 +16,7 @@ const useFormCreate = (originalState) => {
       };
     });
   };
-
+  // reset the form
   const reset = () => {
     setState(originalState);
   };

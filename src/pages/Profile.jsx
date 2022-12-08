@@ -6,16 +6,14 @@ import useAuth from "../auth/useAuth";
 
 const Profile = () => {
   const { currentUser } = useAuth();
-  console.log({ currentUser });
   const [artists, setArtists] = useState([]);
 
   // Find the artist related to the user if there is one
   const artistPageExists = artists.filter((el) => el.user === currentUser._id);
-  console.log(artistPageExists);
 
+  // To add the new artist to all artists
   useEffect(() => {
     apiHandler.getAllArtists().then((data) => {
-      console.log(data);
       setArtists(data);
     });
   }, []);
@@ -29,9 +27,11 @@ const Profile = () => {
           {" "}
           <Link to="/profile/orders">Your orders</Link>{" "}
         </button>
+        {/* If the user is an artist he can have access to the create and update artist profile page + add and update his creation but if the user is not an artist he has just access to his orders */}
         {!currentUser.isArtist ? (
           ""
         ) : artistPageExists.length ? (
+          // If the artist user has already created his profile he has now only access to the update artist profile page
           <button className="button-on-profile">
             {" "}
             <Link to="/profile/artists/updateartistpage">

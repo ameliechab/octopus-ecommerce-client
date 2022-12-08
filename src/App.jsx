@@ -26,7 +26,6 @@ import FormCreateObject from "./components/Forms/FormCreateObject";
 function App() {
   const [creations, setCreations] = useState([]);
   const [artists, setArtists] = useState([]);
-  const [orderCart, setOrderCart] = useState(null);
 
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
@@ -38,6 +37,7 @@ function App() {
     });
   }, []);
 
+  // If there is no creations or no artists load the page display "Loading"
   if (!creations.length || !artists.length) {
     return <div className="middle-div-min">Loading...</div>;
   }
@@ -83,16 +83,7 @@ function App() {
             </Route>
 
             {/* Orders */}
-            <Route
-              path="/cart"
-              element={
-                <Cart
-                  creations={creations}
-                  orderCart={orderCart}
-                  setOrderCart={setOrderCart}
-                />
-              }
-            />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/order/validation" element={<OrderValidation />} />
             {/* Creations */}
             <Route path="/creations" element={<CreationsList />} />

@@ -6,7 +6,7 @@ const ProfileOrders = () => {
   const [orders, setOrders] = useState([]);
   const [creations, setCreations] = useState([]);
 
-  // find orders of the current user and details of the creations
+  // Find orders of the current user and details of the creations
   useEffect(() => {
     apiHandler.getAllOrders().then((res) => {
       setOrders(res);
@@ -34,7 +34,7 @@ const ProfileOrders = () => {
             {order.creations.map((element) => {
               return (
                 <div key={element._id}>
-                  {/* Ternary if creation deleted by artist */}
+                  {/* Ternary on the name of creation bought if creation deleted by artist */}
                   {!creations.find(
                     (creation) => creation._id === element.productId
                   ) ? (
@@ -58,6 +58,7 @@ const ProfileOrders = () => {
             })}
 
             <p>
+              {/* Ternary on order total price if creation deleted by artist */}
               Total price:{" "}
               <span className="bold">
                 {order.creations.reduce(

@@ -6,26 +6,29 @@ import "./ProfileUpdateCreation.css";
 
 const ProfileUpdateCreation = () => {
   const [error, setError] = useState("");
+
+  // Get the id of the creation
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
 
+  // setFormData for the update creation page
   const [formData, handleChange, setFormData, resetForm] = useFormCreate({
     title: "",
     description: "",
     img: {},
     categories: [],
-    price: null,
+    price: 0,
   });
 
-  //Display creation by id
+  //To get creation by id
   useEffect(() => {
     apiHandler.getOneCreation(id).then((res) => {
-      console.log(res);
       setFormData(res);
     });
   }, []);
 
+  // To delete a creation and to go back to the artist profile page
   const handleDeleteCreation = async (event) => {
     event.preventDefault();
     try {
@@ -36,27 +39,31 @@ const ProfileUpdateCreation = () => {
     }
   };
 
-  const handleUpdateCreationForm = async (e) => {
-    e.preventDefault();
+  // To update the creation
+  const handleUpdateCreationForm = async (event) => {
+    event.preventDefault();
     const formDataUpdatedCreation = new FormData();
+    // Error message if some input are empty
     for (const key in formData) {
       if (formData[key] === "") {
         setError(`${key} is required`);
         return;
       }
     }
+
+    // Get the value of each input of the update form
     formDataUpdatedCreation.append("title", formData.title);
     formDataUpdatedCreation.append("description", formData.description);
     formDataUpdatedCreation.append("img", formData.img);
     formDataUpdatedCreation.append("categories", formData.categories);
     formDataUpdatedCreation.append("price", formData.price);
 
+    // To update the creation and reload the page
     try {
       const data = await apiHandler.patchUpdateCreation(
         formDataUpdatedCreation,
         id
       );
-      console.log(data);
       resetForm();
       navigate("/profile/artists/updatecreationpage");
     } catch (err) {
@@ -73,7 +80,6 @@ const ProfileUpdateCreation = () => {
         className="update-all-object-details-page"
       >
         <div className="update-creation-presentation">
-          {/* <label htmlFor="img">Picture</label> */}
           <img
             className="update-creation-picture"
             src={`${img}`}
@@ -81,7 +87,6 @@ const ProfileUpdateCreation = () => {
           />
 
           <div className="update-creation-details">
-            {/* <label  htmlFor="title">Title: </label> */}
             <input
               className="update-creation-details-title"
               type="text"
@@ -89,9 +94,8 @@ const ProfileUpdateCreation = () => {
               name="title"
               id="title"
               onChange={handleChange}
-              // placeholder="Your creation name"
             />
-            {/* <label htmlFor="description">Description: </label> */}
+
             <textarea
               className="update-creation-details-description"
               type="text"
@@ -99,7 +103,6 @@ const ProfileUpdateCreation = () => {
               name="description"
               id="description"
               onChange={handleChange}
-              // placeholder="Your description here"
             ></textarea>
 
             <h4>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ArtistCard = ({ artist, showName = false }) => {
   return (
-    <div key={artist._id}>
+    <>
       <Link to={`/artist/${artist._id}`}>
         {/* the artist name is displayed only if showName = true */}
         {showName && (
@@ -15,7 +15,7 @@ const ArtistCard = ({ artist, showName = false }) => {
           alt={artist.name}
         />
       </Link>
-    </div>
+    </>
   );
 };
 

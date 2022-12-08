@@ -24,92 +24,109 @@ const service = {
   ...apiHandler,
 
   //GET
+  // we are getting all artists
 
   getAllArtists() {
     return service
       .get("/artists")
       .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
   },
+
+    // we are getting the cart
 
   getOrderCart() {
     return service
       .get("/orderCart")
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+    // we are getting all creations
 
   getAllCreations() {
     return service
       .get("/creations")
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+    // we are getting all orders
 
   getAllOrders() {
     return service
       .get("/orders")
       .then((res) => {
-        console.log(res);
+       
         return res.data;
       })
       .catch(errorHandler);
   },
+
+    // we are getting one specific creation
 
   getOneCreation(id) {
     return service
       .get(`/creations/${id}`)
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+      // we are getting one specific artist
 
   getOneArtist(id) {
     return service
       .get(`/artists/${id}`)
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+      // we are getting the creations of a specific artists
 
   getArtistCreations(id) {
     return service
       .get(`/artists/${id}/creations`)
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+      // we are getting one specific artist
 
   getMyArtist() {
     return service
       .get("/myartist")
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
 
+      // we are getting creations of artist connected
+
   getMyCreations() {
     return service
       .get("/mycreations")
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
@@ -117,15 +134,19 @@ const service = {
 
   // POST
 
+    // We add a specific creation to the cart
+
   postAddToCart(id) {
     return service
       .post(`/creations/${id}/addtocart`)
       .then((res) => {
-        console.log(res);
+       
         return res.data;
       })
       .catch(errorHandler);
   },
+
+  // Create the profile of the artist
 
   createArtist(formDataArtist) {
     return service 
@@ -137,6 +158,8 @@ const service = {
       throw err.response.data.message
     });
   },
+
+  // Create a new creation for the artist connected
 
   createCreation(formDataCreation) {
     return service 
@@ -151,25 +174,31 @@ const service = {
 
   // PATCH
 
+  // we increment the number of a creation in cart
+
   patchIncrementCreationToOrder(creationId) {
     return service
       .patch(`/orderCart/increment/${creationId}`)
       .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
   },
 
+    // we decrement the number of a creation in cart
+
   patchDecrementCreationToOrder(creationId) {
     return service
       .patch(`/orderCart/decrement/${creationId}`)
       .then((res) => {
-        console.log(res);
+        
         return res.data;
       })
       .catch(errorHandler);
   },
+
+  // update a specific creation of the artist connected
 
   patchUpdateCreation(formDataUpdatedCreation, id) {
     return service 
@@ -184,6 +213,8 @@ const service = {
       throw err.response.data.message
     })
   },
+
+    // update the artist page
 
   patchUpdateArtist(formDataUpdatedArtist) {
     return service 
@@ -201,36 +232,38 @@ const service = {
 
 // PUT
 
+  // add a date to the order so the cart become an order
+
   buyCart() {
     return service
       .put(`/orderCart/buy`)
       .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
   },
 
   // DELETE
-  // DELETE ALL CART
+  // Delete all cart
 
   deleteCart() {
     return service
       .delete(`/orderCart/delete`)
       .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
   },
 
-  // DELETE ONE CREATION IN CART
+  // Delete one creation in cart
 
   deleteCreationCart(productId) {
     return service
       .patch(`/orderCart/${productId}`)
       .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
@@ -241,7 +274,7 @@ const service = {
     return service
       .delete(`/myArtist/delete`)
        .then((res) => {
-        console.log(res);
+      
         return res.data;
       })
       .catch(errorHandler);
@@ -253,7 +286,7 @@ const service = {
     return service
       .delete(`/creationinprofile/${id}/delete`)
       .then((res) => {
-        console.log(res);
+       
         return res.data;
       })
       .catch(errorHandler);
@@ -263,6 +296,7 @@ const service = {
   //
   // AUTHENTICATION
 
+  //signup
   signup(userInfo) {
     return service
       .post("/auth/signup", 
@@ -271,7 +305,7 @@ const service = {
       .then((res) => res.data)
       .catch(errorHandler);
   },
-
+ //loggedin
   isLoggedIn() {
     return service
       .get("/auth/me")
@@ -279,13 +313,13 @@ const service = {
       .catch(errorHandler);
   },
 
+//signin
   signin(userInfo) {
     return service
       .post("/auth/signin", userInfo)
       .then((res) => res.data)
       .catch(errorHandler);
   },
-
 };
 
 // export default apiHandler

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CreationCard = ({ creation, showTitle = false }) => {
   return (
-    <div key={creation._id}>
+    <>
       <Link to={`/creations/${creation._id}`}>
         {/* the creation name is displayed only if showTitle = true */}
         {showTitle && (
@@ -17,7 +17,7 @@ const CreationCard = ({ creation, showTitle = false }) => {
           alt={creation.title}
         />
       </Link>
-    </div>
+    </>
   );
 };
 

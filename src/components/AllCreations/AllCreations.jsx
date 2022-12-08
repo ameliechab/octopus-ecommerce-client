@@ -8,15 +8,14 @@ import chooseRandom from "../../helper";
 const AllCreations = () => {
   const [creations, setCreations] = useState([]);
 
+  // get all creations and pass it to the useState
   useEffect(() => {
     apiHandler.getAllCreations().then((res) => {
-      console.log(res);
       setCreations(res);
     });
   }, []);
 
-  // Pick some random creations in the array of all creations
-
+  // Pick 5 random creations in the array of all creations
   const fiveRandomCreations = chooseRandom(creations, 5);
 
   // If there is no creation found
@@ -28,8 +27,13 @@ const AllCreations = () => {
     <div>
       <p className="creation-paragraph-title">CREATIONS</p>
       <div className="all-creations-home-page">
+        {/* We map over the random creations picked by the chooseRandom function */}
         {fiveRandomCreations.map((creation) => {
-          return <CreationCard creation={creation} />;
+          return (
+            <div key={creation._id}>
+              <CreationCard creation={creation} />
+            </div>
+          );
         })}
         <div className="creations-images-view-more">
           <Link className="link-to-view-more" to="/creations">

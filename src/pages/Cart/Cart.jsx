@@ -1,25 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import apiHandler from "../../api/apiHandler";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 
-const Cart = ({ creations, orderCart, setOrderCart }) => {
+const Cart = () => {
+  const [creations, setCreations] = useState([]);
+  const [orderCart, setOrderCart] = useState(null);
+
   //Use effect to display the cart
   useEffect(() => {
+    apiHandler.getAllCreations().then((res) => {
+      setCreations(res);
+    });
     apiHandler.getOrderCart().then((res) => {
-      console.log(res);
       setOrderCart(res);
     });
   }, []);
 
-  console.log("tatita", [orderCart]);
-
-  // increment quantity of creation(s) in the cart
+  // Increment quantity of creation(s) in the cart
   const handleIncrementCreation = async (event) => {
     document.querySelectorAll(".increment-button").forEach(async (button) => {
       event.preventDefault();
       const creationId = event.target.getAttribute("id");
-      console.log(creationId);
       try {
         const orderIncremented = await apiHandler.patchIncrementCreationToOrder(
           creationId
@@ -31,13 +33,12 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     });
   };
 
-  // decrement quantity of creation(s) in the cart
+  // Decrement quantity of creation(s) in the cart
 
   const handleDecrementCreation = async (event) => {
     document.querySelectorAll(".decrement-button").forEach(async (button) => {
       event.preventDefault();
       const creationId = event.target.getAttribute("id");
-      console.log(creationId);
       try {
         const orderDecremented = await apiHandler.patchDecrementCreationToOrder(
           creationId
@@ -49,7 +50,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
     });
   };
 
-  // delete all the cart
+  // Delete all the cart
   const handleDeleteCart = async (event) => {
     event.preventDefault();
     try {
@@ -63,10 +64,8 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
   // Buy what you put on the cart (the cart become an order)
   const handleBuyCart = async (event) => {
     event.preventDefault();
-    console.log("hello");
     try {
       const orderCartBuy = await apiHandler.buyCart();
-      console.log(orderCartBuy);
     } catch (error) {
       console.error(error);
     }
@@ -103,12 +102,14 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
       <div>
         <div className="creation-details-total-price-section">
           <ul className="all-creation-order">
+            {/* Mapping through creations ordered to get creation details */}
             {creationOfOrder.map((element) => {
               return (
                 <div key={element._id}>
                   <li className="each-creation-order">
                     <img
                       className="creation-image-order"
+                      // To find the right creation in the array of creations by comparing the id of the creation in the array of order
                       src={
                         creations.find(
                           (creation) => creation._id === element.productId
@@ -185,6 +186,7 @@ const Cart = ({ creations, orderCart, setOrderCart }) => {
                   <h4>TOTAL</h4>
                 </div>
                 <div>
+                  {/* To get the total price of the order */}
                   {creationOfOrder.reduce(
                     (total, element) =>
                       total +

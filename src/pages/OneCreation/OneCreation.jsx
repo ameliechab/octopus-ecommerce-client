@@ -6,10 +6,12 @@ import "./OneCreation.css";
 const OneCreation = () => {
   const [creation, setCreation] = useState([]);
 
-  // get creation by id
+  // Get creation by id
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id;
+
+  // Get one creation by its id
   useEffect(() => {
     const getCreation = async () => {
       const res = await apiHandler.getOneCreation(id);
@@ -18,7 +20,7 @@ const OneCreation = () => {
     getCreation();
   }, []);
 
-  // add creation to cart and navigate to cart
+  // Add creation to cart and navigate to cart
   const handleAddToCart = async (event) => {
     event.preventDefault();
     try {
@@ -29,10 +31,12 @@ const OneCreation = () => {
     navigate("/cart");
   };
 
+  // Loading section if no creation
   if (!creation) {
     return <div className="middle-div-min">Loading...</div>;
   }
 
+  // Display of all creation details
   return (
     <div className="middle-div-min">
       <div className="all-object-details-page">
