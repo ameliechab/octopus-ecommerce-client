@@ -26,6 +26,11 @@ Get, post, patch, delete routes
 UseState, UseEffect, props
 Responsive
 
+## .env
+
+VITE_BACKEND_URL=?
+
+
 ## [Link to OCTOPUS E Commerce](https://octopus-ecommerce.netlify.app/)
 
 ![My Remote Image](https://res.cloudinary.com/dsioshcio/image/upload/v1670435660/Screenshot_2022-12-05_at_20.28.28_rndwtd.png)
