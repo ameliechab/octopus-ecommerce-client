@@ -5,8 +5,11 @@ const Footer = () => {
   return (
     <div className="footer-entire">
       <p className="copyright-footer">
-        Copyright © 2022 Lucile Tronczyk, Amélie Chabrand. All Rights Reserved.
-        Copyright Octopus logo © Charlotte Brovia
+        <div>
+          Copyright © 2022 Lucile Tronczyk, Amélie Chabrand. All Rights
+          Reserved.
+        </div>
+        <div>Copyright Octopus logo © Charlotte Brovia</div>
       </p>
     </div>
   );
