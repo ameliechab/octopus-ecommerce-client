@@ -12,7 +12,6 @@
 .creation-presentation {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .creation-picture {
@@ -79,4 +78,10 @@
   border-radius: 0.8rem;
   font-family: "Montserrat";
   margin-bottom: 2rem;
+}
+
+@media (max-width: 800px) {
+  .creation-presentation {
+    flex-wrap: wrap;
+  }
 }
