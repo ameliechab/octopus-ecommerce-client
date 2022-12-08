@@ -13,7 +13,8 @@ h6 {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 300;
-  font-size: 27px;
+  font-size: 1.6rem;
+  /* font-size: calc(0.9rem + 2vw); */
   line-height: 32px;
   /* or 119% */
 
@@ -64,5 +65,8 @@ h6 {
   }
   .card-logo-nav-bar {
     width: 3rem;
+  }
+  h6 {
+    font-size: 1.1rem;
   }
 }
