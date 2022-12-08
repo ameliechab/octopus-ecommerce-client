@@ -83,5 +83,6 @@
 @media (max-width: 800px) {
   .creation-presentation {
     flex-wrap: wrap;
+    padding-left: 1rem;
   }
 }

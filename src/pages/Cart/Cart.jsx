@@ -76,8 +76,10 @@ const Cart = () => {
 
   //Handle event for the delete button of one creation
   const handleDeleteCreation = async (id) => {
+    console.log(id);
     try {
       const updatedOrder = await apiHandler.deleteCreationCart(id);
+      console.log("=========", { updatedOrder });
       setOrderCart(updatedOrder);
     } catch (error) {
       console.error(error);

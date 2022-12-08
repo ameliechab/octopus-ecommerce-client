@@ -65,3 +65,10 @@
   flex-direction: row;
   overflow: scroll;
 }
+
+@media (max-width: 800px) {
+  .artist-presentation {
+    flex-wrap: wrap;
+    padding-left: 1rem;
+  }
+}
