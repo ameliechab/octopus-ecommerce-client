@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import useForm from "../../hooks/useForm";
 import apiHandler from "../../api/apiHandler";
-import useAuth from "../../auth/useAuth";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./AllArtists.css";
 import ArtistCard from "../ArtistCard/ArtistCard";
+import chooseRandom from "../../helper";
 
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -19,21 +16,10 @@ const AllArtists = () => {
   }, []);
 
   // Pick some random artist in the array of all artists
-  const chooseRandom = (array, num) => {
-    const tenArtistsArray = [];
-    for (let i = 0; i < num; i++) {
-      const randomIndex = Math.floor(Math.random() * array.length);
-      if (tenArtistsArray.indexOf(array[randomIndex]) !== -1) {
-        //verify if there's no double artist
-        continue;
-      }
-      tenArtistsArray.push(array[randomIndex]); //push (num times - double artist) in new array
-    }
-    return tenArtistsArray;
-  };
 
-  const sixRandomArtists = chooseRandom(artists, 5);
+  const threeRandomArtists = chooseRandom(artists, 3);
 
+  console.log("tatatatatata", artists);
   // If there is no artist found
   if (!artists.length) {
     return <div className="middle-div-min">Loading...</div>;
@@ -43,7 +29,7 @@ const AllArtists = () => {
     <div>
       <p className="artists-paragraph-title">ARTISTS & CREATORS</p>
       <div className="all-artists-home-page">
-        {sixRandomArtists.map((artist) => {
+        {threeRandomArtists.map((artist) => {
           return <ArtistCard artist={artist} />;
         })}
         <div className="artists-images-view-more">

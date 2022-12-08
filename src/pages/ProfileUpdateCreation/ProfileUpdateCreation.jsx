@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFormCreate from "../../hooks/useFormCreate";
 import apiHandler from "./../../api/apiHandler";
 import "./ProfileUpdateCreation.css";

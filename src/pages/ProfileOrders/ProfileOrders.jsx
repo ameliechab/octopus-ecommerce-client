@@ -16,8 +16,6 @@ const ProfileOrders = () => {
     });
   }, []);
 
-  let creationExists = {};
-
   return (
     <div className="all-orders">
       {!orders.length ? (

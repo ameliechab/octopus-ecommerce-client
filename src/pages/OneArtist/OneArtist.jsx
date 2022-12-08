@@ -11,6 +11,7 @@ const OneArtist = () => {
   // get artist by id and the creations of this artist
   const params = useParams();
   const id = params.id;
+
   useEffect(() => {
     apiHandler.getOneArtist(id).then((res) => {
       console.log(res);
