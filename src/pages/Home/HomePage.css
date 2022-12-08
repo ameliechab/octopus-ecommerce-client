@@ -42,43 +42,7 @@ h6 {
   background-color: #22223b;
 }
 
-@media (max-width: 550px) {
-  .navbar-login-register-link {
-    font-size: 75%;
-  }
-  #button-log-out-navbar {
-    font-size: 75%;
-  }
-  .navbar-artist-creation-link {
-    font-size: 75%;
-  }
-  .logo-nav-bar {
-    width: 6.5rem;
-  }
-  .card-logo-nav-bar {
-    width: 3.5rem;
-  }
-}
-
-@media (max-width: 450px) {
-  .navbar-login-register-link {
-    font-size: 30%;
-  }
-  #button-log-out-navbar {
-    font-size: 30%;
-  }
-  .navbar-artist-creation-link {
-    font-size: 30%;
-  }
-  .logo-nav-bar {
-    width: 6rem;
-  }
-  .card-logo-nav-bar {
-    width: 3.5rem;
-  }
-}
-
-@media (max-width: 380px) {
+@media (max-width: 650px) {
   .link-navbar-responsive {
     padding-bottom: 0.2rem;
   }
